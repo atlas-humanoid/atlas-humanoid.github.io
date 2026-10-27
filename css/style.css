@@ -49,7 +49,7 @@ p { margin: 0; }
 .authors a { color: var(--accent); text-decoration: none; }
 .authors a:hover { text-decoration: underline; }
 .authors sup { font-size: 11px; color: var(--muted); margin-left: 1px; }
-.affil { margin: 10px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 20px; font-size: 15.5px; color: var(--fg); }
+.affil { margin: 10px auto 0; max-width: 680px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; font-size: 15.5px; color: var(--fg); }
 .affil span { max-width: 100%; }
 .affil sup { font-size: 11px; color: var(--muted); margin-right: 2px; }
 .logos { margin: 20px 0 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px 40px; }
@@ -61,8 +61,11 @@ p { margin: 0; }
 .film video { width: 100%; height: auto; }
 .film::before { content: ""; position: absolute; inset: 0 0 auto; height: 100px; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(8, 14, 20, .58), rgba(8, 14, 20, .16) 60%, transparent); }
 .film-prompt { position: absolute; left: 20px; right: 20px; top: 18px; z-index: 2; color: #fff; font-size: clamp(16px, 1.4vw, 18px); line-height: 1.45; font-weight: 500; text-align: left; text-shadow: 0 1px 4px rgba(0, 0, 0, .35); pointer-events: none; }
-.facts { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-.facts li { padding: 7px 14px; border-radius: 999px; background: #e3ecfa; color: var(--accent); font-size: 14px; font-weight: 600; }
+.facts { list-style: none; margin: 18px auto 0; padding: 0; max-width: 980px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 10px; }
+.facts li { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 8px 12px; border-radius: 999px; background: #e3ecfa; color: var(--accent); font-size: 14px; font-weight: 600; text-align: center; line-height: 1.25; white-space: nowrap; }
+.facts li::before { content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3.6 7.2l2.2 2.2 4.6-4.8' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px 14px no-repeat; }
+@media (max-width: 900px) { .facts { display: flex; flex-wrap: wrap; justify-content: center; } }
+@media (max-width: 640px) { .facts li { font-size: 13px; padding: 7px 11px; } }
 
 /* ---------- the framework, two figures ---------- */
 .intro { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }

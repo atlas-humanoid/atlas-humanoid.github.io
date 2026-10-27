@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=44a6c0a2">
+  <link rel="stylesheet" href="css/style.css?v=49">
 </head>
 <body>
 <a class="skip" href="#results">Skip to content</a>
@@ -58,7 +58,7 @@
     <ul class="facts" aria-label="What this run is">
       <li>Fully autonomous</li>
       <li>No teleoperation</li>
-      <li>Direct video to policy</li>
+      <li>No policy switch</li>
       <li>No task-specific training in simulation</li>
       <li>No VLA / WAM</li>
       <li>All sensing onboard</li>
@@ -68,7 +68,7 @@
   <!-- ===== The framework, one figure ===== -->
   <section class="intro wrap">
     <figure class="fig">
-      <div class="fig-scroll"><img src="media/fig_system_v23.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual end-effector target with an RL update, slow: agentic update, both marked with an update loop, sends wrist targets to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. Dashed lines from the slow update to the task specification and the progress indicator: the slow system revises both." width="2476" height="555"></div>
+      <div class="fig-scroll"><img src="media/fig_system_v24.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual end-effector target with an RL update, slow: agentic update, both marked with an update loop, sends wrist targets to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. Dashed lines from the slow agentic update to the task specification and to the progress indicator: the slow system revises both." width="2476" height="555"></div>
       <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen; System 1 learns on the robot: it acts at every control step and is updated after every attempt.</figcaption>
     </figure>
     <figure class="fig fig--retry">
