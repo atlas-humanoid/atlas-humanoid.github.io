@@ -159,8 +159,64 @@ h3.sub:first-of-type { margin-top: 8px; }
 .strips figcaption { margin-top: 7px; font-size: 13.5px; color: var(--muted); }
 .strips .duo-sim { max-width: 66%; margin: 0 auto; }
 .strips .duo-sim figcaption { text-align: center; }
-.fig.chart { margin-top: 36px; border: 0; padding: 0; background: none; }
-.fig.chart img { max-width: 920px; margin: 0 auto; display: block; }
+/* Simulation results: original plot pixels, responsive labels and layout. */
+.learning-study { --study-blue: #2b7ce2; --study-control: #fc6330; margin-top: 56px; padding: 28px; background: #fcfcfb; border: 1px solid #e6e8eb; border-radius: 18px; }
+.study-eyebrow { margin-bottom: 10px; color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+.study-header h3 { margin: 0; font-size: clamp(26px, 3vw, 32px); line-height: 1.15; letter-spacing: -.035em; }
+.study-deck { margin-top: 10px; color: var(--muted); font-size: 16px; line-height: 1.5; }
+.study-deck strong { color: var(--accent); font-weight: 500; }
+.study-legend { display: flex; flex-wrap: wrap; gap: 12px 32px; list-style: none; padding: 0; margin: 18px 0 0; font-size: 14px; }
+.study-legend li { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.study-legend small { padding-left: 5px; color: var(--muted); font-size: 12px; font-weight: 400; }
+.study-swatch { position: relative; display: block; width: 28px; height: 3px; background: var(--study-blue); }
+.study-swatch::after { content: ""; position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; border: 1.5px solid #fcfcfb; border-radius: 50%; background: inherit; transform: translate(-50%, -50%); }
+.study-swatch--control { background: var(--study-control); }
+.study-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; margin-top: 24px; }
+.study-task { min-width: 0; }
+.study-task h4 { margin: 0 0 16px; padding-top: 16px; border-top: 1px solid #dfe3e8; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -.02em; }
+.study-metric + .study-metric { margin-top: 24px; }
+.study-metric-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+.study-metric-heading strong { display: block; font-size: 14px; font-weight: 600; line-height: 1.4; }
+.study-metric-heading p > span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.4; }
+.study-direction { flex: none; color: var(--muted); font-size: 11px; }
+.study-plot { position: relative; width: calc(100% - 32px); margin: 0 0 0 32px; aspect-ratio: 868 / 410; min-height: 164px; }
+.study-plot svg { width: 100%; height: 100%; overflow: visible; }
+.study-y-ticks span { position: absolute; left: -9px; transform: translate(-100%, -50%); font-size: 12px; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
+.study-x-ticks span { position: absolute; top: 100%; margin-top: 9px; transform: translateX(-50%); font-size: 12px; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
+.study-x-label { margin: 30px 0 0 32px; text-align: center; font-size: 12px; line-height: 1.4; color: var(--muted); }
+.study-metric:first-of-type .study-x-ticks, .study-metric:first-of-type .study-x-label { display: none; }
+.study-caption { margin-top: 28px; padding-top: 20px; border-top: 1px solid #dfe3e8; color: var(--muted); font-size: 12.5px; line-height: 1.65; }
+.study-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 20px; color: var(--fg); font-size: 13px; font-weight: 500; }
+.study-meta p > span { padding: 0 7px; color: #a0a6af; }
+.study-meta a { font-size: 12px; white-space: nowrap; }
+.study-band-note { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 7px; margin: 10px 0; }
+.study-band-swatch, .study-warmup-swatch { display: inline-block; width: 14px; height: 10px; flex: none; border-radius: 2px; background: #dce7f6; }
+.study-warmup-swatch { margin-left: 8px; background: #eeeeeb; border: 1px solid #e2e2df; }
+.study-caption b { font-weight: 500; color: var(--fg); }
+@media (max-width: 800px) {
+  .learning-study { padding: 24px; }
+  .study-panels { gap: 28px; }
+  .study-metric-heading { display: block; }
+  .study-direction { display: none; }
+}
+@media (max-width: 640px) {
+  .learning-study { margin-top: 36px; padding: 24px 16px 20px; border-radius: 12px; }
+  .study-header h3 { max-width: 13ch; font-size: 30px; }
+  .study-deck { font-size: 15px; }
+  .study-deck strong { display: block; margin-top: 3px; }
+  .study-legend { gap: 10px; flex-direction: column; margin-top: 20px; }
+  .study-panels { grid-template-columns: 1fr; gap: 28px; margin-top: 24px; }
+  .study-task h4 { margin-bottom: 20px; }
+  .study-metric-heading { display: flex; }
+  .study-direction { display: block; font-size: 10px; }
+  .study-metric + .study-metric { margin-top: 24px; }
+  .study-caption { margin-top: 24px; }
+  .study-meta p { max-width: 24ch; line-height: 1.8; }
+  .study-meta p > span { padding: 0 4px; }
+  .study-band-note { display: block; }
+  .study-band-swatch, .study-warmup-swatch { margin-right: 3px; }
+  .study-warmup-swatch { margin-left: 0; }
+}
 @media (max-width: 640px) { .strips .duo-sim { max-width: 100%; } }
 .gallery li { display: flex; flex-direction: column; }
 .gallery li p.say { flex: 1; }

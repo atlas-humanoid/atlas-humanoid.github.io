@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3805c5ff">
+  <link rel="stylesheet" href="css/style.css?v=cb7467aa">
 </head>
 <body>
 <a class="skip" href="#results">Skip to content</a>
@@ -183,9 +183,84 @@
       <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; the harness lifts, carries and sets it down"><source src="media/sim_trio_box.mp4" type="video/mp4"></video><figcaption>Box · two-hand carry</figcaption></figure>
       <figure class="duo-sim"><video muted loop playsinline preload="none" poster="media/sim_duo_fridge_door.jpg" width="1244" height="524" aria-label="Two panels: a person squats and pulls an under-counter fridge door open; the harness grasps the vertical bar and pulls the door open"><source src="media/sim_duo_fridge_door.mp4" type="video/mp4"></video><figcaption>Fridge door · person and harness, no retarget</figcaption></figure>
     </div>
-    <figure class="fig chart">
-      <img src="media/sim_rl_vs_attempt.png" alt="Two columns, apple and banana; two rows, end-effector error in the hold and success rate, against the attempt number. With the real robot's execution bias injected, the online learner's curve drops to a low error and rises to a high success rate within about ten attempts; the control with no learner, dealt by coin inside the same run, stays flat." width="2100" height="1320">
-      <figcaption><b>Online RL against a no-learner control, in the same run.</b> With the real robot's measured execution bias injected into the simulator, the online learner brings the end-effector error down and the success rate up within about ten attempts; the control, dealt by coin inside the same run, stays where it started.</figcaption>
+    <figure class="learning-study" aria-labelledby="study-title">
+      <header class="study-header">
+        <p class="study-eyebrow">Online learning in simulation</p>
+        <h3 id="study-title">Closing the execution gap.</h3>
+        <p class="study-deck">Lower error. Higher success. <strong>Within about ten attempts.</strong></p>
+        <ul class="study-legend" aria-label="Experimental arms">
+          <li><span class="study-swatch" aria-hidden="true"></span><span>Online RL <small>learner arm</small></span></li>
+          <li><span class="study-swatch study-swatch--control" aria-hidden="true"></span><span>No learner <small>zero-bias arm</small></span></li>
+        </ul>
+      </header>
+      <!-- The four viewports preserve the original plot pixels, including all
+           points, range bands and the warm-up label. Only labels and layout are
+           rebuilt; no values are digitized or inferred from this raster figure. -->
+      <div class="study-panels">
+        <section class="study-task" aria-labelledby="study-apple">
+          <h4 id="study-apple">Apple</h4>
+          <div class="study-metric">
+            <div class="study-metric-heading"><p><strong>End-effector error</strong><span>In the hold · cm · median</span></p><span class="study-direction">↓ Lower is better</span></div>
+            <div class="study-plot" role="img" aria-label="Apple: online RL reduces end-effector error within about ten attempts; the no-learner control remains high. Shaded bands show the range across seeds.">
+              <svg viewBox="126 218 868 446" preserveAspectRatio="none" aria-hidden="true">
+                <defs><clipPath id="apple-error-clip"><rect x="126" y="218" width="790" height="446" /><rect x="104" y="235" width="22" height="21" /></clipPath></defs>
+                <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 916 266.5 H 994" /><path d="M 916 332.5 H 994" /><path d="M 916 398.5 H 994" /><path d="M 916 464.5 H 994" /><path d="M 916 529.5 H 994" /><path d="M 916 595.5 H 994" /><path d="M 916 661.5 H 994" /></g>
+                <image href="media/sim_rl_vs_attempt.png" width="2100" height="1320" clip-path="url(#apple-error-clip)" />
+              </svg>
+              <div class="study-y-ticks" aria-hidden="true"><span style="top:10.8744%">12</span><span style="top:25.6726%">10</span><span style="top:40.4709%">8</span><span style="top:55.2691%">6</span><span style="top:69.8430%">4</span><span style="top:84.6413%">2</span><span style="top:99.4395%">0</span></div>
+              <div class="study-x-ticks" aria-hidden="true"><span style="left:0.0000%">0</span><span style="left:23.8095%">20</span><span style="left:47.6190%">40</span><span style="left:71.4286%">60</span><span style="left:95.2381%">80</span></div>
+            </div>
+            <p class="study-x-label" aria-hidden="true">Attempt</p>
+          </div>
+          <div class="study-metric">
+            <div class="study-metric-heading"><p><strong>Success rate</strong><span>% · mean</span></p><span class="study-direction">↑ Higher is better</span></div>
+            <div class="study-plot" role="img" aria-label="Apple: online RL raises success rate within about ten attempts; the no-learner control stays near zero. Shaded bands show the range across seeds.">
+              <svg viewBox="126 710 868 446" preserveAspectRatio="none" aria-hidden="true">
+                <defs><clipPath id="apple-success-clip"><rect x="126" y="710" width="790" height="446" /></clipPath></defs>
+                <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 916 725.5 H 994" /><path d="M 916 809.5 H 994" /><path d="M 916 893.5 H 994" /><path d="M 916 977.5 H 994" /><path d="M 916 1061.5 H 994" /></g>
+                <image href="media/sim_rl_vs_attempt.png" width="2100" height="1320" clip-path="url(#apple-success-clip)" />
+              </svg>
+              <div class="study-y-ticks" aria-hidden="true"><span style="top:3.4753%">100</span><span style="top:22.3094%">80</span><span style="top:41.1435%">60</span><span style="top:59.9776%">40</span><span style="top:78.8117%">20</span><span style="top:97.6457%">0</span></div>
+              <div class="study-x-ticks" aria-hidden="true"><span style="left:0.0000%">0</span><span style="left:23.8095%">20</span><span style="left:47.6190%">40</span><span style="left:71.4286%">60</span><span style="left:95.2381%">80</span></div>
+            </div>
+            <p class="study-x-label" aria-hidden="true">Attempt</p>
+          </div>
+        </section>
+        <section class="study-task" aria-labelledby="study-banana">
+          <h4 id="study-banana">Banana</h4>
+          <div class="study-metric">
+            <div class="study-metric-heading"><p><strong>End-effector error</strong><span>In the hold · cm · median</span></p><span class="study-direction">↓ Lower is better</span></div>
+            <div class="study-plot" role="img" aria-label="Banana: online RL reduces end-effector error within about ten attempts; the no-learner control remains high. Shaded bands show the range across seeds.">
+              <svg viewBox="1142 218 868 446" preserveAspectRatio="none" aria-hidden="true">
+                <defs><clipPath id="banana-error-clip"><rect x="1142" y="218" width="790" height="446" /></clipPath></defs>
+                <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 1932 266.5 H 2010" /><path d="M 1932 332.5 H 2010" /><path d="M 1932 398.5 H 2010" /><path d="M 1932 464.5 H 2010" /><path d="M 1932 529.5 H 2010" /><path d="M 1932 595.5 H 2010" /><path d="M 1932 661.5 H 2010" /></g>
+                <image href="media/sim_rl_vs_attempt.png" width="2100" height="1320" clip-path="url(#banana-error-clip)" />
+              </svg>
+              <div class="study-y-ticks" aria-hidden="true"><span style="top:10.8744%">12</span><span style="top:25.6726%">10</span><span style="top:40.4709%">8</span><span style="top:55.2691%">6</span><span style="top:69.8430%">4</span><span style="top:84.6413%">2</span><span style="top:99.4395%">0</span></div>
+              <div class="study-x-ticks" aria-hidden="true"><span style="left:0.0000%">0</span><span style="left:23.8095%">20</span><span style="left:47.6190%">40</span><span style="left:71.4286%">60</span><span style="left:95.2381%">80</span></div>
+            </div>
+            <p class="study-x-label" aria-hidden="true">Attempt</p>
+          </div>
+          <div class="study-metric">
+            <div class="study-metric-heading"><p><strong>Success rate</strong><span>% · mean</span></p><span class="study-direction">↑ Higher is better</span></div>
+            <div class="study-plot" role="img" aria-label="Banana: online RL raises success rate within about ten attempts; the no-learner control stays near zero. Shaded bands show the range across seeds.">
+              <svg viewBox="1142 710 868 446" preserveAspectRatio="none" aria-hidden="true">
+                <defs><clipPath id="banana-success-clip"><rect x="1142" y="710" width="790" height="446" /></clipPath></defs>
+                <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 1932 725.5 H 2010" /><path d="M 1932 809.5 H 2010" /><path d="M 1932 893.5 H 2010" /><path d="M 1932 977.5 H 2010" /><path d="M 1932 1061.5 H 2010" /></g>
+                <image href="media/sim_rl_vs_attempt.png" width="2100" height="1320" clip-path="url(#banana-success-clip)" />
+              </svg>
+              <div class="study-y-ticks" aria-hidden="true"><span style="top:3.4753%">100</span><span style="top:22.3094%">80</span><span style="top:41.1435%">60</span><span style="top:59.9776%">40</span><span style="top:78.8117%">20</span><span style="top:97.6457%">0</span></div>
+              <div class="study-x-ticks" aria-hidden="true"><span style="left:0.0000%">0</span><span style="left:23.8095%">20</span><span style="left:47.6190%">40</span><span style="left:71.4286%">60</span><span style="left:95.2381%">80</span></div>
+            </div>
+            <p class="study-x-label" aria-hidden="true">Attempt</p>
+          </div>
+        </section>
+      </div>
+      <figcaption class="study-caption">
+        <div class="study-meta"><p>3 seeds <span>·</span> 80 attempts per seed <span>·</span> 10-attempt bins</p><a href="media/sim_rl_vs_attempt.png" target="_blank" rel="noopener">Original figure <span aria-hidden="true">↗</span></a></div>
+        <p class="study-band-note"><span class="study-band-swatch" aria-hidden="true"></span>Shaded bands: range across seeds. <span class="study-warmup-swatch" aria-hidden="true"></span>Gray strip: warm-up.</p>
+        <p><b>Online RL against a no-learner control, in the same run.</b> Isaac Lab, one-object pick-and-place, with the real robot’s measured execution bias (x −7.9 cm, y −4.1 cm) injected into the tracker. From attempt 5, each attempt is assigned by coin flip to the learner arm or the zero-bias control arm.</p>
+      </figcaption>
     </figure>
   </section>
 
