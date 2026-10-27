@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATLAS: Agentic Test-Time Learning via Self-Improving Harness for Humanoid Loco-Manipulation</title>
+  <meta name="description" content="From one human video and one sentence, a Unitree G1 climbs a staircase and picks a paper ball off the step. ATLAS keeps the VLM agent and the whole-body controller frozen and learns the control on the robot while it works. Early release.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ATLAS: a humanoid learns the task on the robot, from one human video">
+  <meta property="og:description" content="From one human video and one sentence, a Unitree G1 climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works. Early release.">
+  <meta property="og:image" content="media/og_card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A Unitree G1 humanoid standing on a wooden staircase, holding a crumpled paper ball it picked off the step">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ATLAS: a humanoid learns the task on the robot, from one human video">
+  <meta name="twitter:description" content="From one human video and one sentence, a Unitree G1 climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works.">
+  <meta name="twitter:image" content="media/og_card.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f4e9c'/%3E%3Ctext x='7' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='700' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=48">
+</head>
+<body>
+<a class="skip" href="#results">Skip to content</a>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">ATLAS</a>
+    <nav class="links" aria-label="Sections"><a href="#results">Session</a><a href="#more">More tasks</a><a href="#sim">Simulation</a><a href="#details">Details</a></nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== Title and the film ===== -->
+  <section class="top wrap">
+    <h1><span class="name">ATLAS</span>: Agentic Test-Time Learning via Self-Improving Harness for Humanoid Loco-Manipulation</h1>
+    <p class="authors"><span class="au"><a href="https://renjunli99.github.io/">Junli Ren</a><sup>*1,3</sup></span>, <span class="au"><a href="https://kaixiangyao.github.io/">Kaixiang Yao</a><sup>*1</sup></span>, <span class="au"><a href="https://junfeng-long.github.io/">Junfeng Long</a><sup>1</sup></span>, <span class="au"><a href="https://taohuang13.github.io/">Tao Huang</a><sup>3</sup></span>, <span class="au"><a href="https://why618188.github.io/">Huayi Wang</a><sup>3</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/yuxiao-chen">Yuxiao Chen</a><sup>2</sup></span>, <span class="au"><a href="https://wenhao.pub">Wenhao Ding</a><sup>2</sup></span>,<br><span class="au"><a href="http://www.borisivanovic.com/">Boris Ivanovic</a><sup>2†</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/marco-pavone">Marco Pavone</a><sup>2†</sup></span>, <span class="au"><a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a><sup>1†</sup></span>, <span class="au"><a href="http://luoping.me">Ping Luo</a><sup>3†</sup></span>, <span class="au"><a href="https://thomaschen98.github.io/">Yuxin Chen</a><sup>1^</sup></span>, <span class="au"><a href="https://thomasrantian.github.io/">Ran Tian</a><sup>2^</sup></span></p>
+    <p class="affil"><sup>1</sup>UC Berkeley &nbsp;&nbsp; <sup>2</sup>NVIDIA &nbsp;&nbsp; <sup>3</sup>The University of Hong Kong</p>
+    <p class="marks">* co-first author &nbsp;·&nbsp; † equal advising &nbsp;·&nbsp; ^ project lead</p>
+    <p class="logos" aria-hidden="true"><img src="media/logos/berkeley.svg" alt=""><img src="media/logos/nvidia.svg" alt="" class="wide"><img src="media/logos/hku.png" alt=""></p>
+    <p class="date">October 2026 · Early release</p>
+    <div class="film">
+      <video muted loop playsinline autoplay preload="auto" poster="media/stairs_hero.jpg" width="1920" height="1080"
+        aria-label="A real Unitree G1 humanoid is placed at the foot of a wooden staircase, climbs three steps, stops, reaches down to the step, lifts a crumpled paper ball and stands holding it. One take; the climb at real speed, the rest at 1.8x.">
+        <source src="media/stairs_hero.mp4" type="video/mp4">
+      </video>
+      <span class="film-prompt" aria-hidden="true">“Climb the stairs and pick up the paper ball.”</span>
+    </div>
+    <ul class="facts" aria-label="What this run is">
+      <li>Fully autonomous</li>
+      <li>No teleoperation</li>
+      <li>No task-specific training in simulation</li>
+      <li>No VLA / WAM</li>
+      <li>All sensing onboard</li>
+    </ul>
+  </section>
+
+  <!-- ===== The framework, one figure ===== -->
+  <section class="intro wrap">
+    <figure class="fig">
+      <div class="fig-scroll"><img src="media/fig_system_v23.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual end-effector target with an RL update, slow: agentic update, both marked with an update loop, sends wrist targets to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. Dashed lines from the slow update to the task specification and the progress indicator: the slow system revises both." width="2476" height="555"></div>
+      <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen; System 1 learns on the robot: it acts at every control step and is updated after every attempt.</figcaption>
+    </figure>
+    <figure class="fig fig--retry">
+      <div class="strip" id="runstrip">
+        <div class="clip"><div class="slot"><img class="ghost" src="media/run_ghost_1.jpg" alt="" width="480" height="360"><canvas width="480" height="360"></canvas></div><p><b>attempt 1</b> · miss</p><p class="st"><i>π</i><sub>φ</sub> from zero</p></div>
+        <div class="gap"></div>
+        <div class="clip"><div class="slot"><img class="ghost" src="media/run_ghost_2.jpg" alt="" width="480" height="360"><canvas width="480" height="360"></canvas></div><p><b>attempt 2</b> · miss</p><p class="st"><i>π</i><sub>φ</sub> updated</p></div>
+        <div class="gap"></div>
+        <div class="clip"><div class="slot"><img class="ghost" src="media/run_ghost_3.jpg" alt="" width="480" height="360"><canvas width="480" height="360"></canvas></div><p><b>attempt 3</b> · grasp</p><p class="st"><i>π</i><sub>φ</sub> updated again</p></div>
+        <div class="mover" id="runmover">
+          <video id="run" muted loop playsinline autoplay preload="metadata" poster="media/stairs_run_3x.jpg" width="960" height="720" aria-label="One stair run at 3x speed, shown as one video that moves from the left slot to the middle to the right as the attempts go by: the robot climbs the stairs, reaches down to the paper ball on the step and misses, stands back up on the same steps, reaches and misses again, then reaches a third time and grasps the ball; the slots it leaves keep the last frame of that attempt"><source src="media/stairs_run_3x.mp4" type="video/mp4"></video>
+          <span class="phase" id="runphase" aria-hidden="true">climbing the stairs</span>
+        </div>
+      </div>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="rah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#d94a3d" stroke-width="1.4"/></marker></defs></svg>
+      <div class="schem">
+        <svg class="pan" viewBox="0 0 340 120" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="339" height="119" rx="6" fill="#f3f4f6" stroke="#d6dae1"/>
+          <text x="12" y="18" class="rf">robot frame</text>
+          <path d="M 30 14 C 80 34, 150 66, 250 88" fill="none" stroke="#8a9099" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <circle cx="250" cy="88" r="7" fill="none" stroke="#1f4e9c" stroke-width="1.5"/><line x1="250" y1="76" x2="250" y2="100" stroke="#1f4e9c" stroke-width="1.5"/><line x1="238" y1="88" x2="262" y2="88" stroke="#1f4e9c" stroke-width="1.5"/>
+          <circle cx="196" cy="58" r="4.5" fill="#5d6470"/>
+          <line x1="202" y1="62" x2="245" y2="85" stroke="#d94a3d" stroke-width="1.6" marker-end="url(#rah)"/><text x="112" y="60" class="l">end effector</text><text x="262" y="110" class="l b">affordance</text>
+        </svg>
+        <div class="loop" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M 22.5 14 a 8.5 8.5 0 1 1 -2.5 -6" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round"/><path d="M 22 3.5 v 5.5 h -5.5" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><i><em>f</em><sub>ψ</sub>, <em>π</em><sub>φ</sub></i></div>
+        <svg class="pan" viewBox="0 0 340 120" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="339" height="119" rx="6" fill="#f3f4f6" stroke="#d6dae1"/>
+          <text x="12" y="18" class="rf">robot frame</text>
+          <path d="M 30 14 C 80 34, 150 66, 250 88" fill="none" stroke="#8a9099" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <circle cx="250" cy="88" r="7" fill="none" stroke="#1f4e9c" stroke-width="1.5"/><line x1="250" y1="76" x2="250" y2="100" stroke="#1f4e9c" stroke-width="1.5"/><line x1="238" y1="88" x2="262" y2="88" stroke="#1f4e9c" stroke-width="1.5"/>
+          <circle cx="234" cy="80" r="4.5" fill="#5d6470"/>
+          <line x1="240" y1="84" x2="247" y2="87" stroke="#d94a3d" stroke-width="1.6" marker-end="url(#rah)"/>
+        </svg>
+        <div class="loop" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M 22.5 14 a 8.5 8.5 0 1 1 -2.5 -6" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round"/><path d="M 22 3.5 v 5.5 h -5.5" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><i><em>f</em><sub>ψ</sub>, <em>π</em><sub>φ</sub></i></div>
+        <svg class="pan" viewBox="0 0 340 120" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="339" height="119" rx="6" fill="#f3f4f6" stroke="#d6dae1"/>
+          <text x="12" y="18" class="rf">robot frame</text>
+          <path d="M 30 14 C 80 34, 150 66, 250 88" fill="none" stroke="#8a9099" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <circle cx="250" cy="88" r="7" fill="none" stroke="#1f4e9c" stroke-width="1.5"/><line x1="250" y1="76" x2="250" y2="100" stroke="#1f4e9c" stroke-width="1.5"/><line x1="238" y1="88" x2="262" y2="88" stroke="#1f4e9c" stroke-width="1.5"/>
+          <circle cx="250" cy="88" r="4.5" fill="#5d6470"/>
+          
+        </svg>
+      </div>
+      <div class="axis" aria-hidden="true">
+        <span class="rail"></span>
+        <span class="span" style="--i:0"><i class="t">t = 0 s</i><span class="cur" id="runcur" style="left:38%"></span></span>
+        <span class="span" style="--i:1"><i class="t">25 s</i></span>
+        <span class="span" style="--i:2"><i class="t">40 s</i><i class="t end">60 s</i></span>
+        <i class="rail-l">π<sub>φ</sub> at every control step, from zero · one run, 3×</i>
+      </div>
+      <figcaption class="exp">
+        <p class="lead"><b>Illustration of the fast online RL update.</b></p>
+        <ul class="steps">
+          <li><span class="g g-rail"></span><b>Every control step.</b> The actor adds an offset to the wrist target, <i>u<sub>t</sub> = π<sub>φ</sub>(c<sub>t</sub>, n<sub>t</sub>)</i>; the controller tracks <i>n<sub>t</sub> + u<sub>t</sub></i>.</li>
+          <li><span class="g g-miss"></span><b>At the grasp.</b> The miss is the end-effector error, the gap to the affordance, <i>‖n<sub>T</sub> − c<sub>T</sub>‖</i>; this is what the learner drives down.</li>
+          <li><span class="g g-loop"></span><b>After every attempt.</b> The dynamics model is refit on all attempts so far, <i>ĉ<sub>t+1</sub> = f<sub>ψ</sub>(c<sub>t</sub>, n<sub>t</sub> + u<sub>t</sub>)</i>, and the actor is updated by backpropagation through it, <i>r = −‖n<sub>T</sub> − ĉ<sub>T</sub>‖²</i>.</li>
+          <li><span class="g g-slow"></span><b>Slow system.</b> The agent may move the grasp target <i>n</i>; a move is kept only if the progress indicator improves.</li>
+        </ul>
+        <p class="key"><i>f</i><sub>ψ</sub> and <i>π</i><sub>φ</sub> start from zero in every session &nbsp;·&nbsp; <i>n<sub>t</sub></i> wrist target, <i>n<sub>T</sub></i> the grasp target &nbsp;·&nbsp; <i>u</i> learned offset &nbsp;·&nbsp; <i>c</i> end effector &nbsp;·&nbsp; ĉ predicted end effector &nbsp;·&nbsp; <i>T</i> grasp step</p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== 01 One session ===== -->
+  <section class="sec sec--wide" id="results">
+    <p class="sec-n">01</p>
+    <h2>Autonomous Test-Time Learning, One Session</h2>
+    <p class="say">Pick up the trash and put it in the bin.</p>
+    <div class="media">
+      <video id="session" muted playsinline controls preload="metadata" poster="media/rl_session_mid.jpg" width="1920" height="1080"
+        aria-label="One online-learning session, sped up five times: a Unitree G1 picks trash off the floor and puts it in a bin. A panel on the left counts attempts and successes and plots the success rate over the last eight attempts; it starts at 0% and ends at 88% after 38 attempts.">
+        <source src="media/rl_session.mp4" type="video/mp4">
+      </video>
+    </div>
+    <ul class="points">
+      <li><b>Success rate over the last eight attempts rises from 0% to 88%</b> in 38 attempts, from zero.</li>
+      <li><b>No teleoperation.</b> A person steps in only when the object leaves the camera's field of view.</li>
+    </ul>
+  </section>
+
+  <!-- ===== 02 More tasks ===== -->
+  <section class="sec sec--wide" id="more">
+    <p class="sec-n">02</p>
+    <h2>More Tasks</h2>
+    <p class="lede">The same harness, other tasks. Each from one video of a person and one sentence.</p>
+    <p class="say">Open the cabinet door. <span class="spd">1×</span></p>
+    <div class="media">
+      <video muted loop playsinline preload="metadata" poster="media/cabinet_open_1x.jpg" width="1440" height="1080" aria-label="A Unitree G1 walks up to an under-counter cabinet, crouches, takes the door's handle and pulls the door open, at real speed"><source src="media/cabinet_open_1x.mp4" type="video/mp4"></video>
+    </div>
+    <p class="say">Navigate to the sofa; pick up the trash along your way and put it in the bin. <span class="spd">1×</span></p>
+    <div class="media">
+      <video muted loop playsinline preload="metadata" poster="media/nav_pick_1x.jpg" width="1920" height="1080" aria-label="A Unitree G1 walks across a lounge toward a sofa, picks up the trash on its way and puts it in the bin, at real speed"><source src="media/nav_pick_1x.mp4" type="video/mp4"></video>
+    </div>
+    <p class="say">Pick up the box, carry it and set it down. <span class="spd">2×</span></p>
+    <div class="media">
+      <video muted loop playsinline preload="metadata" poster="media/box_retry_2x.jpg" width="1920" height="1080" aria-label="A Unitree G1 walks to a box on the floor, tries to lift it, retries where it stands and lifts it, at 2x speed"><source src="media/box_retry_2x.mp4" type="video/mp4"></video>
+    </div>
+    <ul class="gallery">
+      <li><video muted loop playsinline preload="none" poster="media/box_three_3x.jpg" width="1080" height="1080" aria-label="A Unitree G1 picks up a box, carries it and sets it down, three times in a row; a person brings the box back each time; at 3x speed"><source src="media/box_three_3x.mp4" type="video/mp4"></video><p class="say">Pick up the box, carry it and set it down. <span class="spd">3×</span></p></li>
+      <li><video muted loop playsinline preload="none" poster="media/tennis_pick_2x.jpg" width="1080" height="1080" aria-label="A Unitree G1 walks to a tennis ball on the floor, crouches, picks it up and stands holding it, at 1.5x speed"><source src="media/tennis_pick_2x.mp4" type="video/mp4"></video><p class="say">Pick up the tennis ball. <span class="spd">1.5×</span></p></li>
+      <li><video muted loop playsinline preload="none" poster="media/can_bin_3x.jpg" width="720" height="720" aria-label="A Unitree G1 walks to a crushed can, picks it off the floor and drops it into a bin, at 3x speed"><source src="media/can_bin_3x.mp4" type="video/mp4"></video><p class="say">Pick up the can and put it in the bin. <span class="spd">3×</span></p></li>
+    </ul>
+  </section>
+
+  <!-- ===== 03 In simulation ===== -->
+  <section class="sec sec--wide" id="sim">
+    <p class="sec-n">03</p>
+    <h2>More Tasks in Simulation</h2>
+    <p class="lede">The same harness, with Isaac Lab standing in for the robot; nothing is trained beforehand. Each strip: the person, a direct retarget of the motion, and the harness, aligned by phase.</p>
+    <div class="strips">
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; the harness picks it up and places it"><source src="media/sim_trio_banana.mp4" type="video/mp4"></video><figcaption>Banana · from one phone video</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video, an apple in the scene; the retarget misses; the harness picks the apple and places it"><source src="media/sim_trio_apple.mp4" type="video/mp4"></video><figcaption>Apple · the same video, another object</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; the harness lifts, carries and sets it down"><source src="media/sim_trio_box.mp4" type="video/mp4"></video><figcaption>Box · two-hand carry</figcaption></figure>
+      <figure class="duo-sim"><video muted loop playsinline preload="none" poster="media/sim_duo_fridge_door.jpg" width="1244" height="524" aria-label="Two panels: a person squats and pulls an under-counter fridge door open; the harness grasps the vertical bar and pulls the door open"><source src="media/sim_duo_fridge_door.mp4" type="video/mp4"></video><figcaption>Fridge door · person and harness, no retarget</figcaption></figure>
+    </div>
+    <figure class="fig chart">
+      <img src="media/sim_rl_vs_attempt.png" alt="Two columns, apple and banana; two rows, end-effector error in the hold and success rate, against the attempt number. With the real robot's execution bias injected, the online learner's curve drops to a low error and rises to a high success rate within about ten attempts; the control with no learner, dealt by coin inside the same run, stays flat." width="2100" height="1320">
+      <figcaption><b>Online RL against a no-learner control, in the same run.</b> With the real robot's measured execution bias injected into the simulator, the online learner brings the end-effector error down and the success rate up within about ten attempts; the control, dealt by coin inside the same run, stays where it started.</figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="details">
+    <p class="sec-n">04</p>
+    <h2>Details</h2>
+
+    <h3 class="sub">FAQ</h3>
+    <div class="faq">
+      <details><summary>How often does the agent run?</summary><p>The agent tells the perception model (SAM 3) what to look for and defines the affordance: the end effector's pose relative to the object. From there SAM 3 finds the object in the image and the depth image places the affordance in 3-D, the whole-body controller carries the end effector to it, and online RL takes care of the tracking error.</p></details>
+      <details><summary>How does one phone video become a robot motion?</summary><p>The person's motion is lifted from the video (GVHMR) and retargeted to the G1 (GMR); that is the reference the whole-body controller tracks. The agent cuts the stretch that is the task and defines the affordance; at run time the reach is anchored to where the camera sees the object, and the learner corrects the wrist.</p></details>
+      <details><summary>What does the online learner learn, and from what?</summary><p>How this body executes wrist commands. Online model-based RL: a dynamics model fitted to the robot's own measurements and an actor updated through it, acting at every control step of the reach. From zero in every session; nothing is collected beforehand.</p></details>
+      <details><summary>How does the robot know it missed?</summary><p>The agent first sets a progress indicator, geometric to begin with: the gripper's closure and what the camera sees after the lift. A background agent reads the robot's ego-view images and state in real time and keeps checking the indicator; when it fits poorly or misjudges too often, the slow system revises it. A miss is retried where it stands.</p></details>
+      <details><summary>Which controller is used?</summary><p>The whole-body controller is ScaleBFM, which we trained to adapt to terrain; that is what carries it up the stairs. The agent, the learner and the retry are the same on the stairs as on the floor.</p></details>
+      <details><summary>What runs on the robot, and what off it?</summary><p>Sensing is all onboard: the head camera (RGB-D) and the joint state. The controller and the acting policy run on the robot; the VLM, SAM 3 and the learner's updates run on a PC over a link; some flat-ground tasks localize the robot with an external tracker.</p></details>
+      <details><summary>Does a person do anything during a run?</summary><p>Nothing, unless the robot walks out of the workspace or the object drops out of the camera's field of view, where the robot would be stuck. The rest of the time you just watch it evolve on its own.</p></details>
+    </div>
+
+    <h3 class="sub">Scope and limitations</h3>
+    <p class="scope">Tasks with sustained contact are still hard; opening a heavy door is one. A dynamics model learned per task does not scale; reusing this real-robot experience across tasks is future work.</p>
+  </section>
+
+</main>
+
+<footer class="foot"><span>ATLAS · Early release</span><a href="#top">Top ↑</a></footer>
+
+<script src="js/main.js?v=18"></script>
+</body>
+</html>
