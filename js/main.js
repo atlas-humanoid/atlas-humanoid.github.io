@@ -22,12 +22,12 @@ function setupClips() {
   const session = document.getElementById("session");
   const loops = [...document.querySelectorAll("video[loop]")];
   if (REDUCED) {
-    loops.forEach(v => { v.removeAttribute("autoplay"); v.setAttribute("controls", ""); });
+    loops.forEach(v => { v.removeAttribute("autoplay"); v.pause(); v.setAttribute("controls", ""); });
     return;
   }
   if (!("IntersectionObserver" in window)) { loops.forEach(play); return; }
   let sessionStarted = false;
-  const io = new IntersectionObserver(es => es.forEach(e => {
+  const onVisibility = es => es.forEach(e => {
     const v = e.target;
     if (v === session) {
       if (e.isIntersecting && !sessionStarted) { sessionStarted = true; play(v); }
@@ -35,8 +35,14 @@ function setupClips() {
       return;
     }
     if (e.isIntersecting) play(v); else v.pause();
-  }), { threshold: 0.4 });
-  loops.forEach(v => { io.observe(v); v.addEventListener("click", () => (v.paused ? play(v) : v.pause())); });
+  });
+  const io = new IntersectionObserver(onVisibility, { threshold: 0.4 });
+  // The title can leave only a sliver of the hero visible on shorter screens.
+  const heroIO = new IntersectionObserver(onVisibility, { threshold: 0.01 });
+  loops.forEach(v => {
+    (v.closest(".film") ? heroIO : io).observe(v);
+    v.addEventListener("click", () => (v.paused ? play(v) : v.pause()));
+  });
   if (session) io.observe(session);
 }
 
