@@ -49,7 +49,7 @@ p { margin: 0; }
 .authors a { color: var(--accent); text-decoration: none; }
 .authors a:hover { text-decoration: underline; }
 .authors sup { font-size: 11px; color: var(--muted); margin-left: 1px; }
-.affil { margin: 10px auto 0; max-width: 680px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; font-size: 15.5px; color: var(--fg); }
+.affil { margin: 10px auto 0; max-width: 680px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; font-size: 15.5px; font-weight: 700; color: var(--fg); }
 .affil span { max-width: 100%; }
 .affil sup { font-size: 11px; color: var(--muted); margin-right: 2px; }
 .logos { margin: 20px 0 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px 40px; }
