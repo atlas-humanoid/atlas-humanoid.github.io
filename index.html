@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=c7a58f49">
+  <link rel="stylesheet" href="css/style.css?v=8bfc5bd3">
 </head>
 <body>
 <a class="skip" href="#method">Skip to content</a>
@@ -85,22 +85,11 @@
     <header class="section-heading">
       <p class="section-eyebrow">Method</p>
       <h2 id="method-title">A Self-Improving Harness</h2>
-      <p class="lede">ATLAS connects a System 2 agent to a whole-body controller through a self-improving harness. The agent’s underlying model and the controller stay frozen while the harness adapts from the robot’s own experience.</p>
     </header>
     <figure class="fig">
       <div class="fig-scroll"><img src="media/fig_system_v24.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual end-effector target with an RL update, slow: agentic update, both marked with an update loop, sends wrist targets to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. Dashed lines from the slow agentic update to the task specification and to the progress indicator: the slow system revises both." width="2476" height="555"></div>
       <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen; System 1 learns on the robot: it acts at every control step and is updated after every attempt.</figcaption>
     </figure>
-    <div class="method-updates" aria-label="Two forms of adaptation">
-      <div>
-        <h3>Fast: learn to execute</h3>
-        <p>Online RL learns wrist-target corrections from the robot’s own experience, updating the dynamics model and residual policy after each attempt.</p>
-      </div>
-      <div>
-        <h3>Slow: refine the task specification</h3>
-        <p>The agent can revise the task specification, grasp target, and progress indicator using feedback from execution.</p>
-      </div>
-    </div>
   </section>
 
   <!-- ===== Learning on the robot ===== -->
