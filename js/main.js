@@ -84,43 +84,25 @@ document.addEventListener("DOMContentLoaded", () => {
 /* One rendered film contains the real attempts and their learning illustrations. */
 function setupLearningLoop() {
   const v = document.getElementById("learning-video"), media = document.getElementById("learning-media");
-  const toggle = document.getElementById("learning-toggle"), replay = document.getElementById("learning-replay");
   if (!v || !media) return;
   const card = v.closest(".learning-loop"), mobile = window.matchMedia("(max-width: 800px)");
-  let wantsPlayback = !REDUCED, inView = !("IntersectionObserver" in window);
+  let inView = !("IntersectionObserver" in window);
   let sourceChanging = false, restoreTime = null, hasStarted = false;
-  const active = () => !v.paused || (sourceChanging && wantsPlayback && inView && !document.hidden);
-  const showControls = () => {
-    if (!toggle) return;
-    const label = active() ? "Pause" : "Play";
-    toggle.textContent = label;
-    toggle.setAttribute("aria-label", `${label} the three attempts`);
-  };
   const resume = () => {
-    if (!wantsPlayback || !inView || document.hidden || sourceChanging) return;
-    const p = v.play();
-    if (p && p.catch) p.catch(() => { showControls(); });
+    if (!inView || document.hidden || sourceChanging) return;
+    play(v);
   };
-  const suspend = () => { v.pause(); showControls(); };
-  const manualPlay = () => { wantsPlayback = true; inView = true; resume(); showControls(); };
-  const manualPause = () => { wantsPlayback = false; suspend(); };
-  const togglePlayback = () => (active() ? manualPause() : manualPlay());
+  const suspend = () => v.pause();
   const revealFrame = () => {
     if (hasStarted && !sourceChanging && v.readyState >= 2) media.classList.add("is-started");
   };
-  v.addEventListener("play", () => { wantsPlayback = true; showControls(); });
-  v.addEventListener("playing", () => { hasStarted = true; revealFrame(); showControls(); });
-  v.addEventListener("pause", () => {
-    // A responsive source swap or an offscreen pause must not change user intent.
-    if (!sourceChanging && inView && !document.hidden) wantsPlayback = false;
-    showControls();
-  });
+  v.addEventListener("playing", () => { hasStarted = true; revealFrame(); });
   v.addEventListener("loadedmetadata", () => {
     if (restoreTime === null) return;
     const t = Math.min(restoreTime, Math.max(0, v.duration - 1 / 30));
     restoreTime = null;
     if (Math.abs(v.currentTime - t) > 0.01) v.currentTime = t;
-    else { sourceChanging = false; revealFrame(); resume(); showControls(); }
+    else { sourceChanging = false; revealFrame(); resume(); }
   });
   v.addEventListener("loadeddata", revealFrame);
   v.addEventListener("seeked", () => {
@@ -128,16 +110,8 @@ function setupLearningLoop() {
     sourceChanging = false;
     revealFrame();
     if (restoring) resume();
-    showControls();
   });
-  v.addEventListener("error", () => { sourceChanging = false; restoreTime = null; showControls(); });
-  v.addEventListener("click", togglePlayback);
-  if (toggle) toggle.addEventListener("click", togglePlayback);
-  if (replay) replay.addEventListener("click", () => {
-    if (v.readyState < 1) restoreTime = 0;
-    else { restoreTime = null; v.currentTime = 0; }
-    manualPlay();
-  });
+  v.addEventListener("error", () => { sourceChanging = false; restoreTime = null; });
   const chooseSource = () => {
     const source = mobile.matches ? v.dataset.mobile : v.dataset.desktop;
     v.poster = mobile.matches ? v.dataset.mobilePoster : v.dataset.desktopPoster;
@@ -150,7 +124,6 @@ function setupLearningLoop() {
     media.classList.remove("is-started");
     v.src = source;
     v.load();
-    showControls();
   };
   if (mobile.addEventListener) mobile.addEventListener("change", chooseSource);
   else mobile.addListener(chooseSource);
@@ -162,6 +135,5 @@ function setupLearningLoop() {
     }, { threshold: 0.08 }).observe(card);
   } else resume();
   document.addEventListener("visibilitychange", () => { if (document.hidden) suspend(); else resume(); });
-  showControls();
 }
 setupLearningLoop();

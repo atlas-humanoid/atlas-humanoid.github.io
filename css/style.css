@@ -97,12 +97,7 @@ p { margin: 0; }
 .learning-loop__media video, .learning-loop__poster img { width: 100%; height: 100%; object-fit: contain; }
 .learning-loop__media:not(.is-started) video { visibility: hidden; }
 .learning-loop__media.is-started .learning-loop__poster { display: none; }
-.learning-loop__controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px 0; }
-.learning-loop__controls button { appearance: none; min-width: 76px; min-height: 40px; padding: 8px 17px; border: 1px solid #d2d2d7; border-radius: 999px; background: transparent; color: #1d1d1f; font: 500 13px/1.4 var(--font); cursor: pointer; }
-.learning-loop__controls button:first-child { border-color: #1d1d1f; background: #1d1d1f; color: #fff; }
-.learning-loop__controls button:hover { border-color: #86868b; }
-.learning-loop__controls button:first-child:hover { background: #3a3a3c; }
-.learning-loop__controls span { margin-left: 4px; color: #626268; font-size: 12px; }
+.learning-loop__caption { padding: 12px 24px 0; color: #626268; font-size: 12px; line-height: 1.5; text-align: center; }
 .learning-loop__note { padding: 14px 24px 0; color: #6e6e73; font-size: 11.5px; line-height: 1.5; text-align: center; }
 .learning-details { border-top: 1px solid var(--line); }
 .learning-details summary { padding: 13px 0; color: var(--muted); cursor: pointer; font-size: 14px; font-weight: 500; }
@@ -129,8 +124,7 @@ p { margin: 0; }
   .learning-loop__heading { padding: 0 20px; }
   .learning-loop__heading p { font-size: 14px; }
   .learning-loop__media { width: 100%; max-width: 560px; margin: 16px auto 0; aspect-ratio: 24 / 35; }
-  .learning-loop__controls { padding-top: 4px; }
-  .learning-loop__controls span { flex-basis: 100%; margin: 0; text-align: center; }
+  .learning-loop__caption { padding: 4px 20px 0; }
   .learning-loop__note { padding: 12px 20px 0; font-size: 11px; }
 }
 
