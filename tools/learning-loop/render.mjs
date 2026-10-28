@@ -1,7 +1,7 @@
 import {bundle} from '@remotion/bundler';
 import {openBrowser, renderMedia, renderStill, selectComposition} from '@remotion/renderer';
 import {existsSync} from 'node:fs';
-import {mkdir, mkdtemp, readFile, rename, rm} from 'node:fs/promises';
+import {copyFile, mkdir, mkdtemp, readFile, rename, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -23,7 +23,7 @@ const {values} = parseArgs({
 });
 
 if (values.help) {
-  console.log(`Render the ATLAS learning-loop mechanism illustration.
+  console.log(`Render the ATLAS learning loop with real footage and a mechanism illustration.
 
   npm run render
   npm run render -- --composition LearningLoopMobile
@@ -97,12 +97,19 @@ async function assertFastStart(filename) {
 const scratch = await mkdtemp(path.join(tmpdir(), 'atlas-learning-loop-'));
 let browser;
 try {
+  // Keep the bundle self-contained without copying unrelated website media.
+  // These names are the complete staticFile() contract used by the composition.
+  const publicDir = path.join(scratch, 'public');
+  await mkdir(publicDir);
+  for (const filename of ['stairs_run_3x.mp4', 'run_ghost_1.jpg', 'run_ghost_2.jpg', 'run_ghost_3.jpg']) {
+    await copyFile(path.join(repoDir, 'media', filename), path.join(publicDir, filename));
+  }
   console.log(`Bundling ${values.composition}…`);
   const serveUrl = await bundle({
     entryPoint: path.join(projectDir, 'src/index.tsx'),
     rootDir: projectDir,
     outDir: path.join(scratch, 'bundle'),
-    publicDir: null,
+    publicDir,
   });
   browser = await openBrowser('chrome', {
     browserExecutable,

@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6dc5a5c3">
+  <link rel="stylesheet" href="css/style.css?v=7561f11d">
 </head>
 <body>
 <a class="skip" href="#results">Skip to content</a>
@@ -72,36 +72,25 @@
       <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen; System 1 learns on the robot: it acts at every control step and is updated after every attempt.</figcaption>
     </figure>
     <figure class="fig fig--retry">
-      <div class="strip" id="runstrip">
-        <div class="clip"><div class="slot"><img class="ghost" src="media/run_ghost_1.jpg" alt="" width="480" height="360"><canvas width="480" height="360"></canvas></div><p><b>attempt 1</b> · miss</p><p class="st"><i>π</i><sub>φ</sub> from zero</p></div>
-        <div class="gap"></div>
-        <div class="clip"><div class="slot"><img class="ghost" src="media/run_ghost_2.jpg" alt="" width="480" height="360"><canvas width="480" height="360"></canvas></div><p><b>attempt 2</b> · miss</p><p class="st"><i>π</i><sub>φ</sub> updated</p></div>
-        <div class="gap"></div>
-        <div class="clip"><div class="slot"><img class="ghost" src="media/run_ghost_3.jpg" alt="" width="480" height="360"><canvas width="480" height="360"></canvas></div><p><b>attempt 3</b> · grasp</p><p class="st"><i>π</i><sub>φ</sub> updated again</p></div>
-        <div class="mover" id="runmover">
-          <video id="run" muted loop playsinline preload="metadata" poster="media/stairs_run_3x.jpg" width="960" height="720" aria-label="One stair run at 3x speed, shown as one video that moves from the left slot to the middle to the right as the attempts go by: the robot climbs the stairs, reaches down to the paper ball on the step and misses, stands back up on the same steps, reaches and misses again, then reaches a third time and grasps the ball; the slots it leaves keep the last frame of that attempt"><source src="media/stairs_run_3x.mp4" type="video/mp4"></video>
-          <span class="phase" id="runphase" aria-hidden="true">climbing the stairs</span>
-        </div>
-      </div>
       <div class="learning-loop" aria-labelledby="learning-title">
         <div class="learning-loop__heading">
-          <h3 id="learning-title">Each attempt informs the next.</h3>
-          <p>The learner uses a missed reach to adjust the next one.</p>
+          <h3 id="learning-title">One run. Three attempts.</h3>
+          <p>Each attempt informs the next reach.</p>
         </div>
         <div class="learning-loop__media" id="learning-media">
-          <video id="learning-video" muted playsinline preload="metadata" width="1920" height="640" src="media/learning_loop.mp4" poster="media/learning_loop.jpg" data-desktop="media/learning_loop.mp4" data-mobile="media/learning_loop_mobile.mp4" aria-label="How the learner adjusts a reach across three attempts" aria-describedby="learning-description learning-note"></video>
+          <video id="learning-video" muted loop playsinline preload="metadata" width="1920" height="880" src="media/learning_loop.mp4?v=b1bae3ed" poster="media/learning_loop.jpg?v=119ce6eb" data-desktop="media/learning_loop.mp4?v=b1bae3ed" data-mobile="media/learning_loop_mobile.mp4?v=3758964f" data-desktop-poster="media/learning_loop.jpg?v=119ce6eb" data-mobile-poster="media/learning_loop_mobile.jpg?v=55eb0c0d" aria-label="One continuous stair run with three attempts and matching learning illustrations" aria-describedby="learning-description learning-note"></video>
           <picture class="learning-loop__poster">
-            <source media="(max-width: 640px)" srcset="media/learning_loop_mobile.jpg">
-            <img src="media/learning_loop.jpg" width="1920" height="640" alt="">
+            <source media="(max-width: 800px)" srcset="media/learning_loop_mobile.jpg?v=55eb0c0d">
+            <img src="media/learning_loop.jpg?v=119ce6eb" width="1920" height="880" alt="">
           </picture>
         </div>
-        <p class="sr-only" id="learning-description">A conceptual illustration follows the real attempts above. The first reach misses the target. The learner uses the error to update its model and adjust the next reach. A second miss leads to another update, then the third reach grasps the object.</p>
-        <div class="learning-loop__controls" role="group" aria-label="Real attempts and illustration playback">
-          <button type="button" id="run-toggle" aria-controls="run learning-video" aria-label="Play real attempts and illustration">Play</button>
-          <button type="button" id="run-replay" aria-controls="run learning-video" aria-label="Replay real attempts and illustration">Replay</button>
+        <p class="sr-only" id="learning-description">Three attempts from one continuous stair run play alongside conceptual illustrations. The first reach misses the target. The learner uses the error to update its model and adjust the next reach. A second miss leads to another update, then the third reach grasps the object.</p>
+        <div class="learning-loop__controls" role="group" aria-label="Learning run playback">
+          <button type="button" id="learning-toggle" aria-controls="learning-video" aria-label="Play the three attempts">Play</button>
+          <button type="button" id="learning-replay" aria-controls="learning-video" aria-label="Replay the three attempts">Replay</button>
           <span>One continuous run · footage at 3×</span>
         </div>
-        <p class="learning-loop__note" id="learning-note">Conceptual illustration · positions are not tracked measurements.</p>
+        <p class="learning-loop__note" id="learning-note">Conceptual illustration · not tracked measurements.</p>
       </div>
       <figcaption class="exp">
         <details class="learning-details">
@@ -275,6 +264,6 @@
 
 <footer class="foot"><span>ATLAS · Early release</span><a href="#top">Top ↑</a></footer>
 
-<script src="js/main.js?v=32f3e207"></script>
+<script src="js/main.js?v=a217a3ba"></script>
 </body>
 </html>

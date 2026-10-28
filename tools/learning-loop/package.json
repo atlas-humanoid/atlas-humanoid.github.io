@@ -9,7 +9,7 @@
   },
   "scripts": {
     "render": "node render.mjs",
-    "studio": "remotion studio src/index.tsx",
+    "studio": "remotion studio src/index.tsx --public-dir ../../media",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
