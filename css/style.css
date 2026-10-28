@@ -65,9 +65,8 @@ p { margin: 0; }
 .showcase-visual { aspect-ratio: 16 / 9; overflow: hidden; background: #151a20; }
 .showcase-scene--stairs .showcase-visual { aspect-ratio: 4 / 3; }
 .showcase-visual video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.showcase-caption { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 13px 16px; text-align: left; }
-.showcase-command { min-width: 0; color: var(--fg); font-size: 15px; font-weight: 500; line-height: 1.5; text-wrap: pretty; }
-.showcase-speed { flex: none; padding: 3px 7px; border-radius: 5px; background: #e9e9ed; color: #626268; font-size: 11px; line-height: 1.35; white-space: nowrap; }
+.showcase-caption { padding: 13px 16px; text-align: left; }
+.showcase-command { display: block; color: var(--fg); font-size: 15px; font-weight: 500; line-height: 1.5; text-wrap: pretty; }
 @media (max-width: 640px) {
   .film--showcase { margin-top: 22px; border-radius: 12px; }
   .showcase-scenes { grid-template-columns: 1fr; gap: 0; }

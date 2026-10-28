@@ -19,17 +19,19 @@ python3 tools/opening-showcase/render.py --only nav
 
 The stair source is the previously approved 12-second edit with variable playback
 speed. This export preserves that existing timing and every frame; it must not be
-described as an unmodified 1× recording. The navigation excerpt keeps the source's
-1× speed and continuous frame order, retaining both pickups and their subsequent
-disposals through the end of the source recording.
-No new retiming, crop, stabilization, sharpening, or aesthetic color adjustment
-is applied. The time intervals use an exclusive end boundary.
+described as an unmodified 1× recording. The navigation excerpt runs at 1.5× the
+source's real speed, retaining the full continuous interval with both pickups and
+their subsequent disposals through the end of the source recording. Its timestamps
+are compressed and frames resampled to 30 fps, with no additional cuts.
+No new crop, stabilization, sharpening, or aesthetic color adjustment is applied.
+The time intervals use an exclusive end boundary; table frame numbers refer to
+the original source.
 
 Both outputs are 1920×1080, 30 fps, silent H.264, yuv420p, and limited-range BT.709,
 with Fast Start (`moov` before `mdat`). Stairs uses CRF 19, preset `medium`;
 navigation uses CRF 20, preset `slow` to keep the longer clip within the web asset
 size budget. The complete stair video is 12 seconds / 360 frames; navigation is
-30.9 seconds / 927 frames.
+20.6 seconds / 618 frames, from the same 30.9-second source interval.
 
 The stair source already declares BT.709. Navigation declares the `bt470bg`
 YCbCr matrix (BT.601 coefficients); its primaries and transfer function are

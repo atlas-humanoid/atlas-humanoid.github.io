@@ -21,7 +21,7 @@ JOBS = {
     "nav": {
         "source": "nav_pick_1x.mp4", "start": 24, "end": 951,
         "poster_frame": 159, "matrix": "bt601", "source_tag": "bt470bg",
-        "crf": 20, "preset": "slow",
+        "crf": 20, "preset": "slow", "speed": 1.5,
     },
 }
 
@@ -114,14 +114,17 @@ def render(name, job, args):
         raise RuntimeError(f"Source color matrix changed: {source}")
     video = MEDIA / f"{name}_showcase.mp4"
     poster = MEDIA / f"{name}_showcase.jpg"
+    speed = job.get("speed", 1)
+    frame_count = round((job["end"] - job["start"]) / speed)
     common = [args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-filter_threads", "2"]
     with tempfile.TemporaryDirectory(prefix=".opening-showcase-", dir=MEDIA) as directory:
         temporary = Path(directory)
         video_tmp, poster_tmp = temporary / video.name, temporary / poster.name
-        # Frame-based boundaries preserve every selected source frame in order.
+        # Keep the same source interval; resample accelerated footage to 30 fps.
         # BT.601 -> BT.709 changes YCbCr coefficients, not the intended RGB look.
+        timing = "setpts=PTS-STARTPTS" if speed == 1 else f"setpts=(PTS-STARTPTS)/{speed},fps=30"
         filters = (
-            f"trim=start_frame={job['start']}:end_frame={job['end']},setpts=PTS-STARTPTS,"
+            f"trim=start_frame={job['start']}:end_frame={job['end']},{timing},"
             f"scale=1920:1080:in_color_matrix={job['matrix']}:out_color_matrix=bt709:"
             "in_range=tv:out_range=tv:flags=lanczos+accurate_rnd,setsar=1,format=yuv420p"
         )
@@ -132,7 +135,7 @@ def render(name, job, args):
             "-pix_fmt", "yuv420p", "-color_range", "tv", "-colorspace", "bt709",
             "-color_primaries", "bt709", "-color_trc", "bt709",
             "-movflags", "+faststart", "-map_metadata", "-1", str(video_tmp)])
-        checked = verify(args.ffmpeg, args.ffprobe, video_tmp, job["end"] - job["start"])
+        checked = verify(args.ffmpeg, args.ffprobe, video_tmp, frame_count)
         # JPEG uses full-range BT.601 YCbCr; convert the source matrix explicitly.
         poster_filter = (
             f"select=eq(n\\,{job['poster_frame']}),"
@@ -151,6 +154,7 @@ def render(name, job, args):
         "source_frame_range": [job["start"], job["end"] - 1],
         "source_time_range_seconds": [job["start"] / 30, job["end"] / 30],
         "crf": job.get("crf", 19), "preset": job.get("preset", "medium"),
+        "speed_multiplier": speed,
         "sha256": sha256(video), "poster": str(poster.relative_to(REPO)),
         "poster_source_frame": job["poster_frame"],
         "poster_source_time_seconds": job["poster_frame"] / 30,
