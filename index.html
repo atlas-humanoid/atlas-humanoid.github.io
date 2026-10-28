@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=316b17bc">
+  <link rel="stylesheet" href="css/style.css?v=6dc5a5c3">
 </head>
 <body>
 <a class="skip" href="#results">Skip to content</a>
@@ -79,47 +79,33 @@
         <div class="gap"></div>
         <div class="clip"><div class="slot"><img class="ghost" src="media/run_ghost_3.jpg" alt="" width="480" height="360"><canvas width="480" height="360"></canvas></div><p><b>attempt 3</b> · grasp</p><p class="st"><i>π</i><sub>φ</sub> updated again</p></div>
         <div class="mover" id="runmover">
-          <video id="run" muted loop playsinline autoplay preload="metadata" poster="media/stairs_run_3x.jpg" width="960" height="720" aria-label="One stair run at 3x speed, shown as one video that moves from the left slot to the middle to the right as the attempts go by: the robot climbs the stairs, reaches down to the paper ball on the step and misses, stands back up on the same steps, reaches and misses again, then reaches a third time and grasps the ball; the slots it leaves keep the last frame of that attempt"><source src="media/stairs_run_3x.mp4" type="video/mp4"></video>
+          <video id="run" muted loop playsinline preload="metadata" poster="media/stairs_run_3x.jpg" width="960" height="720" aria-label="One stair run at 3x speed, shown as one video that moves from the left slot to the middle to the right as the attempts go by: the robot climbs the stairs, reaches down to the paper ball on the step and misses, stands back up on the same steps, reaches and misses again, then reaches a third time and grasps the ball; the slots it leaves keep the last frame of that attempt"><source src="media/stairs_run_3x.mp4" type="video/mp4"></video>
           <span class="phase" id="runphase" aria-hidden="true">climbing the stairs</span>
         </div>
       </div>
-      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="rah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#d94a3d" stroke-width="1.4"/></marker></defs></svg>
-      <div class="schem">
-        <svg class="pan" viewBox="0 0 340 120" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="339" height="119" rx="6" fill="#f3f4f6" stroke="#d6dae1"/>
-          <text x="12" y="18" class="rf">robot frame</text>
-          <path d="M 30 14 C 80 34, 150 66, 250 88" fill="none" stroke="#8a9099" stroke-width="1.2" stroke-dasharray="4 4"/>
-          <circle cx="250" cy="88" r="7" fill="none" stroke="#1f4e9c" stroke-width="1.5"/><line x1="250" y1="76" x2="250" y2="100" stroke="#1f4e9c" stroke-width="1.5"/><line x1="238" y1="88" x2="262" y2="88" stroke="#1f4e9c" stroke-width="1.5"/>
-          <circle cx="196" cy="58" r="4.5" fill="#5d6470"/>
-          <line x1="202" y1="62" x2="245" y2="85" stroke="#d94a3d" stroke-width="1.6" marker-end="url(#rah)"/><text x="112" y="60" class="l">end effector</text><text x="262" y="110" class="l b">affordance</text>
-        </svg>
-        <div class="loop" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M 22.5 14 a 8.5 8.5 0 1 1 -2.5 -6" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round"/><path d="M 22 3.5 v 5.5 h -5.5" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><i><em>f</em><sub>ψ</sub>, <em>π</em><sub>φ</sub></i></div>
-        <svg class="pan" viewBox="0 0 340 120" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="339" height="119" rx="6" fill="#f3f4f6" stroke="#d6dae1"/>
-          <text x="12" y="18" class="rf">robot frame</text>
-          <path d="M 30 14 C 80 34, 150 66, 250 88" fill="none" stroke="#8a9099" stroke-width="1.2" stroke-dasharray="4 4"/>
-          <circle cx="250" cy="88" r="7" fill="none" stroke="#1f4e9c" stroke-width="1.5"/><line x1="250" y1="76" x2="250" y2="100" stroke="#1f4e9c" stroke-width="1.5"/><line x1="238" y1="88" x2="262" y2="88" stroke="#1f4e9c" stroke-width="1.5"/>
-          <circle cx="234" cy="80" r="4.5" fill="#5d6470"/>
-          <line x1="240" y1="84" x2="247" y2="87" stroke="#d94a3d" stroke-width="1.6" marker-end="url(#rah)"/>
-        </svg>
-        <div class="loop" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M 22.5 14 a 8.5 8.5 0 1 1 -2.5 -6" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round"/><path d="M 22 3.5 v 5.5 h -5.5" fill="none" stroke="#1f4e9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><i><em>f</em><sub>ψ</sub>, <em>π</em><sub>φ</sub></i></div>
-        <svg class="pan" viewBox="0 0 340 120" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="339" height="119" rx="6" fill="#f3f4f6" stroke="#d6dae1"/>
-          <text x="12" y="18" class="rf">robot frame</text>
-          <path d="M 30 14 C 80 34, 150 66, 250 88" fill="none" stroke="#8a9099" stroke-width="1.2" stroke-dasharray="4 4"/>
-          <circle cx="250" cy="88" r="7" fill="none" stroke="#1f4e9c" stroke-width="1.5"/><line x1="250" y1="76" x2="250" y2="100" stroke="#1f4e9c" stroke-width="1.5"/><line x1="238" y1="88" x2="262" y2="88" stroke="#1f4e9c" stroke-width="1.5"/>
-          <circle cx="250" cy="88" r="4.5" fill="#5d6470"/>
-          
-        </svg>
-      </div>
-      <div class="axis" aria-hidden="true">
-        <span class="rail"></span>
-        <span class="span" style="--i:0"><i class="t">t = 0 s</i><span class="cur" id="runcur" style="left:38%"></span></span>
-        <span class="span" style="--i:1"><i class="t">25 s</i></span>
-        <span class="span" style="--i:2"><i class="t">40 s</i><i class="t end">60 s</i></span>
-        <i class="rail-l">π<sub>φ</sub> at every control step, from zero · one run, 3×</i>
+      <div class="learning-loop" aria-labelledby="learning-title">
+        <div class="learning-loop__heading">
+          <h3 id="learning-title">Each attempt informs the next.</h3>
+          <p>The learner uses a missed reach to adjust the next one.</p>
+        </div>
+        <div class="learning-loop__media" id="learning-media">
+          <video id="learning-video" muted playsinline preload="metadata" width="1920" height="640" src="media/learning_loop.mp4" poster="media/learning_loop.jpg" data-desktop="media/learning_loop.mp4" data-mobile="media/learning_loop_mobile.mp4" aria-label="How the learner adjusts a reach across three attempts" aria-describedby="learning-description learning-note"></video>
+          <picture class="learning-loop__poster">
+            <source media="(max-width: 640px)" srcset="media/learning_loop_mobile.jpg">
+            <img src="media/learning_loop.jpg" width="1920" height="640" alt="">
+          </picture>
+        </div>
+        <p class="sr-only" id="learning-description">A conceptual illustration follows the real attempts above. The first reach misses the target. The learner uses the error to update its model and adjust the next reach. A second miss leads to another update, then the third reach grasps the object.</p>
+        <div class="learning-loop__controls" role="group" aria-label="Real attempts and illustration playback">
+          <button type="button" id="run-toggle" aria-controls="run learning-video" aria-label="Play real attempts and illustration">Play</button>
+          <button type="button" id="run-replay" aria-controls="run learning-video" aria-label="Replay real attempts and illustration">Replay</button>
+          <span>One continuous run · footage at 3×</span>
+        </div>
+        <p class="learning-loop__note" id="learning-note">Conceptual illustration · positions are not tracked measurements.</p>
       </div>
       <figcaption class="exp">
+        <details class="learning-details">
+        <summary>Technical details of the online update</summary>
         <p class="lead"><b>Illustration of the fast online RL update.</b></p>
         <ul class="steps">
           <li><span class="g g-rail"></span><b>Every control step.</b> The actor adds an offset to the wrist target, <i>u<sub>t</sub> = π<sub>φ</sub>(c<sub>t</sub>, n<sub>t</sub>)</i>; the controller tracks <i>n<sub>t</sub> + u<sub>t</sub></i>.</li>
@@ -128,6 +114,7 @@
           <li><span class="g g-slow"></span><b>Slow system.</b> The agent may move the grasp target <i>n</i>; a move is kept only if the progress indicator improves.</li>
         </ul>
         <p class="key"><i>f</i><sub>ψ</sub> and <i>π</i><sub>φ</sub> start from zero in every session &nbsp;·&nbsp; <i>n<sub>t</sub></i> wrist target, <i>n<sub>T</sub></i> the grasp target &nbsp;·&nbsp; <i>u</i> learned offset &nbsp;·&nbsp; <i>c</i> end effector &nbsp;·&nbsp; ĉ predicted end effector &nbsp;·&nbsp; <i>T</i> grasp step</p>
+        </details>
       </figcaption>
     </figure>
   </section>
@@ -288,6 +275,6 @@
 
 <footer class="foot"><span>ATLAS · Early release</span><a href="#top">Top ↑</a></footer>
 
-<script src="js/main.js?v=b2a7f279"></script>
+<script src="js/main.js?v=32f3e207"></script>
 </body>
 </html>
