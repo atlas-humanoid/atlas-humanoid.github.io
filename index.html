@@ -87,8 +87,8 @@
       <h2 id="method-title">A Self-Improving Harness</h2>
     </header>
     <figure class="fig">
-      <div class="fig-scroll"><img src="media/fig_system_v25.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual end-effector target with an RL update, slow: agentic update, both marked with an update loop, sends wrist targets to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. A solid blue arrow from the RL update to the wrist targets: the fast system writes them. Dashed amber arrows from the slow agentic update to the task specification and to the progress indicator, drawn in the same amber: the slow system revises both." width="2476" height="555"></div>
-      <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen; System 1 learns on the robot: it acts at every control step and is updated after every attempt.</figcaption>
+      <div class="fig-scroll"><img src="media/fig_system_v26.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual end-effector target with an RL update, slow: agentic update, both marked with an update loop, sends wrist targets to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. A solid blue arrow from the RL update to the wrist targets: the fast system writes them. Dashed amber arrows from the slow agentic update to the task specification and to the progress indicator, drawn in the same amber: the slow system revises both." width="2476" height="555"></div>
+      <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen; The camera places the agent's affordance on the object and the human reach is anchored to it: that is the wrist target <i>n</i><sub>t</sub>. System 1 learns on the robot only what keeps the end effector from reaching it: the fast system adds a residual <i>u</i><sub>t</sub> at every control step and is updated after every attempt; the slow system, the same agent, revises what SAM 3 looks for and the progress indicator.</figcaption>
     </figure>
   </section>
 
@@ -97,7 +97,7 @@
     <header class="section-heading">
       <p class="section-eyebrow">Learning</p>
       <h2 id="results-title">Learning on the Robot</h2>
-      <p class="lede">The online learner starts from zero in each session, adapting the control policy from the robot’s own experience.</p>
+      <p class="lede">The online learner starts from zero in each session and learns how this body misses the target that the agent and the camera set; it never moves that target.</p>
     </header>
     <figure class="fig fig--retry">
       <div class="learning-loop" aria-labelledby="learning-title">
@@ -120,11 +120,11 @@
         <p class="lead"><b>Illustration of the fast online RL update.</b></p>
         <ul class="steps">
           <li><span class="g g-rail"></span><b>Every control step.</b> The actor adds an offset to the wrist target, <i>u<sub>t</sub> = π<sub>φ</sub>(c<sub>t</sub>, n<sub>t</sub>)</i>; the controller tracks <i>n<sub>t</sub> + u<sub>t</sub></i>.</li>
-          <li><span class="g g-miss"></span><b>At the grasp.</b> The miss is the end-effector error, the gap to the affordance, <i>‖n<sub>T</sub> − c<sub>T</sub>‖</i>; this is what the learner drives down.</li>
+          <li><span class="g g-miss"></span><b>At the grasp.</b> The miss is the end-effector error to the grasp target, the affordance placed on the seen object, <i>‖n<sub>T</sub> − c<sub>T</sub>‖</i>; the learner drives this down and never moves <i>n<sub>T</sub></i>.</li>
           <li><span class="g g-loop"></span><b>After every attempt.</b> The dynamics model is refit on all attempts so far, <i>ĉ<sub>t+1</sub> = f<sub>ψ</sub>(c<sub>t</sub>, n<sub>t</sub> + u<sub>t</sub>)</i>, and the actor is updated by backpropagation through it, <i>r = −‖n<sub>T</sub> − ĉ<sub>T</sub>‖²</i>.</li>
-          <li><span class="g g-slow"></span><b>Slow system.</b> The agent reads the frames and may rewrite what SAM 3 looks for, which anchors the grasp target <i>n</i> to the right thing, or the progress indicator; a change is kept only if it scores better on the session's own saved frames.</li>
+          <li><span class="g g-slow"></span><b>Slow system.</b> After every attempt the same VLM agent reads the frames and may rewrite what SAM 3 looks for, which anchors the grasp target <i>n</i> to the right thing, or the progress indicator; a change is kept only if it scores better on the session's own saved frames.</li>
         </ul>
-        <p class="key"><i>f</i><sub>ψ</sub> and <i>π</i><sub>φ</sub> start from zero in every session &nbsp;·&nbsp; <i>n<sub>t</sub></i> wrist target, <i>n<sub>T</sub></i> the grasp target &nbsp;·&nbsp; <i>u</i> learned offset &nbsp;·&nbsp; <i>c</i> end effector &nbsp;·&nbsp; ĉ predicted end effector &nbsp;·&nbsp; <i>T</i> grasp step</p>
+        <p class="key"><i>f</i><sub>ψ</sub> and <i>π</i><sub>φ</sub> start from zero in every session &nbsp;·&nbsp; <i>n<sub>t</sub></i> wrist target (the human reach anchored to the affordance), <i>n<sub>T</sub></i> the grasp target &nbsp;·&nbsp; <i>u</i> learned offset &nbsp;·&nbsp; <i>c</i> end effector &nbsp;·&nbsp; ĉ predicted end effector &nbsp;·&nbsp; <i>T</i> grasp step</p>
         </details>
       </figcaption>
     </figure>
@@ -181,7 +181,7 @@
         <p class="study-deck">Lower error. Higher success. <strong>Within about ten attempts.</strong></p>
         <ul class="study-legend" aria-label="Experimental arms">
           <li><span class="study-swatch" aria-hidden="true"></span><span>Online RL <small>learner arm</small></span></li>
-          <li><span class="study-swatch study-swatch--control" aria-hidden="true"></span><span>No learner <small>zero-bias arm</small></span></li>
+          <li><span class="study-swatch study-swatch--control" aria-hidden="true"></span><span>No learner <small>same bias, no offset</small></span></li>
         </ul>
       </header>
       <!-- The four viewports preserve the original plot pixels, including all
@@ -257,7 +257,7 @@
       <header class="study-header">
         <p class="study-eyebrow">Ablation in simulation</p>
         <h3 id="abl-title">A learned dynamics model, not a bias estimate.</h3>
-        <p class="study-deck">The robot's execution bias is drawn anew for every attempt. Estimators of the bias stop at about half; <strong>the dynamics model lifts the apple in 83% of attempts.</strong></p>
+        <p class="study-deck">In a harder test, the robot's execution bias is drawn anew for every attempt. Estimators of the bias stop at about half; <strong>the dynamics model lifts the apple in 83% of attempts.</strong></p>
       </header>
       <p class="abl-axis-label">Attempts that lift the apple <span>(learner's attempts after the warm-up; 3 seeds × 80 attempts per learner)</span></p>
       <ul class="abl-chart" role="list">
@@ -309,7 +309,7 @@
 
     <h3 class="sub">FAQ</h3>
     <div class="faq">
-      <details><summary>How often does the agent run?</summary><p>The agent tells the perception model (SAM 3) what to look for and defines the affordance: the end effector's pose relative to the object. From there SAM 3 finds the object in the image and the depth image places the affordance in 3-D, the whole-body controller carries the end effector to it, and online RL takes care of the tracking error.</p></details>
+      <details><summary>Where does the end-effector target come from?</summary><p>Once per task, the agent tells SAM 3 what to look for and defines the affordance: the end effector's pose relative to the object. At run time SAM 3 finds the object, the depth image places the affordance in 3-D, and the human reach is shifted so the end effector meets it at the grasp step: that is the wrist target <i>n</i><sub>t</sub>. The whole-body controller tracks it, and online RL learns only the tracking error to it. After every attempt the agent checks the progress indicator.</p></details>
       <details><summary>How does one phone video become a robot motion?</summary><p>The person's motion is lifted from the video (GVHMR) and retargeted to the G1 (GMR); that is the reference the whole-body controller tracks. The agent cuts the stretch that is the task and defines the affordance; at run time the reach is anchored to where the camera sees the object, and the learner corrects the wrist.</p></details>
       <details><summary>What does the online learner learn, and from what?</summary><p>How this body executes wrist commands. Online model-based RL: a dynamics model fitted to the robot's own measurements and an actor updated through it, acting at every control step of the reach. From zero in every session; nothing is collected beforehand.</p></details>
       <details><summary>What is the task specification?</summary><p>What the agent writes once per task, from the video and the sentence: the steps the task is cut into and the stretch of the human motion each step uses; the affordance, the end effector's pose relative to the object, with which end effector and how it closes; what SAM 3 should look for; the action target, where the object goes; and the progress indicator. The background agent revises two parts of it online: what SAM 3 looks for, when the camera shows the object unfound or the mask on something else, such as the robot's own leg; and the progress indicator.</p></details>
