@@ -19,8 +19,9 @@ JOBS = {
         "poster_frame": 294, "matrix": "bt709", "source_tag": "bt709",
     },
     "nav": {
-        "source": "nav_pick_1x.mp4", "start": 24, "end": 480,
+        "source": "nav_pick_1x.mp4", "start": 24, "end": 951,
         "poster_frame": 159, "matrix": "bt601", "source_tag": "bt470bg",
+        "crf": 20, "preset": "slow",
     },
 }
 
@@ -126,8 +127,8 @@ def render(name, job, args):
         )
         print(f"Rendering {video.name}…", flush=True)
         run(common + ["-i", str(source), "-map", "0:v:0", "-vf", filters,
-            "-an", "-sn", "-dn", "-c:v", "libx264", "-preset", "medium",
-            "-crf", "19", "-threads", str(args.threads), "-vsync", "0",
+            "-an", "-sn", "-dn", "-c:v", "libx264", "-preset", job.get("preset", "medium"),
+            "-crf", str(job.get("crf", 19)), "-threads", str(args.threads), "-vsync", "0",
             "-pix_fmt", "yuv420p", "-color_range", "tv", "-colorspace", "bt709",
             "-color_primaries", "bt709", "-color_trc", "bt709",
             "-movflags", "+faststart", "-map_metadata", "-1", str(video_tmp)])
@@ -149,6 +150,7 @@ def render(name, job, args):
         "source_sha256": original_hash, "source_unchanged": True,
         "source_frame_range": [job["start"], job["end"] - 1],
         "source_time_range_seconds": [job["start"] / 30, job["end"] / 30],
+        "crf": job.get("crf", 19), "preset": job.get("preset", "medium"),
         "sha256": sha256(video), "poster": str(poster.relative_to(REPO)),
         "poster_source_frame": job["poster_frame"],
         "poster_source_time_seconds": job["poster_frame"] / 30,
