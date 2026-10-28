@@ -20,7 +20,7 @@ function setupLinks() {
 /* looping clips play while on screen; the whole session plays once when it comes into view */
 function setupClips() {
   const session = document.getElementById("session");
-  const loops = [...document.querySelectorAll("video[loop]:not(#learning-video)")];
+  const loops = [...document.querySelectorAll("video[loop]:not(#learning-video):not([data-showcase-video])")];
   if (REDUCED) {
     loops.forEach(v => { v.removeAttribute("autoplay"); v.pause(); v.setAttribute("controls", ""); });
     return;
@@ -46,9 +46,39 @@ function setupClips() {
   if (session) io.observe(session);
 }
 
+/* The opening demos loop independently while visible. */
+function setupShowcase() {
+  const videos = [...document.querySelectorAll("#opening-showcase video[data-showcase-video]")];
+  if (!videos.length) return;
+  const hasObserver = "IntersectionObserver" in window;
+  const visible = new Set(hasObserver ? [] : videos);
+  const applyPlayback = () => videos.forEach(v => {
+    if (!visible.has(v) || document.hidden) v.pause();
+    else if (!v.paused || REDUCED) return;
+    else play(v);
+  });
+  videos.forEach(v => {
+    if (REDUCED) { v.removeAttribute("autoplay"); v.pause(); }
+    v.addEventListener("loadedmetadata", applyPlayback);
+  });
+  if (hasObserver) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio >= 0.01) visible.add(e.target);
+        else visible.delete(e.target);
+      });
+      applyPlayback();
+    }, { threshold: 0.01 });
+    videos.forEach(v => observer.observe(v));
+  }
+  document.addEventListener("visibilitychange", applyPlayback);
+  applyPlayback();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupLinks();
   setupClips();
+  setupShowcase();
 });
 
 /* One rendered film contains the real attempts and their learning illustrations. */
