@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=8bfc5bd3">
+  <link rel="stylesheet" href="css/style.css?v=50">
 </head>
 <body>
 <a class="skip" href="#method">Skip to content</a>
@@ -252,6 +252,43 @@
         <p class="study-band-note"><span class="study-band-swatch" aria-hidden="true"></span>Shaded bands: range across seeds. <span class="study-warmup-swatch" aria-hidden="true"></span>Gray strip: warm-up.</p>
         <p><b>Online RL against a no-learner control, in the same run.</b> Isaac Lab, one-object pick-and-place, with the real robot’s measured execution bias (x −7.9 cm, y −4.1 cm) injected into the tracker. From attempt 5, each attempt is assigned by coin flip to the learner arm or the zero-bias control arm.</p>
       </figcaption>
+    </figure>
+    <figure class="ablation-study" aria-labelledby="abl-title">
+      <header class="study-header">
+        <p class="study-eyebrow">Ablation in simulation</p>
+        <h3 id="abl-title">A learned dynamics model, not a bias estimate.</h3>
+        <p class="study-deck">The robot's execution bias is drawn anew for every attempt. Estimators of the bias stop at about half; <strong>the dynamics model lifts the apple in 83% of attempts.</strong></p>
+      </header>
+      <p class="abl-axis-label">Attempts that lift the apple <span>(learner's attempts after the warm-up; 3 seeds × 80 attempts per learner)</span></p>
+      <ul class="abl-chart" role="list">
+        <li class="abl-row abl-row--ours" tabindex="0" aria-label="Online model-based RL: 83% of attempts lifted the apple (59 of 71); 95% interval 73 to 90%">
+          <span class="abl-name">Online model-based RL</span>
+          <span class="abl-track"><span class="abl-bar" style="width:83.1%"></span><span class="abl-ci" style="left:72.7%;width:17.4%"></span><span class="abl-tip">59 of 71 attempts lifted · 95% interval 73–90%</span></span>
+          <span class="abl-val">83%</span>
+        </li>
+        <li class="abl-row" tabindex="0" aria-label="RLS estimate (bias + gain): 58% of attempts lifted the apple (66 of 114); 95% interval 49 to 67%">
+          <span class="abl-name">RLS estimate (bias + gain)</span>
+          <span class="abl-track"><span class="abl-bar" style="width:57.9%"></span><span class="abl-ci" style="left:48.7%;width:17.9%"></span><span class="abl-tip">66 of 114 attempts lifted · 95% interval 49–67%</span></span>
+          <span class="abl-val">58%</span>
+        </li>
+        <li class="abl-row" tabindex="0" aria-label="Constant offset (from the warm-up): 57% of attempts lifted the apple (65 of 114); 95% interval 48 to 66%">
+          <span class="abl-name">Constant offset (from the warm-up)</span>
+          <span class="abl-track"><span class="abl-bar" style="width:57.0%"></span><span class="abl-ci" style="left:47.8%;width:17.9%"></span><span class="abl-tip">65 of 114 attempts lifted · 95% interval 48–66%</span></span>
+          <span class="abl-val">57%</span>
+        </li>
+        <li class="abl-row" tabindex="0" aria-label="Model-free RL, same error: 13% of attempts lifted the apple (9 of 71); 95% interval 7 to 22%">
+          <span class="abl-name">Model-free RL, same error</span>
+          <span class="abl-track"><span class="abl-bar" style="width:12.7%"></span><span class="abl-ci" style="left:6.8%;width:15.6%"></span><span class="abl-tip">9 of 71 attempts lifted · 95% interval 7–22%</span></span>
+          <span class="abl-val">13%</span>
+        </li>
+        <li class="abl-row abl-row--ctrl" tabindex="0" aria-label="No learner (control): 4% of attempts lifted the apple (16 of 378); 95% interval 3 to 7%">
+          <span class="abl-name">No learner (control)</span>
+          <span class="abl-track"><span class="abl-bar" style="width:4.2%"></span><span class="abl-ci" style="left:2.6%;width:4.2%"></span><span class="abl-tip">16 of 378 attempts lifted · 95% interval 3–7%</span></span>
+          <span class="abl-val">4%</span>
+        </li>
+      </ul>
+      <div class="abl-ticks" aria-hidden="true"><span style="left:0%">0</span><span style="left:25%">25</span><span style="left:50%">50</span><span style="left:75%">75</span><span style="left:100%">100%</span></div>
+      <figcaption>Isaac Lab, nothing trained beforehand. The real robot's measured execution bias (−7.9 / −4.1 cm mean) is injected into the end-effector command with its measured spread, drawn anew for every attempt; no method sees it. Each learner runs with a no-learner control dealt by coin inside the same run, seeds paired across learners. Against both estimators the model-based learner is ahead in every seed (+25 points, p &lt; 0.001). Bars: share of attempts; whiskers: 95% interval.</figcaption>
     </figure>
     <div class="subsection-heading">
       <h3>From demonstration to execution</h3>
