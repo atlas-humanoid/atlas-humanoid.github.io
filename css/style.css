@@ -97,8 +97,6 @@ p { margin: 0; }
 .learning-loop__media video, .learning-loop__poster img { width: 100%; height: 100%; object-fit: contain; }
 .learning-loop__media:not(.is-started) video { visibility: hidden; }
 .learning-loop__media.is-started .learning-loop__poster { display: none; }
-.learning-loop__caption { padding: 12px 24px 0; color: #626268; font-size: 12px; line-height: 1.5; text-align: center; }
-.learning-loop__note { padding: 14px 24px 0; color: #6e6e73; font-size: 11.5px; line-height: 1.5; text-align: center; }
 .learning-details { border-top: 1px solid var(--line); }
 .learning-details summary { padding: 13px 0; color: var(--muted); cursor: pointer; font-size: 14px; font-weight: 500; }
 .learning-details[open] summary { margin-bottom: 6px; }
@@ -124,8 +122,6 @@ p { margin: 0; }
   .learning-loop__heading { padding: 0 20px; }
   .learning-loop__heading p { font-size: 14px; }
   .learning-loop__media { width: 100%; max-width: 560px; margin: 16px auto 0; aspect-ratio: 24 / 35; }
-  .learning-loop__caption { padding: 4px 20px 0; }
-  .learning-loop__note { padding: 12px 20px 0; font-size: 11px; }
 }
 
 
