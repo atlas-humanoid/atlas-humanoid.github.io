@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ATLAS: Agentic Test-Time Learning via Self-Improving Harness for Humanoid Loco-Manipulation</title>
-  <meta name="description" content="From one human video and one sentence, a Unitree G1 climbs a staircase and picks a paper ball off the step. ATLAS keeps the VLM agent and the whole-body controller frozen and learns the control on the robot while it works. Early release.">
+  <meta name="description" content="From one human video and one sentence, a Unitree G1 climbs a staircase and picks a paper ball off the step. ATLAS connects a System 2 agent to whole-body control through a harness that learns from the robot's own experience. Early release.">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website">
   <meta property="og:title" content="ATLAS: a humanoid learns the task on the robot, from one human video">
@@ -21,15 +21,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=c0a335b0">
+  <link rel="stylesheet" href="css/style.css?v=c7a58f49">
 </head>
 <body>
-<a class="skip" href="#results">Skip to content</a>
+<a class="skip" href="#method">Skip to content</a>
 
 <header class="bar">
   <div class="wrap">
     <a class="brand" href="#top">ATLAS</a>
-    <nav class="links" aria-label="Sections"><a href="#results">Session</a><a href="#more">More tasks</a><a href="#sim">Simulation</a><a href="#details">Details</a></nav>
+    <nav class="links" aria-label="Sections"><a href="#method">Method</a><a href="#results">Learning</a><a href="#more">Tasks</a><a href="#sim">Evaluation</a></nav>
   </div>
 </header>
 
@@ -80,12 +80,36 @@
     </ul>
   </section>
 
-  <!-- ===== The framework, one figure ===== -->
-  <section class="intro wrap">
+  <!-- ===== Method ===== -->
+  <section class="sec sec--wide sec--method" id="method" aria-labelledby="method-title">
+    <header class="section-heading">
+      <p class="section-eyebrow">Method</p>
+      <h2 id="method-title">A Self-Improving Harness</h2>
+      <p class="lede">ATLAS connects a System 2 agent to a whole-body controller through a self-improving harness. The agent’s underlying model and the controller stay frozen while the harness adapts from the robot’s own experience.</p>
+    </header>
     <figure class="fig">
       <div class="fig-scroll"><img src="media/fig_system_v24.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual end-effector target with an RL update, slow: agentic update, both marked with an update loop, sends wrist targets to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. Dashed lines from the slow agentic update to the task specification and to the progress indicator: the slow system revises both." width="2476" height="555"></div>
       <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen; System 1 learns on the robot: it acts at every control step and is updated after every attempt.</figcaption>
     </figure>
+    <div class="method-updates" aria-label="Two forms of adaptation">
+      <div>
+        <h3>Fast: learn to execute</h3>
+        <p>Online RL learns wrist-target corrections from the robot’s own experience, updating the dynamics model and residual policy after each attempt.</p>
+      </div>
+      <div>
+        <h3>Slow: refine the task specification</h3>
+        <p>The agent can revise the task specification, grasp target, and progress indicator using feedback from execution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Learning on the robot ===== -->
+  <section class="sec sec--wide" id="results" aria-labelledby="results-title">
+    <header class="section-heading">
+      <p class="section-eyebrow">Learning</p>
+      <h2 id="results-title">Learning on the Robot</h2>
+      <p class="lede">The online learner starts from zero in each session, adapting the control policy from the robot’s own experience.</p>
+    </header>
     <figure class="fig fig--retry">
       <div class="learning-loop" aria-labelledby="learning-title">
         <div class="learning-loop__heading">
@@ -115,12 +139,10 @@
         </details>
       </figcaption>
     </figure>
-  </section>
-
-  <!-- ===== 01 One session ===== -->
-  <section class="sec sec--wide" id="results">
-    <p class="sec-n">01</p>
-    <h2>Autonomous Test-Time Learning, One Session</h2>
+    <div class="subsection-heading">
+      <h3>One autonomous learning session</h3>
+      <p>Follow 38 attempts as the robot learns to pick up trash and place it in the bin.</p>
+    </div>
     <p class="say">Pick up the trash and put it in the bin.</p>
     <div class="media">
       <video id="session" muted playsinline controls preload="metadata" poster="media/rl_session_mid.jpg" width="1920" height="1080"
@@ -134,11 +156,13 @@
     </ul>
   </section>
 
-  <!-- ===== 02 More tasks ===== -->
-  <section class="sec sec--wide" id="more">
-    <p class="sec-n">02</p>
-    <h2>More Tasks</h2>
-    <p class="lede">The same harness, other tasks. Each from one video of a person and one sentence.</p>
+  <!-- ===== Task coverage ===== -->
+  <section class="sec sec--wide" id="more" aria-labelledby="tasks-title">
+    <header class="section-heading">
+      <p class="section-eyebrow">Tasks</p>
+      <h2 id="tasks-title">One Harness, Multiple Tasks</h2>
+      <p class="lede">Cabinet opening, box carrying, and object pickup use the same harness, with each task specified by one human video and one sentence.</p>
+    </header>
     <p class="say">Open the cabinet door. <span class="spd">1×</span></p>
     <div class="media">
       <video muted loop playsinline preload="metadata" poster="media/cabinet_open_1x.jpg" width="1440" height="1080" aria-label="A Unitree G1 walks up to an under-counter cabinet, crouches, takes the door's handle and pulls the door open, at real speed"><source src="media/cabinet_open_1x.mp4" type="video/mp4"></video>
@@ -154,17 +178,13 @@
     </ul>
   </section>
 
-  <!-- ===== 03 In simulation ===== -->
-  <section class="sec sec--wide" id="sim">
-    <p class="sec-n">03</p>
-    <h2>More Tasks in Simulation</h2>
-    <p class="lede">The same harness, with Isaac Lab standing in for the robot; nothing is trained beforehand. Each strip: the person, a direct retarget of the motion, and the harness, aligned by phase.</p>
-    <div class="strips">
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; the harness picks it up and places it"><source src="media/sim_trio_banana.mp4" type="video/mp4"></video><figcaption>Banana · from one phone video</figcaption></figure>
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video, an apple in the scene; the retarget misses; the harness picks the apple and places it"><source src="media/sim_trio_apple.mp4" type="video/mp4"></video><figcaption>Apple · the same video, another object</figcaption></figure>
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; the harness lifts, carries and sets it down"><source src="media/sim_trio_box.mp4" type="video/mp4"></video><figcaption>Box · two-hand carry</figcaption></figure>
-      <figure class="duo-sim"><video muted loop playsinline preload="none" poster="media/sim_duo_fridge_door.jpg" width="1244" height="524" aria-label="Two panels: a person squats and pulls an under-counter fridge door open; the harness grasps the vertical bar and pulls the door open"><source src="media/sim_duo_fridge_door.mp4" type="video/mp4"></video><figcaption>Fridge door · person and harness, no retarget</figcaption></figure>
-    </div>
+  <!-- ===== Controlled evaluation ===== -->
+  <section class="sec sec--wide" id="sim" aria-labelledby="evaluation-title">
+    <header class="section-heading">
+      <p class="section-eyebrow">Evaluation</p>
+      <h2 id="evaluation-title">Controlled Tests in Simulation</h2>
+      <p class="lede">In Isaac Lab, online RL is compared with a no-learner control under the real robot’s measured execution bias.</p>
+    </header>
     <figure class="learning-study" aria-labelledby="study-title">
       <header class="study-header">
         <p class="study-eyebrow">Online learning in simulation</p>
@@ -244,11 +264,22 @@
         <p><b>Online RL against a no-learner control, in the same run.</b> Isaac Lab, one-object pick-and-place, with the real robot’s measured execution bias (x −7.9 cm, y −4.1 cm) injected into the tracker. From attempt 5, each attempt is assigned by coin flip to the learner arm or the zero-bias control arm.</p>
       </figcaption>
     </figure>
+    <div class="subsection-heading">
+      <h3>From demonstration to execution</h3>
+      <p>Each three-panel strip compares the human demonstration, direct motion retargeting, and ATLAS, aligned by phase.</p>
+    </div>
+    <div class="strips">
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; the harness picks it up and places it"><source src="media/sim_trio_banana.mp4" type="video/mp4"></video><figcaption>Banana · from one phone video</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video, an apple in the scene; the retarget misses; the harness picks the apple and places it"><source src="media/sim_trio_apple.mp4" type="video/mp4"></video><figcaption>Apple · the same video, another object</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; the harness lifts, carries and sets it down"><source src="media/sim_trio_box.mp4" type="video/mp4"></video><figcaption>Box · two-hand carry</figcaption></figure>
+      <figure class="duo-sim"><video muted loop playsinline preload="none" poster="media/sim_duo_fridge_door.jpg" width="1244" height="524" aria-label="Two panels: a person squats and pulls an under-counter fridge door open; the harness grasps the vertical bar and pulls the door open"><source src="media/sim_duo_fridge_door.mp4" type="video/mp4"></video><figcaption>Fridge door · person and harness, no retarget</figcaption></figure>
+    </div>
   </section>
 
-  <section class="sec" id="details">
-    <p class="sec-n">04</p>
-    <h2>Details</h2>
+  <section class="sec sec--details" id="details" aria-labelledby="details-title">
+    <header class="section-heading">
+      <h2 id="details-title">Technical Details &amp; Limitations</h2>
+    </header>
 
     <h3 class="sub">FAQ</h3>
     <div class="faq">
