@@ -58,7 +58,7 @@ function setupShowcase() {
     else play(v);
   });
   videos.forEach(v => {
-    if (REDUCED) { v.removeAttribute("autoplay"); v.pause(); }
+    if (REDUCED) { v.removeAttribute("autoplay"); v.pause(); v.controls = true; }
     v.addEventListener("loadedmetadata", applyPlayback);
   });
   if (hasObserver) {

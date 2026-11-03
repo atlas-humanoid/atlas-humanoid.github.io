@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=52">
+  <link rel="stylesheet" href="css/style.css?v=53">
 </head>
 <body>
 <a class="skip" href="#method">Skip to content</a>
@@ -50,24 +50,46 @@
     <p class="date">October 2026 · Early release</p>
     <div class="film film--showcase" id="opening-showcase" role="group" aria-label="Featured robot demonstrations">
       <div class="showcase-scenes">
-        <figure class="showcase-scene showcase-scene--stairs">
-          <div class="showcase-visual">
-            <video id="showcase-stairs" data-showcase-video muted loop playsinline autoplay preload="metadata" poster="media/stairs_showcase.jpg?v=8c06769a" width="1920" height="1080"
-              aria-label="A real Unitree G1 climbs the stairs and picks up a paper ball. One take with variable playback speed; the climb is shown at real speed.">
-              <source src="media/stairs_showcase.mp4?v=79d32516" type="video/mp4">
-            </video>
-          </div>
-          <figcaption class="showcase-caption"><span class="showcase-command">“Climb the stairs and pick up the paper ball.”</span></figcaption>
-        </figure>
-        <figure class="showcase-scene showcase-scene--nav">
-          <div class="showcase-visual">
-            <video id="showcase-nav" data-showcase-video muted loop playsinline autoplay preload="metadata" poster="media/nav_showcase.jpg?v=e5f424b9" width="1920" height="1080"
-              aria-label="A real Unitree G1 navigates across a lounge, picks up two pieces of trash and puts each in the bin. Playback accelerated to 1.5 times real speed.">
-              <source src="media/nav_showcase.mp4?v=dd8faead" type="video/mp4">
-            </video>
-          </div>
-          <figcaption class="showcase-caption"><span class="showcase-command">“Navigate to the sofa; pick up the trash along your way and put it in the bin.”</span></figcaption>
-        </figure>
+        <div class="showcase-row showcase-row--stairs">
+          <figure class="showcase-scene showcase-scene--stairs">
+            <div class="showcase-visual">
+              <video id="showcase-stairs" data-showcase-video muted loop playsinline preload="none" poster="media/stairs_showcase.jpg?v=9ed2e7cd" width="1920" height="1080"
+                aria-label="A real Unitree G1 climbs the stairs and picks up a paper ball. One take with variable playback speed; the climb is shown at real speed.">
+                <source src="media/stairs_showcase.mp4?v=08c34337" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Climb the stairs and pick up the paper ball.”</span></figcaption>
+          </figure>
+          <figure class="showcase-scene showcase-scene--stairs-down">
+            <div class="showcase-visual">
+              <video id="showcase-stairs-down" data-showcase-video muted loop playsinline preload="none" poster="media/stairs_down_showcase.jpg?v=c0cce88f" width="1080" height="1350"
+                aria-label="A real Unitree G1 walks down an outdoor staircase, crouches on a step to pick up a chip bag, turns and climbs back up. One take at real speed.">
+                <source src="media/stairs_down_showcase.mp4?v=7cf5f8c1" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Go down the stairs, pick up the chip&nbsp;bag, and come back up.”</span></figcaption>
+          </figure>
+        </div>
+        <div class="showcase-row showcase-row--tasks">
+          <figure class="showcase-scene showcase-scene--nav">
+            <div class="showcase-visual">
+              <video id="showcase-nav" data-showcase-video muted loop playsinline preload="none" poster="media/nav_showcase.jpg?v=379ddd5c" width="1920" height="1080"
+                aria-label="A real Unitree G1 navigates across a lounge, picks up two pieces of trash and puts each in the bin. Playback accelerated to 1.5 times real speed.">
+                <source src="media/nav_showcase.mp4?v=e353428c" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Navigate to the sofa; pick up the trash along your way and put it in the bin.”</span></figcaption>
+          </figure>
+          <figure class="showcase-scene showcase-scene--candy">
+            <div class="showcase-visual">
+              <video id="showcase-candy" data-showcase-video muted loop playsinline preload="none" poster="media/candy_showcase.jpg?v=8ad5acff" width="1412" height="972"
+                aria-label="A real Unitree G1 walks to a basket on a patio, takes a candy, walks to a pumpkin bucket and drops the candy in. Playback accelerated to 2 times real speed.">
+                <source src="media/candy_showcase.mp4?v=566e650f" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Take a candy from the basket and put it in the pumpkin&nbsp;bucket.”</span></figcaption>
+          </figure>
+        </div>
       </div>
     </div>
     <ul class="facts" aria-label="About these demonstrations">
@@ -321,6 +343,6 @@
 
 <footer class="foot"><span>ATLAS · Early release</span><a href="#top">Top ↑</a></footer>
 
-<script src="js/main.js?v=129c4e2d"></script>
+<script src="js/main.js?v=bd3130a1"></script>
 </body>
 </html>
