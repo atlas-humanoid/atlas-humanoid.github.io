@@ -63,6 +63,9 @@ p { margin: 0; }
 .top h1 .name { color: var(--accent); }
 .authors { margin: 14px auto 0; max-width: 980px; font-size: 16px; line-height: 1.7; color: var(--fg); }
 .authors .au { white-space: nowrap; }
+/* two lines of eight names: on medium screens the type yields a little, on phones the names simply flow */
+@media (min-width: 880px) and (max-width: 1020px) { .authors { font-size: calc((100vw - 64px) / 62); } }
+@media (max-width: 879px) { .authors br { display: none; } }
 .authors a { color: var(--accent); text-decoration: none; }
 .authors a:hover { text-decoration: underline; }
 .authors sup { font-size: 11px; color: var(--muted); margin-left: 1px; }
