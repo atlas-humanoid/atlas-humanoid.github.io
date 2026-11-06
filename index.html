@@ -21,17 +21,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=54">
+  <link rel="stylesheet" href="css/style.css?v=57">
 </head>
 <body>
-<a class="skip" href="#method">Skip to content</a>
+<a class="skip" href="#overview">Skip to content</a>
 
 <header class="bar">
   <div class="wrap">
     <a class="brand" href="#top">ATLAS</a>
-    <nav class="links" aria-label="Sections"><a href="#method">Method</a><a href="#results">Learning</a><a href="#more">Tasks</a><a href="#sim">Evaluation</a></nav>
+    <nav class="links" aria-label="Sections"><a href="#method">Method</a><a href="#results">Learning</a><a href="#more">Tasks</a><a href="#sim">Evaluation</a><a class="tag" href="blog/">Blog</a></nav>
   </div>
 </header>
+
+<nav class="toc toc--page" id="toc" aria-label="On this page">
+  <p class="toc-title">On this page</p>
+  <ol>
+    <li><a href="#overview"><span class="toc-n">01</span><span>Overview</span></a></li>
+    <li><a href="#method"><span class="toc-n">02</span><span>Method</span></a></li>
+    <li><a href="#results"><span class="toc-n">03</span><span>Learning</span></a></li>
+    <li><a href="#more"><span class="toc-n">04</span><span>Tasks</span></a></li>
+    <li><a href="#sim"><span class="toc-n">05</span><span>Evaluation</span></a></li>
+    <li><a href="#details"><span class="toc-n">06</span><span>Details</span></a></li>
+  </ol>
+</nav>
 
 <main id="top">
 
@@ -48,6 +60,7 @@
     <p class="marks">* co-first author &nbsp;·&nbsp; † equal advising &nbsp;·&nbsp; ^ project lead</p>
     <p class="logos" aria-hidden="true"><img src="media/logos/berkeley.svg" alt=""><img src="media/logos/nvidia.svg" alt="" class="wide"><img src="media/logos/hku.png" alt=""><img src="media/logos/stanford.png" alt=""></p>
     <p class="date">October 2026 · Early release</p>
+    <p class="top-links"><a href="blog/">Read the blog post <span aria-hidden="true">→</span></a></p>
     <div class="film film--showcase" id="opening-showcase" role="group" aria-label="Featured robot demonstrations">
       <div class="showcase-scenes">
         <div class="showcase-row showcase-row--outdoor">
@@ -102,11 +115,27 @@
     </ul>
   </section>
 
+  <!-- ===== Overview ===== -->
+  <section class="sec sec--wide sec--overview" id="overview" aria-labelledby="overview-title">
+    <header class="section-heading">
+      <p class="section-eyebrow"><span class="eyebrow-n">/ 01</span>Overview</p>
+      <h2 id="overview-title">One Human Demonstration, One Prompt</h2>
+      <div class="section-text">
+        <p>From one human video demonstration, with no robot demonstrations and no task-specific training in simulation, ATLAS completes the task a prompt names. Its middle layer is not a policy pretrained on robot data but a self-improving harness. It learns at test time what neither the agent nor the controller can know in advance: how this real robot executes a command, and the fine-grained task specification in this scene.</p>
+        <p class="more-link"><a href="blog/">Read how it works <span aria-hidden="true">→</span></a></p>
+      </div>
+    </header>
+  </section>
+
   <!-- ===== Method ===== -->
   <section class="sec sec--wide sec--method" id="method" aria-labelledby="method-title">
     <header class="section-heading">
-      <p class="section-eyebrow">Method</p>
-      <h2 id="method-title">A Self-Improving Harness</h2>
+      <p class="section-eyebrow"><span class="eyebrow-n">/ 02</span>Method</p>
+      <h2 id="method-title">A <span class="nw">Self-Improving</span> Harness</h2>
+      <div class="section-text">
+        <p>ATLAS divides the work by what each layer knows and when it learns it. System 2 knows the task before any session, and System 0 knows whole-body motion. The harness sits between them and learns what only the running robot shows.</p>
+        <p class="more-link"><a href="blog/#idea">Read the method <span aria-hidden="true">→</span></a></p>
+      </div>
     </header>
     <figure class="fig">
       <div class="fig-scroll"><img src="media/fig_system_v29.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual on the command with an RL update, slow: agentic update, both marked with an update loop, sends the command to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. A solid blue arrow from the RL update to the "+ u_t" of the command n_t + u_t: the fast system adds a residual to the command it sends. Dashed amber arrows from the slow agentic update to the task specification and to the progress indicator, drawn in the same amber: the slow system revises both." width="2476" height="555"></div>
@@ -117,9 +146,12 @@
   <!-- ===== Learning on the robot ===== -->
   <section class="sec sec--wide" id="results" aria-labelledby="results-title">
     <header class="section-heading">
-      <p class="section-eyebrow">Learning</p>
+      <p class="section-eyebrow"><span class="eyebrow-n">/ 03</span>Learning</p>
       <h2 id="results-title">Learning on the Robot</h2>
-      <p class="lede">The online learner starts from zero in each session and learns how this body misses the target that the agent and the camera set; it never moves that target.</p>
+      <div class="section-text">
+        <p class="lede">The online learner starts from zero in each session and learns how this body misses the target that the agent and the camera set; it never moves that target.</p>
+        <p class="more-link"><a href="blog/#body">How the fast system learns <span aria-hidden="true">→</span></a></p>
+      </div>
     </header>
     <figure class="fig fig--retry">
       <div class="learning-loop" aria-labelledby="learning-title">
@@ -170,9 +202,12 @@
   <!-- ===== Task coverage ===== -->
   <section class="sec sec--wide" id="more" aria-labelledby="tasks-title">
     <header class="section-heading">
-      <p class="section-eyebrow">Tasks</p>
+      <p class="section-eyebrow"><span class="eyebrow-n">/ 04</span>Tasks</p>
       <h2 id="tasks-title">One Harness, Multiple Tasks</h2>
-      <p class="lede">Cabinet opening, box carrying, and object pickup use the same harness, with each task specified by one human video and one sentence.</p>
+      <div class="section-text">
+        <p class="lede">Cabinet opening, box carrying, and object pickup use the same harness, with each task specified by one human video and one sentence.</p>
+        <p class="more-link"><a href="blog/#spec">How the agent writes a task <span aria-hidden="true">→</span></a></p>
+      </div>
     </header>
     <p class="say">Open the cabinet door. <span class="spd">1×</span></p>
     <div class="media">
@@ -192,9 +227,11 @@
   <!-- ===== Controlled evaluation ===== -->
   <section class="sec sec--wide" id="sim" aria-labelledby="evaluation-title">
     <header class="section-heading">
-      <p class="section-eyebrow">Evaluation</p>
+      <p class="section-eyebrow"><span class="eyebrow-n">/ 05</span>Evaluation</p>
       <h2 id="evaluation-title">Controlled Tests in Simulation</h2>
-      <p class="lede">In Isaac Lab, online RL is compared with a no-learner control under the real robot’s measured execution bias.</p>
+      <div class="section-text">
+        <p class="lede">In Isaac Lab, online RL is compared with a no-learner control under the real robot’s measured execution bias.</p>
+      </div>
     </header>
     <figure class="learning-study" aria-labelledby="study-title">
       <header class="study-header">
@@ -320,6 +357,7 @@
 
   <section class="sec sec--details" id="details" aria-labelledby="details-title">
     <header class="section-heading">
+      <p class="section-eyebrow"><span class="eyebrow-n">/ 06</span>Details</p>
       <h2 id="details-title">Technical Details &amp; Limitations</h2>
     </header>
 
@@ -344,5 +382,6 @@
 <footer class="foot"><span>ATLAS · Early release</span><a href="#top">Top ↑</a></footer>
 
 <script src="js/main.js?v=bd3130a1"></script>
+<script src="js/toc.js?v=1"></script>
 </body>
 </html>

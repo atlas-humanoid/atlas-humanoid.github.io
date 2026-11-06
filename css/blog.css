@@ -1,0 +1,180 @@
+/* ATLAS blog: an article written for readers, in the project page's style (white, near-black, one blue, Geist, hairlines).
+   Wide screens read in four columns: the page's contents, each section's title, its text, and short notes in the margin. */
+
+body.post { --toc: 150px; --head: 190px; --text: 660px; --notes: 120px; --gap: 36px; --full: 1216px; }
+
+.post-main { max-width: calc(var(--full) + 48px); margin: 0 auto; padding: 0 24px; }
+body.post .bar .wrap, body.post .foot { max-width: calc(var(--full) + 48px); }
+
+/* ---------- the opening: one claim, one take ---------- */
+.post-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: 56px; align-items: center; padding: 32px 0 56px; }
+.post-claim { font-size: clamp(46px, 5.8vw, 82px); line-height: 1.04; font-weight: 600; letter-spacing: -.035em; }
+.post-claim span { color: var(--accent); }
+.post-hero__sub { margin-top: 22px; max-width: 30em; color: var(--muted); font-size: 19px; line-height: 1.5; }
+.post-hero__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.post-hero__links a { padding: 7px 16px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); font-size: 15px; font-weight: 500; }
+.post-hero__links a:first-child { border-color: #d2e0f6; background: var(--accent-tint); color: var(--accent); }
+.post-hero__links a:hover { background: var(--tint); text-decoration: none; }
+.post-hero__links a:first-child:hover { background: #dfe9f9; }
+.post-hero__media video { width: 100%; height: auto; border-radius: var(--r); background: var(--tint); }
+.post-hero__media figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+/* ---------- the paper's title and its people ---------- */
+.post-head { padding-top: 28px; border-top: 1px solid var(--line); }
+.crumbs { display: flex; gap: 8px; font-size: 14px; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--fg); }
+.post-head h1 { margin: 16px 0 0; max-width: 860px; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.14; font-weight: 600; letter-spacing: -.025em; text-wrap: balance; }
+.post-head h1 .name { color: var(--accent); }
+.post-head .nw { white-space: nowrap; }
+.post-authors { margin: 20px 0 0; max-width: 980px; font-size: 16px; }
+.post-affil { justify-content: flex-start; max-width: 980px; margin: 8px 0 0; font-size: 14.5px; font-weight: 600; }
+.post-marks { margin-top: 8px; }
+.post-meta { display: flex; flex-wrap: wrap; gap: 14px 56px; margin: 24px 0 0; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.post-meta dt { color: var(--muted); font-size: 12.5px; }
+.post-meta dd { margin: 2px 0 0; font-weight: 500; }
+.post-share { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.linkish { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; cursor: pointer; }
+.linkish:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- layout ---------- */
+.post-layout { display: grid; grid-template-columns: var(--toc) minmax(0, 1fr); column-gap: var(--gap); }
+.post-body { min-width: 0; }
+.post-sec { display: grid; grid-template-columns: var(--head) var(--text); column-gap: var(--gap); padding-top: 80px; scroll-margin-top: 24px; }
+.post-sec__head { position: sticky; top: 84px; align-self: start; }
+.post-sec--static .post-sec__head { position: static; }                   /* its figure spans the title's column */
+.post-sec__num { margin-bottom: 8px; font-size: 13px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.post-sec__head h2 { margin: 0; color: var(--accent); font-size: clamp(24px, 2vw, 28px); line-height: 1.16; font-weight: 600; letter-spacing: -.022em; text-wrap: balance; }
+.post-sec__body { position: relative; min-width: 0; font-size: 18px; line-height: 1.7; color: #1c2026; }
+.post-sec__body > p + p { margin-top: 1.05em; }
+.post-sec__body > * + p { margin-top: 1.05em; }
+.post-sec__body b { font-weight: 600; color: var(--fg); }
+
+/* ---------- media ---------- */
+.post-fig { margin: 28px 0; }
+.post-fig__img { display: block; cursor: zoom-in; }
+.post-fig img, .post-fig video { width: 100%; height: auto; }
+.post-video video { border-radius: 12px; background: var(--tint); }
+.post-fig figcaption { margin-top: 10px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.post-fig figcaption b { color: var(--fg); font-weight: 600; }
+.post-fig--span { margin-left: calc(-1 * var(--head) - var(--gap)); margin-right: calc(-1 * var(--notes) - 24px); }
+.post-fig--span figcaption { margin-left: calc(var(--head) + var(--gap)); margin-right: calc(var(--notes) + 24px); }
+#fig-4, #fig-scene { max-width: 560px; }
+
+/* the four costs */
+.post-stats { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 24px 0; padding: 0; border-bottom: 1px solid var(--line); }
+.post-stats li { padding: 14px 0 16px; border-top: 1px solid var(--line); }
+.post-stats b { display: block; color: var(--accent); font-size: 23px; line-height: 1.2; font-weight: 600; letter-spacing: -.02em; }
+.post-stats span { display: block; margin-top: 5px; color: var(--muted); font-size: 15px; line-height: 1.45; }
+
+/* a task specification */
+.spec { margin: 26px 0; padding: 18px 20px 16px; border: 1px solid var(--line); border-radius: 14px; font-size: 15.5px; line-height: 1.45; }
+.spec__in { display: grid; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.spec__in span { display: block; color: var(--muted); font-size: 12.5px; }
+.spec dl { margin: 6px 0 0; }
+.spec dl > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 8px 0; align-items: baseline; }
+.spec dt { color: var(--muted); }
+.spec dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { padding: 1px 10px; border-radius: 999px; background: var(--accent-tint); color: var(--accent); font-weight: 500; }
+.spec figcaption { margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+
+/* "why" boxes */
+.post-why { margin: 26px 0; padding: 16px 20px 18px; border: 1px solid #d2e0f6; border-radius: 14px; background: var(--accent-tint); font-size: 16px; line-height: 1.6; }
+.post-why h3 { margin: 0 0 6px; color: var(--accent); font-size: 16.5px; line-height: 1.35; font-weight: 600; letter-spacing: -.01em; }
+
+/* folds */
+.post-fold { margin-top: 22px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.post-fold + .post-why, .post-fold + p { margin-top: 26px; }
+.post-fold summary { list-style: none; cursor: pointer; position: relative; padding: 12px 28px 12px 0; color: var(--muted); font-size: 15.5px; font-weight: 500; }
+.post-fold summary::-webkit-details-marker { display: none; }
+.post-fold summary::after { content: "+"; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 19px; font-weight: 400; }
+.post-fold[open] summary::after { content: "\2212"; }
+.post-fold > p { margin-bottom: 14px; font-size: 16px; line-height: 1.65; }
+.post-fold--refs { margin-top: 0; }
+
+/* math, in the paper's serif italic */
+.m { font-family: "Cambria Math", "STIX Two Math", Cambria, "Times New Roman", serif; font-style: italic; white-space: nowrap; font-size: 1.04em; padding-right: .12em; }
+.m sub { font-size: .7em; line-height: 0; }
+.post-eq { display: flex; align-items: center; gap: 16px; margin: 0 0 14px; padding: 12px 16px; border-radius: 12px; background: var(--tint); }
+.post-eq__body { flex: 1; text-align: center; }
+.post-eq__body .m { font-size: 1.2em; }
+.post-eq__n { flex: none; color: var(--muted); font-size: 14.5px; font-variant-numeric: tabular-nums; }
+
+/* citations: a small number, a note in the margin, the full reference on hover */
+.fn { font-size: .66em; top: -.55em; margin-left: 1px; font-variant-numeric: tabular-nums; }
+.cite, .xref { color: var(--accent); }
+.side { display: none; }
+.cite-pop { position: absolute; z-index: 60; max-width: 360px; padding: 10px 13px; border-radius: 10px; background: #1d232b; color: #fff; font-size: 13.5px; line-height: 1.45; box-shadow: 0 8px 26px rgba(17, 20, 24, .18); pointer-events: none; }
+.refs li:target { background: var(--accent-tint); border-radius: 6px; box-shadow: 0 0 0 6px var(--accent-tint); }
+
+/* related work */
+.post-compare { margin-top: 18px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.5; }
+.post-compare__row { display: grid; grid-template-columns: 124px minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.post-compare__row > :last-child { color: var(--accent); }
+.post-compare__row > span:nth-child(2) { color: var(--muted); }
+.post-compare__head { padding: 8px 0; color: var(--muted); font-size: 13px; }
+.post-compare__head > span { color: var(--muted) !important; }
+
+/* ---------- contents ---------- */
+.toc { position: sticky; top: 84px; align-self: start; padding-top: 80px; font-size: 13px; }
+.toc-n { min-width: 18px; }
+.toc-mobile { display: none; }
+.toc-mobile ol { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 9px; }
+.toc-mobile a { display: flex; gap: 7px; color: var(--muted); }
+.toc-mobile a:hover { color: var(--fg); text-decoration: none; }
+
+/* ---------- the end of the article ---------- */
+.post-next { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.post-next li { border-bottom: 1px solid var(--line); }
+.post-next a { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 16px; padding: 12px 0; color: var(--fg); font-weight: 500; font-size: 16.5px; line-height: 1.4; }
+.post-next a:hover { color: var(--accent); text-decoration: none; }
+.post-next small { color: var(--muted); font-size: 14px; font-weight: 400; }
+.post-source { margin-top: 16px !important; color: var(--muted); font-size: 14.5px; }
+.refs { margin: 4px 0 16px; padding-left: 32px; display: grid; gap: 7px; font-size: 14.5px; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
+.refs li { scroll-margin-top: 90px; }
+.refs li::marker { color: var(--faint); font-variant-numeric: tabular-nums; font-size: 13px; }
+.bib { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.bib__bar { display: flex; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid var(--line); background: var(--tint); font-size: 13.5px; color: var(--muted); }
+.bib pre { margin: 0; padding: 14px; overflow-x: auto; font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--fg); }
+body.post .foot { margin-top: 88px; }
+
+/* ---------- wide: the notes sit in the margin (blog.js stacks them so they never overlap) ---------- */
+@media (min-width: 1280px) {
+  .side { display: block; position: absolute; left: calc(100% + 24px); width: var(--notes); color: var(--muted); font-size: 12.5px; font-weight: 400; font-style: normal; line-height: 1.3; }
+  .side b { color: var(--accent); font-weight: 500; font-variant-numeric: tabular-nums; }
+}
+
+/* ---------- narrower: the contents collapse, then the section title stacks above its text ---------- */
+@media (max-width: 1279px) {
+  body.post { --full: 886px; }
+  .post-layout { display: block; }
+  .post-sec { grid-template-columns: var(--head) minmax(0, 1fr); }
+  .post-fig--span { margin-right: 0; }
+  .post-fig--span figcaption { margin-right: 0; }
+  .toc { display: none; }
+  .toc-mobile { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .toc-mobile summary { cursor: pointer; font-weight: 600; }
+}
+@media (max-width: 979px) {
+  body.post { --full: 680px; }
+  .post-sec { display: block; padding-top: 56px; }
+  .post-sec__head { position: static; margin-bottom: 16px; }
+  .post-fig--span { margin-left: 0; }
+  .post-fig--span figcaption { margin-left: 0; }
+  .post-hero { gap: 32px; grid-template-columns: minmax(0, 1fr); padding: 24px 0 40px; }
+  .post-hero__media { max-width: 460px; }
+}
+@media (max-width: 640px) {
+  .post-main { padding: 0 16px; }
+  .post-claim { font-size: 44px; }
+  .post-hero__sub { font-size: 17px; }
+  .post-meta { gap: 12px 28px; }
+  .post-sec__body { font-size: 17px; line-height: 1.66; }
+  .post-stats { grid-template-columns: minmax(0, 1fr); }
+  .post-eq { padding: 10px 12px; gap: 8px; font-size: 16px; }
+  .post-affil { flex-direction: column; }
+  .authors .au { white-space: normal; }
+  .post-compare__head { display: none; }
+  .post-compare__row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .spec dl > div { grid-template-columns: 80px minmax(0, 1fr); }
+}
