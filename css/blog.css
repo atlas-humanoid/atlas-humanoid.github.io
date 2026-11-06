@@ -10,6 +10,8 @@ body.post .bar .wrap, body.post .foot { max-width: calc(var(--full) + 48px); }
 .post-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: 56px; align-items: center; padding: 32px 0 56px; }
 .post-claim { font-size: clamp(46px, 5.8vw, 82px); line-height: 1.04; font-weight: 600; letter-spacing: -.035em; }
 .post-claim span { color: var(--accent); }
+/* beside the video, each sentence keeps its own line */
+@media (min-width: 980px) and (max-width: 1279px) { .post-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 400px); } .post-claim { font-size: 52px; } }
 .post-hero__sub { margin-top: 22px; max-width: 30em; color: var(--muted); font-size: 19px; line-height: 1.5; }
 .post-hero__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .post-hero__links a { padding: 7px 16px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); font-size: 15px; font-weight: 500; }
