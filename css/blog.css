@@ -182,3 +182,17 @@ body.post .foot { margin-top: 88px; }
   .post-compare__row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .spec dl > div { grid-template-columns: 80px minmax(0, 1fr); }
 }
+
+/* 2026-11-08: the blog is the paper's introduction, related work and method; Fig. 1 leads under the title block */
+.post-head--paper { padding-top: 20px; border-top: 0; }
+.post-fig--lead { margin: 30px 0 10px; }
+.post-fig--lead figcaption { max-width: 980px; }
+.post-fold--abstract { max-width: 980px; margin: 0 0 34px; }
+.post-fold--abstract > p { margin-top: 10px; }
+.post-sec__body h3 { margin: 30px 0 8px; font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+.post-sec__body h3:first-child { margin-top: 0; }
+.contrib { margin: 14px 0 0; padding-left: 22px; }
+.contrib li { margin: 8px 0; }
+.contrib li b { font-weight: 600; }
+.post-eq + p, .contrib + p { margin-top: 16px; }
+.post-sec__body .cite { font-weight: 500; }

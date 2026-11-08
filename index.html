@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ATLAS: Agentic Test-Time Learning via Self-Improving Harness for Humanoid Loco-Manipulation</title>
-  <meta name="description" content="From one human video and one sentence, a humanoid climbs a staircase and picks a paper ball off the step. ATLAS connects a System 2 agent to whole-body control through a harness that learns from the robot's own experience. Early release.">
+  <title>ATLAS: Agentic Harness for Whole-Body Intelligence from Human Video</title>
+  <meta name="description" content="From one human video demonstration and one prompt, a humanoid climbs a staircase and picks a paper ball off the step. ATLAS connects a System 2 agent to whole-body control through a harness that learns from the robot's own experience. Early release.">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ATLAS: a humanoid learns the task on the robot, from one human video">
-  <meta property="og:description" content="From one human video and one sentence, a humanoid climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works. Early release.">
-  <meta property="og:image" content="media/og_card.jpg">
+  <meta property="og:title" content="ATLAS: a humanoid learns the task on the robot, from one human video demonstration">
+  <meta property="og:description" content="From one human video demonstration and one prompt, a humanoid climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works. Early release.">
+  <meta property="og:url" content="https://atlas-humanoid.github.io/">
+  <link rel="canonical" href="https://atlas-humanoid.github.io/">
+  <meta property="og:image" content="https://atlas-humanoid.github.io/media/og_card.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="A humanoid standing on a wooden staircase, holding a crumpled paper ball it picked off the step">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ATLAS: a humanoid learns the task on the robot, from one human video">
-  <meta name="twitter:description" content="From one human video and one sentence, a humanoid climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works.">
-  <meta name="twitter:image" content="media/og_card.jpg">
+  <meta name="twitter:title" content="ATLAS: a humanoid learns the task on the robot, from one human video demonstration">
+  <meta name="twitter:description" content="From one human video demonstration and one prompt, a humanoid climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works.">
+  <meta name="twitter:image" content="https://atlas-humanoid.github.io/media/og_card.jpg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f4e9c'/%3E%3Ctext x='7' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='700' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +51,7 @@
 
   <!-- ===== Title and the film ===== -->
   <section class="top wrap">
-    <h1><span class="name">ATLAS</span>: Agentic Test-Time Learning via Self-Improving Harness for Humanoid Loco-Manipulation</h1>
+    <h1><span class="name">ATLAS</span>: Agentic Harness for <span class="nw">Whole&#8209;Body</span> Intelligence from Human Video</h1>
     <p class="authors"><span class="au"><a href="https://renjunli99.github.io/">Junli Ren</a><sup>*1,3</sup></span>, <span class="au"><a href="https://kaixiangyao.github.io/">Kaixiang Yao</a><sup>*1</sup></span>, <span class="au"><a href="https://junfeng-long.github.io/">Junfeng Long</a><sup>1</sup></span>, <span class="au"><a href="https://taohuang13.github.io/">Tao Huang</a><sup>3</sup></span>, <span class="au"><a href="https://why618188.github.io/">Huayi Wang</a><sup>3</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/yuxiao-chen">Yuxiao Chen</a><sup>2</sup></span>, <span class="au"><a href="https://wenhao.pub">Wenhao Ding</a><sup>2</sup></span>, <span class="au"><a href="https://yixiaowang7.github.io/">Yixiao Wang</a><sup>1</sup></span>,<br><span class="au"><a href="https://yanwang.org/">Yan Wang</a><sup>2</sup></span>, <span class="au"><a href="https://www.cs.toronto.edu/~wenjie/">Wenjie Luo</a><sup>2</sup></span>, <span class="au"><a href="http://www.borisivanovic.com/">Boris Ivanovic</a><sup>2†</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/marco-pavone">Marco Pavone</a><sup>2,4†</sup></span>, <span class="au"><a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a><sup>1†</sup></span>, <span class="au"><a href="http://luoping.me">Ping Luo</a><sup>3†</sup></span>, <span class="au"><a href="https://thomaschen98.github.io/">Yuxin Chen</a><sup>1^</sup></span>, <span class="au"><a href="https://thomasrantian.github.io/">Ran &quot;Thomas&quot; Tian</a><sup>2^</sup></span></p>
     <p class="affil">
       <span><sup>1</sup>UC Berkeley</span>
@@ -59,7 +61,7 @@
     </p>
     <p class="marks">* co-first author &nbsp;·&nbsp; † equal advising &nbsp;·&nbsp; ^ project lead</p>
     <p class="logos" aria-hidden="true"><img src="media/logos/berkeley.svg" alt=""><img src="media/logos/nvidia.svg" alt="" class="wide"><img src="media/logos/hku.png" alt=""><img src="media/logos/stanford.png" alt=""></p>
-    <p class="date">October 2026 · Early release</p>
+    <p class="date">November 2026 · Early release</p>
     <p class="top-links"><a href="blog/">Read the blog post <span aria-hidden="true">→</span></a></p>
     <div class="film film--showcase" id="opening-showcase" role="group" aria-label="Featured robot demonstrations">
       <div class="showcase-scenes">
@@ -119,9 +121,9 @@
   <section class="sec sec--wide sec--overview" id="overview" aria-labelledby="overview-title">
     <header class="section-heading">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 01</span>Overview</p>
-      <h2 id="overview-title">One Human Demonstration, One Prompt</h2>
+      <h2 id="overview-title">One Human Video Demonstration, One Prompt</h2>
       <div class="section-text">
-        <p>From one human video demonstration, with no robot demonstrations and no task-specific training in simulation, ATLAS completes the task a prompt names. Its middle layer is not a policy pretrained on robot data but a self-improving harness. It learns at test time what neither the agent nor the controller can know in advance: how this real robot executes a command, and the fine-grained task specification in this scene.</p>
+        <p>From one human video demonstration, with no robot demonstrations and no task-specific training in simulation, ATLAS completes the task a prompt names. Its middle layer is not a policy pretrained on robot data but an agentic harness. It learns at test time what neither the agent nor the controller can know in advance: how this real robot executes a command, and the fine-grained task specification in this scene.</p>
         <p class="more-link"><a href="blog/">Read how it works <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
@@ -131,10 +133,10 @@
   <section class="sec sec--wide sec--method" id="method" aria-labelledby="method-title">
     <header class="section-heading">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 02</span>Method</p>
-      <h2 id="method-title">A <span class="nw">Self-Improving</span> Harness</h2>
+      <h2 id="method-title">An Agentic Harness</h2>
       <div class="section-text">
         <p>ATLAS divides the work by what each layer knows and when it learns it. System 2 knows the task before any session, and System 0 knows whole-body motion. The harness sits between them and learns what only the running robot shows.</p>
-        <p class="more-link"><a href="blog/#idea">Read the method <span aria-hidden="true">→</span></a></p>
+        <p class="more-link"><a href="blog/#method">Read the method <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
     <figure class="fig">
@@ -150,7 +152,7 @@
       <h2 id="results-title">Learning on the Robot</h2>
       <div class="section-text">
         <p class="lede">The online learner starts from zero in each session and learns how this body misses the target that the agent and the camera set; it never moves that target.</p>
-        <p class="more-link"><a href="blog/#body">How the fast system learns <span aria-hidden="true">→</span></a></p>
+        <p class="more-link"><a href="blog/#fast">How the fast system learns <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
     <figure class="fig fig--retry">
@@ -169,17 +171,6 @@
         <p class="sr-only" id="learning-description">Three attempts from one continuous stair run play alongside conceptual illustrations. The first reach misses the target. The learner uses the error to update its model and adjust the next reach. A second miss leads to another update, then the third reach grasps the object.</p>
       </div>
       <figcaption class="exp">
-        <details class="learning-details">
-        <summary>Technical details of the online update</summary>
-        <p class="lead"><b>Illustration of the fast online RL update.</b></p>
-        <ul class="steps">
-          <li><span class="g g-rail"></span><b>Every control step.</b> We want the end effector <i>c<sub>t</sub></i> to reach its target <i>n<sub>t</sub></i>. Sent <i>n<sub>t</sub></i>, a perfect controller would get there. No general controller is perfect on one particular robot, so the actor computes a residual <i>u<sub>t</sub> = π<sub>φ</sub>(c<sub>t</sub>, n<sub>t</sub>)</i> and the controller receives <i>n<sub>t</sub> + u<sub>t</sub></i>. The residual acts only at the controller's input, on the end-effector positions, and never enters the reference motion.</li>
-          <li><span class="g g-miss"></span><b>At the grasp.</b> The miss is the end-effector error to the grasp target, the affordance placed on the seen object, <i>‖n<sub>T</sub> − c<sub>T</sub>‖</i>; the learner drives this down and never moves <i>n<sub>T</sub></i>.</li>
-          <li><span class="g g-loop"></span><b>Across attempts.</b> The dynamics model is refit on all attempts so far, <i>ĉ<sub>t+1</sub> = f<sub>ψ</sub>(c<sub>t</sub>, n<sub>t</sub> + u<sub>t</sub>)</i>, and the actor is updated by backpropagation through it, <i>r = −‖n<sub>T</sub> − ĉ<sub>T</sub>‖²</i>.</li>
-          <li><span class="g g-slow"></span><b>Slow system.</b> Throughout the session the same VLM agent reads the frames and may rewrite what SAM 3 looks for, which anchors the grasp target <i>n</i> to the right thing, or the progress indicator; a change is kept only if it scores better on the session's own saved frames.</li>
-        </ul>
-        <p class="key"><i>f</i><sub>ψ</sub> and <i>π</i><sub>φ</sub> start from zero in every session &nbsp;·&nbsp; <i>n<sub>t</sub></i> end-effector target (the human reach anchored to the affordance), <i>n<sub>T</sub></i> the grasp target &nbsp;·&nbsp; <i>u</i> learned residual &nbsp;·&nbsp; <i>c</i> end-effector position &nbsp;·&nbsp; ĉ predicted end-effector position &nbsp;·&nbsp; <i>T</i> grasp step</p>
-        </details>
       </figcaption>
     </figure>
     <div class="subsection-heading">
@@ -205,7 +196,7 @@
       <p class="section-eyebrow"><span class="eyebrow-n">/ 04</span>Tasks</p>
       <h2 id="tasks-title">One Harness, Multiple Tasks</h2>
       <div class="section-text">
-        <p class="lede">Cabinet opening, box carrying, and object pickup use the same harness, with each task specified by one human video and one sentence.</p>
+        <p class="lede">Cabinet opening, box carrying, and object pickup use the same harness, with each task specified by one human video demonstration and one prompt.</p>
         <p class="more-link"><a href="blog/#spec">How the agent writes a task <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
@@ -348,9 +339,9 @@
       <p>Each three-panel strip compares the human demonstration, direct motion retargeting, and ATLAS, aligned by phase.</p>
     </div>
     <div class="strips">
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; the harness picks it up and places it"><source src="media/sim_trio_banana.mp4" type="video/mp4"></video><figcaption>Banana · from one phone video</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; the harness picks it up and places it"><source src="media/sim_trio_banana.mp4" type="video/mp4"></video><figcaption>Banana · from one human video demonstration</figcaption></figure>
       <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video, an apple in the scene; the retarget misses; the harness picks the apple and places it"><source src="media/sim_trio_apple.mp4" type="video/mp4"></video><figcaption>Apple · the same video, another object</figcaption></figure>
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; the harness lifts, carries and sets it down"><source src="media/sim_trio_box.mp4" type="video/mp4"></video><figcaption>Box · two-hand carry</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; the harness lifts, carries and sets it down"><source src="media/sim_trio_box.mp4" type="video/mp4"></video><figcaption>Box · carried with both arms</figcaption></figure>
       <figure class="duo-sim"><video muted loop playsinline preload="none" poster="media/sim_duo_fridge_door.jpg" width="1244" height="524" aria-label="Two panels: a person squats and pulls an under-counter fridge door open; the harness grasps the vertical bar and pulls the door open"><source src="media/sim_duo_fridge_door.mp4" type="video/mp4"></video><figcaption>Fridge door · person and harness, no retarget</figcaption></figure>
     </div>
   </section>
@@ -358,23 +349,18 @@
   <section class="sec sec--details" id="details" aria-labelledby="details-title">
     <header class="section-heading">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 06</span>Details</p>
-      <h2 id="details-title">Technical Details &amp; Limitations</h2>
+      <h2 id="details-title">Setup &amp; Limitations</h2>
     </header>
 
-    <h3 class="sub">FAQ</h3>
+    <h3 class="sub">Setup</h3>
     <div class="faq">
-      <details><summary>Where does the end-effector target come from?</summary><p>Once per task, the agent tells SAM 3 what to look for and defines the affordance: the end effector's pose relative to the object. At run time SAM 3 finds the object, the depth image places the affordance in 3-D, and the human reach is shifted so the end effector meets it at the grasp step: that is the end-effector target <i>n</i><sub>t</sub>. The whole-body controller tracks it, and online RL learns only the tracking error to it. After every attempt the agent checks the progress indicator.</p></details>
-      <details><summary>How does one phone video become a robot motion?</summary><p>The person's motion is lifted from the video (GVHMR) and retargeted to the robot (GMR); that is the reference the whole-body controller tracks. The agent cuts the stretch that is the task and defines the affordance; at run time the reach is anchored to where the camera sees the object, and the learner corrects the end-effector command.</p></details>
-      <details><summary>What does the online learner learn, and from what?</summary><p>How this body executes end-effector commands. Online model-based RL: a dynamics model fitted to the robot's own measurements and an actor updated through it, acting at every control step of the reach. From zero in every session; nothing is collected beforehand.</p></details>
-      <details><summary>What is the task specification?</summary><p>What the agent writes once per task, from the video and the sentence: the steps the task is cut into and the stretch of the human motion each step uses; the affordance, the end effector's pose relative to the object, with which end effector and how it closes; what SAM 3 should look for; the action target, where the object goes; and the progress indicator. The background agent revises two parts of it online: what SAM 3 looks for, when the camera shows the object unfound or the mask on something else, such as the robot's own leg; and the progress indicator.</p></details>
-      <details><summary>What is the progress indicator?</summary><p>How the robot tells on its own whether an attempt is getting somewhere; the agent picks it for each task. <b>Geometric</b>: the gripper or the fingers stop short of closing, so they hold something rather than shutting on air; after the lift, the head camera sees the object above where it rested; in a two-hand carry, the palms stay apart. <b>VLM</b>, where geometry cannot decide, such as a door opened or an object set down: the VLM looks at the ego-view image and answers the task's own question, for example whether the box is in the bin, and two looks in a row are needed to call a miss. A miss is retried where the robot stands, and the background agent revises the indicator when its verdicts disagree with what the camera shows.</p></details>
       <details><summary>Which controller is used?</summary><p>The whole-body controller is ScaleBFM, which we trained to adapt to terrain; that is what carries it up the stairs. The agent, the learner and the retry are the same on the stairs as on the floor.</p></details>
       <details><summary>What runs on the robot, and what off it?</summary><p>Sensing is all onboard: the head camera (RGB-D) and the joint state. The controller and the acting policy run on the robot; the VLM, SAM 3 and the learner's updates run on a PC over a link; some flat-ground tasks localize the robot with an external tracker.</p></details>
-      <details><summary>Does a person do anything during a run?</summary><p>Nothing, unless the robot walks out of the workspace or the object drops out of the camera's field of view, where the robot would be stuck. The rest of the time you just watch it evolve on its own.</p></details>
+      <details><summary>Does a person do anything during a run?</summary><p>Nothing, unless the robot walks out of the workspace or the object drops out of the camera's field of view, where the robot would be stuck. The rest of the time the robot works on its own.</p></details>
     </div>
 
     <h3 class="sub">Scope and limitations</h3>
-    <p class="scope">Tasks with sustained contact are still hard; opening a heavy door is one. A dynamics model learned per task does not scale; reusing this real-robot experience across tasks is future work.</p>
+    <p class="scope">Tasks with sustained contact are still hard. Next we will carry the fast system past the grasp, into sustained contact, and reuse real-robot experience so a new task starts from what the robot already knows.</p>
   </section>
 
 </main>
