@@ -140,8 +140,8 @@
       </div>
     </header>
     <figure class="fig">
-      <div class="fig-scroll"><img src="media/fig_system_v29.jpg" alt="ATLAS keeps the three-layer stack and changes only its middle layer. Left, one phone video of a person pulling open an under-counter cabinet door, no teleoperation, no dataset, goes to System 2, a frozen VLM agent: task decomposition, affordance, action target; it hands System 1 the task specification. System 1, fast: a residual on the command with an RL update, slow: agentic update, both marked with an update loop, sends the command to System 0, a frozen whole-body controller. Right, the real robot crouched at the same kind of cabinet, pulling its door open, from zero in one session; it feeds System 1 back a progress indicator, VLM or geometric, defined by the agent. A solid blue arrow from the RL update to the "+ u_t" of the command n_t + u_t: the fast system adds a residual to the command it sends. Dashed amber arrows from the slow agentic update to the task specification and to the progress indicator, drawn in the same amber: the slow system revises both." width="2476" height="555"></div>
-      <figcaption><b>ATLAS keeps the three-layer stack and changes only its middle layer.</b> System 2 and System 0 are released and frozen. The camera places the agent's affordance on the object and the human reach is anchored to it: that is the end-effector target <i>n</i><sub>t</sub>, where the end effector should be. System 1 learns on the robot only what keeps the end effector from reaching it: at every control step the fast system adds a residual <i>u</i><sub>t</sub> to the command sent to System 0, and it is updated throughout the session; the slow system, the same agent, revises what SAM 3 looks for and the progress indicator.</figcaption>
+      <div class="fig-scroll"><img src="media/fig_method_v30.jpg" alt="One row of four parts. Left, a person crouching to pick a banana off the floor, face blurred, titled &quot;Human Video Demonstration&quot;, with the prompt &quot;Pick up the trash and put it in the bin.&quot; An arrow leads to a box tagged System 2, the Agent, holding the task specification: steps walk, pick, carry, place; affordance lateral surface, enclose; find, where &quot;the trash.&quot; is struck through and replaced by &quot;crushed silver energy drink can.&quot;; done, the trash lies inside the bin. An arrow leads to a box tagged Middle Layer, the ATLAS Harness: a small head-camera view with a box on a crushed can and its target point n_t, labelled Grounding, plus Judge and Retry in place. An arrow labelled n_t + u_t leads to a box tagged System 0 with a lock, the Frozen Tracker: the real robot crouching toward the can, captioned &quot;follows the person's motion&quot;. An amber arrow labelled Slow Update returns above the boxes from the harness to the agent; a blue arrow labelled Fast Update returns below them from the tracker to the u_t of the command." width="2400" height="663"></div>
+      <figcaption><b>ATLAS puts a harness, not a policy pretrained on robot data, between the VLM agent and the frozen whole-body tracker.</b> From one human video demonstration and one prompt, the agent writes the task specification once. On the robot, the harness finds the target with the segmenter and depth, the frozen tracker follows the person's motion with the end effector commanded to <i>n<sub>t</sub></i> + <i>u<sub>t</sub></i>, and a miss is retried in place. Two loops learn from the robot's own attempts: the fast update learns how this robot executes a command and corrects the command at every control step, and the slow update lets the same agent rewrite what the segmenter looks for, keeping a revision only if it wins a replay on saved frames. <a href="blog/#method">The method, in full →</a></figcaption>
     </figure>
   </section>
 
@@ -170,8 +170,6 @@
         </div>
         <p class="sr-only" id="learning-description">Three attempts from one continuous stair run play alongside conceptual illustrations. The first reach misses the target. The learner uses the error to update its model and adjust the next reach. A second miss leads to another update, then the third reach grasps the object.</p>
       </div>
-      <figcaption class="exp">
-      </figcaption>
     </figure>
     <div class="subsection-heading">
       <h3>One autonomous learning session</h3>
@@ -336,7 +334,7 @@
     </figure>
     <div class="subsection-heading">
       <h3>From demonstration to execution</h3>
-      <p>Each three-panel strip compares the human demonstration, direct motion retargeting, and ATLAS, aligned by phase.</p>
+      <p>Each three-panel strip compares the human video demonstration, direct motion retargeting, and ATLAS, aligned by phase.</p>
     </div>
     <div class="strips">
       <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; the harness picks it up and places it"><source src="media/sim_trio_banana.mp4" type="video/mp4"></video><figcaption>Banana · from one human video demonstration</figcaption></figure>
