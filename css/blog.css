@@ -196,3 +196,6 @@ body.post .foot { margin-top: 88px; }
 .contrib li b { font-weight: 600; }
 .post-eq + p, .contrib + p { margin-top: 16px; }
 .post-sec__body .cite { font-weight: 500; }
+
+/* method subsection numbers (blog v2, 2026-11-09) */
+.post-sec__body h3 .sec-n { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: .35em; }
