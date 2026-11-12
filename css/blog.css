@@ -177,7 +177,7 @@ body.post .foot { margin-top: 88px; }
   .post-stats { grid-template-columns: minmax(0, 1fr); }
   .post-eq { padding: 10px 12px; gap: 8px; font-size: 16px; }
   .post-affil { flex-direction: column; }
-  .authors .au { white-space: normal; }
+  
   .post-compare__head { display: none; }
   .post-compare__row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .spec dl > div { grid-template-columns: 80px minmax(0, 1fr); }
@@ -199,3 +199,4 @@ body.post .foot { margin-top: 88px; }
 
 /* method subsection numbers (blog v2, 2026-11-09) */
 .post-sec__body h3 .sec-n { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: .35em; }
+@media (max-width: 640px) { .bib pre { white-space: pre-wrap; overflow-wrap: anywhere; } }

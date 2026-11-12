@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ATLAS: Agentic Harness for Whole-Body Intelligence from Human Video</title>
-  <meta name="description" content="From one human video demonstration and one prompt, a humanoid climbs a staircase and picks a paper ball off the step. ATLAS connects a System 2 agent to whole-body control through a harness that learns from the robot's own experience. Early release.">
+  <meta name="description" content="From one human video demonstration and one prompt, a humanoid climbs a staircase and picks a paper ball off the step. ATLAS links a System 2 agent and a frozen whole-body tracker with a harness, a part of each, that learns from the robot's own attempts. Early release.">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ATLAS: a humanoid learns the task on the robot, from one human video demonstration">
+  <meta property="og:title" content="ATLAS: a humanoid learns the task as it works, from one human video demonstration and one prompt">
   <meta property="og:description" content="From one human video demonstration and one prompt, a humanoid climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works. Early release.">
   <meta property="og:url" content="https://atlas-humanoid.github.io/">
   <link rel="canonical" href="https://atlas-humanoid.github.io/">
@@ -16,14 +16,14 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="A humanoid standing on a wooden staircase, holding a crumpled paper ball it picked off the step">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ATLAS: a humanoid learns the task on the robot, from one human video demonstration">
+  <meta name="twitter:title" content="ATLAS: a humanoid learns the task as it works, from one human video demonstration and one prompt">
   <meta name="twitter:description" content="From one human video demonstration and one prompt, a humanoid climbs a staircase and picks a paper ball off the step. No teleoperation; the harness learns on the robot while it works.">
   <meta name="twitter:image" content="https://atlas-humanoid.github.io/media/og_card.jpg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f4e9c'/%3E%3Ctext x='7' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='700' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=60">
+  <link rel="stylesheet" href="css/style.css?v=61">
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
@@ -52,7 +52,7 @@
   <!-- ===== Title and the film ===== -->
   <section class="top wrap">
     <h1><span class="name">ATLAS</span>: Agentic Harness for <span class="nw">Whole&#8209;Body</span> Intelligence from Human Video</h1>
-    <p class="authors"><span class="au"><a href="https://renjunli99.github.io/">Junli Ren</a><sup>*1,3</sup></span>, <span class="au"><a href="https://kaixiangyao.github.io/">Kaixiang Yao</a><sup>*1</sup></span>, <span class="au"><a href="https://junfeng-long.github.io/">Junfeng Long</a><sup>1</sup></span>, <span class="au"><a href="https://taohuang13.github.io/">Tao Huang</a><sup>3</sup></span>, <span class="au"><a href="https://why618188.github.io/">Huayi Wang</a><sup>3</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/yuxiao-chen">Yuxiao Chen</a><sup>2</sup></span>, <span class="au"><a href="https://wenhao.pub">Wenhao Ding</a><sup>2</sup></span>, <span class="au"><a href="https://yixiaowang7.github.io/">Yixiao Wang</a><sup>1</sup></span>,<br><span class="au"><a href="https://yanwang.org/">Yan Wang</a><sup>2</sup></span>, <span class="au"><a href="https://www.cs.toronto.edu/~wenjie/">Wenjie Luo</a><sup>2</sup></span>, <span class="au"><a href="http://www.borisivanovic.com/">Boris Ivanovic</a><sup>2†</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/marco-pavone">Marco Pavone</a><sup>2,4†</sup></span>, <span class="au"><a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a><sup>1†</sup></span>, <span class="au"><a href="http://luoping.me">Ping Luo</a><sup>3†</sup></span>, <span class="au"><a href="https://thomaschen98.github.io/">Yuxin Chen</a><sup>1^</sup></span>, <span class="au"><a href="https://thomasrantian.github.io/">Ran &quot;Thomas&quot; Tian</a><sup>2^</sup></span></p>
+    <p class="authors"><span class="au"><a href="https://renjunli99.github.io/">Junli Ren</a><sup>*1,3</sup></span>, <span class="au"><a href="https://kaixiangyao.github.io/">Kaixiang Yao</a><sup>*1</sup></span>, <span class="au"><a href="https://junfeng-long.github.io/">Junfeng Long</a><sup>1</sup></span>, <span class="au"><a href="https://taohuang13.github.io/">Tao Huang</a><sup>3</sup></span>, <span class="au"><a href="https://why618188.github.io/">Huayi Wang</a><sup>3</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/yuxiao-chen">Yuxiao Chen</a><sup>2</sup></span>, <span class="au"><a href="https://wenhao.pub">Wenhao Ding</a><sup>2</sup></span>, <span class="au"><a href="https://yixiaowang7.github.io/">Yixiao Wang</a><sup>1</sup></span>, <br><span class="au"><a href="https://yanwang.org/">Yan Wang</a><sup>2</sup></span>, <span class="au"><a href="https://www.cs.toronto.edu/~wenjie/">Wenjie Luo</a><sup>2</sup></span>, <span class="au"><a href="http://www.borisivanovic.com/">Boris Ivanovic</a><sup>2†</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/marco-pavone">Marco Pavone</a><sup>2,4†</sup></span>, <span class="au"><a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a><sup>1†</sup></span>, <span class="au"><a href="http://luoping.me">Ping Luo</a><sup>3†</sup></span>, <span class="au"><a href="https://thomaschen98.github.io/">Yuxin Chen</a><sup>1^</sup></span>, <span class="au"><a href="https://thomasrantian.github.io/">Ran &quot;Thomas&quot; Tian</a><sup>2^</sup></span></p>
     <p class="affil">
       <span><sup>1</sup>UC Berkeley</span>
       <span><sup>2</sup>Autonomous System &amp; Physical AI Research Group, NVIDIA</span>
@@ -73,7 +73,7 @@
                 <source src="media/stairs_down_showcase.mp4?v=39760614" type="video/mp4">
               </video>
             </div>
-            <figcaption class="showcase-caption"><span class="showcase-command">“Go down the stairs, pick up the chip&nbsp;bag, and come back up.”</span></figcaption>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Go down the stairs, pick up the chip&nbsp;bag, and come back up.”</span><span class="spd">1×</span></figcaption>
           </figure>
           <figure class="showcase-scene showcase-scene--candy">
             <div class="showcase-visual">
@@ -82,7 +82,7 @@
                 <source src="media/candy_showcase.mp4?v=9d30ce6a" type="video/mp4">
               </video>
             </div>
-            <figcaption class="showcase-caption"><span class="showcase-command">“Take a candy from the basket and put it in the pumpkin&nbsp;bucket.”</span></figcaption>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Take a candy from the basket and put it in the pumpkin&nbsp;bucket.”</span><span class="spd">2×</span></figcaption>
           </figure>
         </div>
         <div class="showcase-row showcase-row--indoor">
@@ -93,7 +93,7 @@
                 <source src="media/stairs_showcase.mp4?v=20dd7e41" type="video/mp4">
               </video>
             </div>
-            <figcaption class="showcase-caption"><span class="showcase-command">“Climb the stairs and pick up the paper ball.”</span></figcaption>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Climb the stairs and pick up the paper ball.”</span><span class="spd">climb 1×, rest faster</span></figcaption>
           </figure>
           <figure class="showcase-scene showcase-scene--nav">
             <div class="showcase-visual">
@@ -102,7 +102,7 @@
                 <source src="media/nav_showcase.mp4?v=06753462" type="video/mp4">
               </video>
             </div>
-            <figcaption class="showcase-caption"><span class="showcase-command">“Navigate to the sofa; pick up the trash along your way and put it in the bin.”</span></figcaption>
+            <figcaption class="showcase-caption"><span class="showcase-command">“Navigate to the sofa; pick up the trash along your way and put it in the bin.”</span><span class="spd">1.5×</span></figcaption>
           </figure>
         </div>
       </div>
@@ -123,7 +123,7 @@
       <p class="section-eyebrow"><span class="eyebrow-n">/ 01</span>Overview</p>
       <h2 id="overview-title">One Human Video Demonstration, One Prompt</h2>
       <div class="section-text">
-        <p>From one human video demonstration, with no robot demonstrations and no task-specific training in simulation, ATLAS completes the task a prompt names. Its middle layer is not a policy pretrained on robot data but an agentic harness. It learns at test time what neither the agent nor the controller can know in advance: how this real robot executes a command, and the fine-grained task specification in this scene.</p>
+        <p>From one human video demonstration and one prompt, with no robot demonstrations and no task-specific training in simulation, ATLAS completes the task the prompt names. An agentic harness, not a policy pretrained on robot data, links the agent and the whole-body tracker, and it is a part of each. It learns at test time what neither can know in advance: how this real robot executes a command, and the fine-grained task specification in this scene.</p>
         <p class="more-link"><a href="blog/">Read how it works <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
@@ -135,13 +135,13 @@
       <p class="section-eyebrow"><span class="eyebrow-n">/ 02</span>Method</p>
       <h2 id="method-title">An Agentic Harness</h2>
       <div class="section-text">
-        <p>ATLAS divides the work by what each layer knows and when it learns it. System 2 knows the task before any session, and System 0 knows whole-body motion. The harness sits between them and learns what only the running robot shows.</p>
+        <p>ATLAS divides the work by what each layer knows and when it learns it. System 2, the agent, knows the task before any session; System 0, the whole-body tracker, knows whole-body motion. The harness, a part of each, links the two and learns what only the running robot shows.</p>
         <p class="more-link"><a href="blog/#method">Read the method <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
     <figure class="fig">
-      <div class="fig-scroll"><img src="media/fig_method_v32.jpg" alt="One row of four parts. Left, a person crouching to pick a banana off the floor, face blurred, titled &quot;Human Video Demonstration&quot;, with the prompt &quot;Pick up the trash and put it in the bin.&quot; An arrow leads to a box tagged System 2, the Agent, holding the task specification: steps walk, pick, carry, place; affordance lateral surface, enclose; find, where &quot;the trash.&quot; is struck through and replaced by &quot;crushed silver energy drink can.&quot;; done, the trash lies inside the bin. An arrow leads to a box tagged Middle Layer, the ATLAS Harness: a small head-camera view with a box on a crushed can and its target point n_t, labelled Grounding, plus Judge and Retry in place. An arrow labelled n_t + u_t leads to a box tagged System 0 with a lock, the Frozen Tracker: the robot squatting with its end effector open above the crushed can (a composite), captioned &quot;follows the person's motion&quot;. An amber arrow labelled Slow Update returns above the boxes from the harness to the agent; a blue arrow labelled Fast Update returns below them from the tracker to the u_t of the command." width="2400" height="663"></div>
-      <figcaption><b>ATLAS puts a harness, not a policy pretrained on robot data, between the VLM agent and the frozen whole-body tracker.</b> From one human video demonstration and one prompt, the agent writes the task specification once. On the robot, the harness finds the target with the segmenter and depth, the frozen tracker follows the person's motion with the end effector commanded to <i>n<sub>t</sub></i> + <i>u<sub>t</sub></i>, and a miss is retried in place. Two loops learn from the robot's own attempts: the fast update learns how this robot executes a command and corrects the command at every control step, and the slow update lets the same agent rewrite what the segmenter looks for, keeping a revision only if it wins a replay on saved frames. <a href="blog/#method">The method, in full →</a></figcaption>
+      <div class="fig-scroll"><a href="media/fig_method_v33.jpg" target="_blank" rel="noopener" aria-label="Open the full-size figure"><img src="media/fig_method_v33.jpg" alt="Left, a person crouching to pick a banana off the floor, face blurred, titled Human video demonstration. An arrow marked 1, reference motion, leads to a plate tagged System 2, the Agent, which knows the task. Below it, a plate tagged System 0, frozen: the Whole-body tracker, which knows whole-body motion. Between the plates, an arrow down reads task spec and an arrow up reads attempts. Each plate has a blue band that continues into its part of the ATLAS harness. The top part, written by the agent (2): find, where “the trash.” is struck through and replaced by “crushed silver energy drink can.”, an amber note slow system, the agent, on saved head-camera frames, and the steps walk, pick, carry and place, with the contact marked inside pick and a loop labelled retry in place. The bottom part, on every attempt: a head-camera frame with a box on a crushed can, labelled target n sub T; (3) edit the reach, a dashed reference path and a solid edited path ending at n sub T; an arrow labelled n sub t plus u sub t runs from n sub T into the robot, which squats with its end effector open above the crushed can (a composite). An amber line runs from the head-camera frame up to the new phrase; a blue loop labelled fast system runs from the robot up into u sub t. The prompt “Pick up the trash and put it in the bin.” sits above the bottom part." width="2400" height="866"></a></div>
+      <figcaption class="exp"><b>ATLAS links the VLM agent and the frozen whole-body tracker with a harness, not a policy pretrained on robot data; the harness is a part of each layer.</b> (1)&nbsp;The person&#8217;s retargeted motion is the reference. (2)&nbsp;From it and the prompt, the agent writes the task specification: the steps, the contact and the phrase the segmenter looks for. (3)&nbsp;On every attempt, the harness edits the reach to end at the target <i>n<sub>T</sub></i> found in the head-camera view, and the frozen tracker follows <span class="nw"><i>n<sub>t</sub></i>&nbsp;+&nbsp;<i>u<sub>t</sub></i></span>; a miss is retried in place. The fast system learns <i>u<sub>t</sub></i> from the robot&#8217;s own attempts; the slow system rewrites the phrase from saved head-camera frames. The can under the robot is composited for illustration.</figcaption>
     </figure>
   </section>
 
@@ -151,40 +151,40 @@
       <p class="section-eyebrow"><span class="eyebrow-n">/ 03</span>Learning</p>
       <h2 id="results-title">Learning on the Robot</h2>
       <div class="section-text">
-        <p class="lede">The online learner starts from zero in each session and learns how this body misses the target that the agent and the camera set; it never moves that target.</p>
+        <p class="lede">The fast system starts from zero in each session and learns how this robot misses the target set by the agent and the camera; it never moves the target.</p>
         <p class="more-link"><a href="blog/#fast">How the fast system learns <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
     <figure class="fig fig--retry">
       <div class="learning-loop" aria-labelledby="learning-title">
         <div class="learning-loop__heading">
-          <h3 id="learning-title">Learning from every attempt.</h3>
-          <p>Each attempt informs the next reach.</p>
+          <h3 id="learning-title">Learning throughout the session.</h3>
+          <p>Every miss becomes training data.</p>
         </div>
         <div class="learning-loop__media" id="learning-media">
-          <video id="learning-video" muted loop playsinline preload="metadata" width="1920" height="880" src="media/learning_loop.mp4?v=296e894d" poster="media/learning_loop.jpg?v=119ce6eb" data-desktop="media/learning_loop.mp4?v=296e894d" data-mobile="media/learning_loop_mobile.mp4?v=3758964f" data-desktop-poster="media/learning_loop.jpg?v=119ce6eb" data-mobile-poster="media/learning_loop_mobile.jpg?v=55eb0c0d" aria-label="One continuous stair run with three attempts and matching learning illustrations" aria-describedby="learning-description"></video>
+          <video id="learning-video" muted loop playsinline preload="metadata" width="1920" height="880" src="media/learning_loop.mp4?v=656216fa" poster="media/learning_loop.jpg?v=57028806" data-desktop="media/learning_loop.mp4?v=656216fa" data-mobile="media/learning_loop_mobile.mp4?v=8917d362" data-desktop-poster="media/learning_loop.jpg?v=57028806" data-mobile-poster="media/learning_loop_mobile.jpg?v=0c34e604" aria-label="One continuous stair run with three attempts and matching learning illustrations" aria-describedby="learning-description"></video>
           <picture class="learning-loop__poster">
-            <source media="(max-width: 800px)" srcset="media/learning_loop_mobile.jpg?v=55eb0c0d">
-            <img src="media/learning_loop.jpg?v=119ce6eb" width="1920" height="880" alt="">
+            <source media="(max-width: 800px)" srcset="media/learning_loop_mobile.jpg?v=0c34e604">
+            <img src="media/learning_loop.jpg?v=57028806" width="1920" height="880" alt="">
           </picture>
         </div>
-        <p class="sr-only" id="learning-description">Three attempts from one continuous stair run play alongside conceptual illustrations. The first reach misses the target. The learner uses the error to update its model and adjust the next reach. A second miss leads to another update, then the third reach grasps the object.</p>
+        <p class="sr-only" id="learning-description">Three attempts from one continuous stair run play alongside conceptual illustrations. The first two reaches miss the target and the robot retries in place; the learner keeps training on the attempts throughout the session, and the third reach grasps the object.</p>
       </div>
     </figure>
     <div class="subsection-heading">
       <h3>One autonomous learning session</h3>
-      <p>Follow 38 attempts as the robot learns to pick up trash and place it in the bin.</p>
+      <p>Follow 38 attempts as the robot learns this task.</p>
     </div>
     <p class="say">Pick up the trash and put it in the bin.</p>
     <div class="media">
       <video id="session" muted playsinline controls preload="metadata" poster="media/rl_session_mid.jpg?v=8b466864" width="1920" height="1080"
         aria-label="One online-learning session, sped up ten times: the robot picks trash off the floor and puts it in a bin. A panel on the left shows and plots the success rate over the last eight attempts; it starts at 0% and ends at 88% after 38 attempts.">
-        <source src="media/rl_session.mp4?v=9f34d78e" type="video/mp4">
+        <source src="media/rl_session.mp4?v=c453006d" type="video/mp4">
       </video>
     </div>
     <ul class="points">
-      <li><b>Success rate over the last eight attempts rises from 0% to 88%</b> in 38 attempts, from zero.</li>
-      <li><b>No teleoperation.</b> A person steps in only when the object leaves the camera's field of view.</li>
+      <li><b>Success rate over the last eight attempts rises from 0% to 88%</b> in 38 attempts.</li>
+      <li><b>No teleoperation.</b> A person only resets the trash: after a success, or when it leaves the camera's field of view.</li>
     </ul>
   </section>
 
@@ -207,7 +207,7 @@
       <video muted loop playsinline preload="metadata" poster="media/box_retry_2x.jpg" width="1920" height="1080" aria-label="A humanoid robot walks to a box on the floor, tries to lift it, retries where it stands and lifts it, at 2x speed"><source src="media/box_retry_2x.mp4" type="video/mp4"></video>
     </div>
     <ul class="gallery">
-      <li><video muted loop playsinline preload="none" poster="media/box_three_3x.jpg" width="1080" height="1080" aria-label="A humanoid robot picks up a box, carries it and sets it down, three times in a row; a person brings the box back each time; at 3x speed"><source src="media/box_three_3x.mp4" type="video/mp4"></video><p class="say">Pick up the box, carry it and set it down. <span class="spd">3×</span></p></li>
+      <li><video muted loop playsinline preload="none" poster="media/box_three_3x.jpg?v=51c3396c" width="1080" height="1080" aria-label="A humanoid robot picks up a box, carries it and sets it down, three times in a row; a person brings the box back each time; at 3x speed"><source src="media/box_three_3x.mp4?v=6e2e0631" type="video/mp4"></video><p class="say">Pick up the box, carry it and set it down. <span class="spd">3×</span></p></li>
       <li><video muted loop playsinline preload="none" poster="media/tennis_pick_2x.jpg" width="1080" height="1080" aria-label="A humanoid robot walks to a tennis ball on the floor, crouches, picks it up and stands holding it, at 1.5x speed"><source src="media/tennis_pick_2x.mp4" type="video/mp4"></video><p class="say">Pick up the tennis ball. <span class="spd">1.5×</span></p></li>
       <li><video muted loop playsinline preload="none" poster="media/can_bin_3x.jpg" width="720" height="720" aria-label="A humanoid robot walks to a crushed can, picks it off the floor and drops it into a bin, at 3x speed"><source src="media/can_bin_3x.mp4" type="video/mp4"></video><p class="say">Pick up the can and put it in the bin. <span class="spd">3×</span></p></li>
     </ul>
@@ -219,7 +219,7 @@
       <p class="section-eyebrow"><span class="eyebrow-n">/ 05</span>Evaluation</p>
       <h2 id="evaluation-title">Controlled Tests in Simulation</h2>
       <div class="section-text">
-        <p class="lede">In Isaac Lab, online RL is compared with a no-learner control under the real robot’s measured execution bias.</p>
+        <p class="lede">In Isaac Lab, online model-based RL is compared with a no-learner control, first with the real robot’s mean execution bias held fixed, then with the bias drawn anew for every attempt.</p>
       </div>
     </header>
     <figure class="learning-study" aria-labelledby="study-title">
@@ -227,9 +227,9 @@
         <p class="study-eyebrow">Online learning in simulation</p>
         <h3 id="study-title">Closing the execution gap.</h3>
         <p class="study-deck">Lower error. Higher success. <strong>Within about ten attempts.</strong></p>
-        <ul class="study-legend" aria-label="Experimental arms">
-          <li><span class="study-swatch" aria-hidden="true"></span><span>Online RL <small>learner arm</small></span></li>
-          <li><span class="study-swatch study-swatch--control" aria-hidden="true"></span><span>No learner <small>same bias, no offset</small></span></li>
+        <ul class="study-legend" aria-label="Compared conditions">
+          <li><span class="study-swatch" aria-hidden="true"></span><span>Online model-based RL <small>ours</small></span></li>
+          <li><span class="study-swatch study-swatch--control" aria-hidden="true"></span><span>No learner <small>same bias, no residual</small></span></li>
         </ul>
       </header>
       <!-- The four viewports preserve the original plot pixels, including all
@@ -240,7 +240,7 @@
           <h4 id="study-apple">Apple</h4>
           <div class="study-metric">
             <div class="study-metric-heading"><p><strong>End-effector error</strong><span>In the hold · cm · median</span></p><span class="study-direction">↓ Lower is better</span></div>
-            <div class="study-plot" role="img" aria-label="Apple: online RL reduces end-effector error within about ten attempts; the no-learner control remains high. Shaded bands show the range across seeds.">
+            <div class="study-plot" role="img" aria-label="Apple: online model-based RL reduces end-effector error within about ten attempts; the no-learner control remains high. Shaded bands show the range across seeds.">
               <svg viewBox="126 218 868 446" preserveAspectRatio="none" aria-hidden="true">
                 <defs><clipPath id="apple-error-clip"><rect x="126" y="218" width="790" height="446" /><rect x="104" y="235" width="22" height="21" /></clipPath></defs>
                 <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 916 266.5 H 994" /><path d="M 916 332.5 H 994" /><path d="M 916 398.5 H 994" /><path d="M 916 464.5 H 994" /><path d="M 916 529.5 H 994" /><path d="M 916 595.5 H 994" /><path d="M 916 661.5 H 994" /></g>
@@ -253,7 +253,7 @@
           </div>
           <div class="study-metric">
             <div class="study-metric-heading"><p><strong>Success rate</strong><span>% · mean</span></p><span class="study-direction">↑ Higher is better</span></div>
-            <div class="study-plot" role="img" aria-label="Apple: online RL raises success rate within about ten attempts; the no-learner control stays near zero. Shaded bands show the range across seeds.">
+            <div class="study-plot" role="img" aria-label="Apple: online model-based RL raises success rate within about ten attempts; the no-learner control stays near zero. Shaded bands show the range across seeds.">
               <svg viewBox="126 710 868 446" preserveAspectRatio="none" aria-hidden="true">
                 <defs><clipPath id="apple-success-clip"><rect x="126" y="710" width="790" height="446" /></clipPath></defs>
                 <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 916 725.5 H 994" /><path d="M 916 809.5 H 994" /><path d="M 916 893.5 H 994" /><path d="M 916 977.5 H 994" /><path d="M 916 1061.5 H 994" /></g>
@@ -269,7 +269,7 @@
           <h4 id="study-banana">Banana</h4>
           <div class="study-metric">
             <div class="study-metric-heading"><p><strong>End-effector error</strong><span>In the hold · cm · median</span></p><span class="study-direction">↓ Lower is better</span></div>
-            <div class="study-plot" role="img" aria-label="Banana: online RL reduces end-effector error within about ten attempts; the no-learner control remains high. Shaded bands show the range across seeds.">
+            <div class="study-plot" role="img" aria-label="Banana: online model-based RL reduces end-effector error within about ten attempts; the no-learner control remains high. Shaded bands show the range across seeds.">
               <svg viewBox="1142 218 868 446" preserveAspectRatio="none" aria-hidden="true">
                 <defs><clipPath id="banana-error-clip"><rect x="1142" y="218" width="790" height="446" /></clipPath></defs>
                 <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 1932 266.5 H 2010" /><path d="M 1932 332.5 H 2010" /><path d="M 1932 398.5 H 2010" /><path d="M 1932 464.5 H 2010" /><path d="M 1932 529.5 H 2010" /><path d="M 1932 595.5 H 2010" /><path d="M 1932 661.5 H 2010" /></g>
@@ -282,7 +282,7 @@
           </div>
           <div class="study-metric">
             <div class="study-metric-heading"><p><strong>Success rate</strong><span>% · mean</span></p><span class="study-direction">↑ Higher is better</span></div>
-            <div class="study-plot" role="img" aria-label="Banana: online RL raises success rate within about ten attempts; the no-learner control stays near zero. Shaded bands show the range across seeds.">
+            <div class="study-plot" role="img" aria-label="Banana: online model-based RL raises success rate within about ten attempts; the no-learner control stays near zero. Shaded bands show the range across seeds.">
               <svg viewBox="1142 710 868 446" preserveAspectRatio="none" aria-hidden="true">
                 <defs><clipPath id="banana-success-clip"><rect x="1142" y="710" width="790" height="446" /></clipPath></defs>
                 <g fill="none" stroke="#e6e5e1" stroke-width="2"><path d="M 1932 725.5 H 2010" /><path d="M 1932 809.5 H 2010" /><path d="M 1932 893.5 H 2010" /><path d="M 1932 977.5 H 2010" /><path d="M 1932 1061.5 H 2010" /></g>
@@ -296,9 +296,9 @@
         </section>
       </div>
       <figcaption class="study-caption">
-        <div class="study-meta"><p>3 seeds <span>·</span> 80 attempts per seed <span>·</span> 10-attempt bins</p><a href="media/sim_rl_vs_attempt.png" target="_blank" rel="noopener">Original figure <span aria-hidden="true">↗</span></a></div>
+        <div class="study-meta"><p>3 seeds <span>·</span> 80 attempts per seed <span>·</span> 10-attempt bins</p></div>
         <p class="study-band-note"><span class="study-band-swatch" aria-hidden="true"></span>Shaded bands: range across seeds. <span class="study-warmup-swatch" aria-hidden="true"></span>Gray strip: warm-up.</p>
-        <p><b>Online RL against a no-learner control, in the same run.</b> Isaac Lab, one-object pick-and-place, with the real robot’s measured execution bias (x −7.9 cm, y −4.1 cm) injected into the tracker. From attempt 5, each attempt is assigned by coin flip to the learner arm or the zero-bias control arm.</p>
+        <p><b>Online model-based RL against a no-learner control, in the same runs.</b> Isaac Lab floor picks, one object per run, scored when the object is lifted. The real robot’s mean execution bias (7.9 cm short, 4.1 cm to the right) is held fixed and added to the end-effector command in every condition. After 5 warm-up attempts, a coin deals each attempt to the learner, to no residual (the control) or to exploration, which is not scored.</p>
       </figcaption>
     </figure>
     <figure class="ablation-study" aria-labelledby="abl-title">
@@ -321,7 +321,7 @@
           <div class="abm-cell" role="cell" tabindex="0" aria-label="Bias estimate, Attempts that lift the apple: 58% of attempts lifted the apple (66 of 114); 95% interval 49 to 67%"><span class="abm-track"><span class="abm-bar" style="width:57.9%"></span><span class="abm-ci" style="left:48.7%;width:17.8%"></span><span class="abm-tip">66 of 114 lifted · 95% interval 49–67%</span></span><span class="abm-val">58%</span></div>
         </div>
         <div class="abm-row" role="row">
-          <div class="abm-name" role="rowheader">Model-free RL<small>same error, no model</small></div>
+          <div class="abm-name" role="rowheader">Model-free RL<small>same reward, no model</small></div>
           <div class="abm-cell" role="cell" tabindex="0" aria-label="Model-free RL, Attempts that lift the apple: 13% of attempts lifted the apple (9 of 71); 95% interval 7 to 22%"><span class="abm-track"><span class="abm-bar" style="width:12.7%"></span><span class="abm-ci" style="left:6.8%;width:15.6%"></span><span class="abm-tip">9 of 71 lifted · 95% interval 7–22%</span></span><span class="abm-val">13%</span></div>
         </div>
         <div class="abm-row abm-row--ctrl" role="row">
@@ -330,35 +330,35 @@
         </div>
         <div class="abm-row abm-axis" aria-hidden="true"><div></div><div class="abm-tickcell"><div class="abm-ticks"><span style="left:0%">0</span><span style="left:50%">50</span><span style="left:100%">100</span></div></div></div>
       </div>
-      <figcaption class="study-caption"><div class="study-meta"><p>Isaac Lab <span>·</span> 3 seeds <span>·</span> 80 attempts per learner</p></div><p>Every learner starts from zero. The real robot's measured execution bias, drawn anew for every attempt with its measured spread, is added to the end-effector command, unseen by every method. Whiskers: 95% interval.</p></figcaption>
+      <figcaption class="study-caption"><div class="study-meta"><p>Isaac Lab <span>·</span> apple <span>·</span> 3 runs of 80 attempts per learner</p></div><p>Every learner starts from zero. The real robot's measured execution bias, drawn anew for every attempt with its measured spread, is added to the end-effector command; no method sees it. Bars count the attempts dealt to each learner after the 5 warm-up attempts; the control pools the uncorrected attempts of all runs. Apple shown; pooled with the banana as in the paper's table, 75% against 64%. Whiskers: 95% interval.</p></figcaption>
     </figure>
     <div class="subsection-heading">
       <h3>From demonstration to execution</h3>
       <p>Each three-panel strip compares the human video demonstration, direct motion retargeting, and ATLAS, aligned by phase.</p>
     </div>
     <div class="strips">
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; the harness picks it up and places it"><source src="media/sim_trio_banana.mp4" type="video/mp4"></video><figcaption>Banana · from one human video demonstration</figcaption></figure>
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video, an apple in the scene; the retarget misses; the harness picks the apple and places it"><source src="media/sim_trio_apple.mp4" type="video/mp4"></video><figcaption>Apple · the same video, another object</figcaption></figure>
-      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; the harness lifts, carries and sets it down"><source src="media/sim_trio_box.mp4" type="video/mp4"></video><figcaption>Box · carried with both arms</figcaption></figure>
-      <figure class="duo-sim"><video muted loop playsinline preload="none" poster="media/sim_duo_fridge_door.jpg" width="1244" height="524" aria-label="Two panels: a person squats and pulls an under-counter fridge door open; the harness grasps the vertical bar and pulls the door open"><source src="media/sim_duo_fridge_door.mp4" type="video/mp4"></video><figcaption>Fridge door · person and harness, no retarget</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_banana.jpg?v=bd90bc17" width="1920" height="476" aria-label="Three panels, phase-aligned: a person picks a banana off the floor and puts it on a table; a direct retarget of the motion reaches past the banana; ATLAS picks it up and places it"><source src="media/sim_trio_banana.mp4?v=7af2160e" type="video/mp4"></video><figcaption>Banana · from one human video demonstration</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg?v=ec0e3568" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video demonstration, an apple in the scene; the retarget misses; ATLAS picks the apple and places it"><source src="media/sim_trio_apple.mp4?v=cdc82082" type="video/mp4"></video><figcaption>Apple · the same human video demonstration, another object</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg?v=4d8eba30" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; ATLAS lifts, carries and sets it down"><source src="media/sim_trio_box.mp4?v=e65e8be8" type="video/mp4"></video><figcaption>Box · carried with both arms</figcaption></figure>
+      <figure class="duo-sim"><video muted loop playsinline preload="none" poster="media/sim_duo_fridge_door.jpg?v=8a9559ea" width="1244" height="524" aria-label="Two panels: a person squats and pulls an under-counter fridge door open; ATLAS grasps the vertical bar and pulls the door open"><source src="media/sim_duo_fridge_door.mp4?v=7cb55dfa" type="video/mp4"></video><figcaption>Fridge door · person and ATLAS, no retarget</figcaption></figure>
     </div>
   </section>
 
   <section class="sec sec--details" id="details" aria-labelledby="details-title">
     <header class="section-heading">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 06</span>Details</p>
-      <h2 id="details-title">Setup &amp; Limitations</h2>
+      <h2 id="details-title">Setup &amp; Scope</h2>
     </header>
 
     <h3 class="sub">Setup</h3>
     <div class="faq">
-      <details><summary>Which controller is used?</summary><p>The whole-body controller is ScaleBFM, which we trained to adapt to terrain; that is what carries it up the stairs. The agent, the learner and the retry are the same on the stairs as on the floor.</p></details>
-      <details><summary>What runs on the robot, and what off it?</summary><p>Sensing is all onboard: the head camera (RGB-D) and the joint state. The controller and the acting policy run on the robot; the VLM, SAM 3 and the learner's updates run on a PC over a link; some flat-ground tasks localize the robot with an external tracker.</p></details>
-      <details><summary>Does a person do anything during a run?</summary><p>Nothing, unless the robot walks out of the workspace or the object drops out of the camera's field of view, where the robot would be stuck. The rest of the time the robot works on its own.</p></details>
+      <details><summary>Which whole-body tracker is used?</summary><p>The frozen whole-body tracker is ScaleBFM, trained before any session to follow human motion and adapt to terrain; it carries the robot up the stairs. The agent, the fast system and the retry are the same on the stairs as on the floor.</p></details>
+      <details><summary>What runs on the robot, and what off it?</summary><p>The robot senses with its own head camera (RGB-D) and joint state; some flat-ground tasks also localize it with an external tracking system. The whole-body tracker and the fast system's actor run on the robot; the VLM, SAM 3 and the learner's updates run on a PC over a link.</p></details>
+      <details><summary>Does a person do anything during a run?</summary><p>No one teleoperates the robot. A person only resets the object, after a success or when it leaves the camera's field of view, and steps in if the robot walks out of the workspace.</p></details>
     </div>
 
-    <h3 class="sub">Scope and limitations</h3>
-    <p class="scope">Tasks with sustained contact are still hard. Next we will carry the fast system past the grasp, into sustained contact, and reuse real-robot experience so a new task starts from what the robot already knows.</p>
+    <h3 class="sub">Scope</h3>
+    <p class="scope">Next we will carry the fast system past the grasp, into sustained contact, and reuse real-robot experience so a new task starts from what the robot already knows.</p>
   </section>
 
 </main>

@@ -59,7 +59,7 @@ const Reach: React.FC<{index: number; t: number}> = ({index, t}) => {
         <text x={index === 0 ? 210 : 258} y="255" textAnchor="middle" fill={ERROR} fontSize="22" fontWeight="500">{index === 0 ? 'Missed reach' : 'Remaining gap'}</text>
       </g>}
       <Gripper x={x} y={y} close={index === 2 ? ramp(t, 16.2, 16.7) : 0} />
-      {t < attempt.start && <text x="148" y="210" textAnchor="middle" fill={MUTED} fontSize="21">Gripper</text>}
+      {t < attempt.start && <text x="148" y="210" textAnchor="middle" fill={MUTED} fontSize="21">End effector</text>}
       {success > 0 && <g transform="translate(426 135)" opacity={success}>
         <circle r="16" fill={BLUE} />
         <path d="M -7 0 L -2 5 L 8 -6" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -89,7 +89,7 @@ const AttemptCard: React.FC<{index: number; frame: number; t: number; mobile: bo
   const status = future ? 'Up next' : done ? (index === 2 ? 'Grasp' : 'Miss') : t < 3.4 ? 'Climbing' : 'Reaching';
   const progress = Math.max(0, Math.min(1, (frame - attempt.slot * 30) / (attempt.lastFrame - attempt.slot * 30)));
   const titleStyle: React.CSSProperties = {position: 'absolute', top: mobile ? 30 : 24, left: mobile ? 30 : 24, right: mobile ? 30 : 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: mobile ? 34 : 25, lineHeight: 1.2};
-  const captions = ['Learning starts from zero.', 'Updated after attempt 1.', 'Updated after attempt 2.'];
+  const captions = ['Learning starts from zero.', 'Learning throughout the session.', 'Grasped on the third try.'];
   return <div style={{position: 'absolute', left: mobile ? 32 : 36 + index * 640, top: mobile ? 104 : 24, width: mobile ? 896 : 568, height: mobile ? 1236 : 808, borderRadius: mobile ? 28 : 22, background: '#fff', border: '1.5px solid ' + (active ? '#d6e1f0' : '#e8e9ed'), boxShadow: active ? '0 10px 32px rgba(30,50,80,.035)' : 'none'}}>
     <div style={titleStyle}>
       <span style={{color: active ? BLUE : MUTED, fontWeight: 500}}>Attempt {String(index + 1).padStart(2, '0')}</span>

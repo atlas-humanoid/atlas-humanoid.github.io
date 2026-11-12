@@ -29,6 +29,22 @@ Default outputs are `media/learning_loop.mp4`, `media/learning_loop.jpg`,
 root. Videos are silent H.264, CRF 18, yuv420p, with Fast Start metadata verified
 before replacing an existing asset. Posters use frame 570 (19 seconds) by default.
 
+The published desktop film is 23.2 seconds (696 frames): after the 21-second
+render, a post-process (2026-10-28) slides the footage window from card to card at
+each new attempt (0.6 s) and holds it for 0.5 s. `npm run render` alone writes
+the 21-second film without the slide over `media/learning_loop.mp4`, so render the
+desktop film to `out/` and finish it with `slide_edit.py` (Python 3 with numpy and
+Pillow). The mobile film has no slide and is used as rendered.
+
+```sh
+npm run render -- --output out/learning_loop_21s.mp4
+python3 slide_edit.py out/learning_loop_21s.mp4 ../../media/learning_loop.mp4
+```
+
+The published films were rendered with `FONTCONFIG_FILE=$PWD/fonts_slight.conf`
+(grayscale antialiasing, slight hinting). Use it on a workstation whose font
+settings draw coloured fringes on text.
+
 Preview a frame without rendering the video:
 
 ```sh

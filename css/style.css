@@ -146,7 +146,7 @@ p { margin: 0; }
 .steps .g-loop { width: 16px; height: 16px; left: 3px; top: 1px; border: 1.8px solid var(--accent); border-radius: 50%; border-right-color: transparent; }
 .steps .g-slow { border: 1.2px dashed var(--accent); border-radius: 999px; top: 6px; }
 .fig figcaption .key { display: block; margin-top: 6px; font-size: 13px; color: var(--muted); }
-@media (max-width: 640px) { .bar .wrap { gap: 12px; } .links { gap: 12px; font-size: 13.5px; } .links a { white-space: nowrap; } .fig-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -16px; padding: 0 16px; } .fig-scroll img { min-width: 760px; } .steps li { font-size: 13px; } }
+@media (max-width: 640px) { .bar .wrap { gap: 12px; } .links { gap: 12px; font-size: 13.5px; } .links a { white-space: nowrap; } .fig-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -16px; padding: 0 16px; } .steps li { font-size: 13px; } }
 @media (max-width: 800px) {
   .learning-loop { padding-top: 28px; border-radius: 20px; }
   .learning-loop__heading { padding: 0 20px; }
@@ -207,6 +207,10 @@ h3.sub:first-of-type { margin-top: 8px; }
 .sec > .media + .text { margin-bottom: 28px; }
 .sec > .say { margin-bottom: 16px; }
 .sec > .media + .say { margin-top: 28px; }
+.sec > .media + .gallery { margin-top: 28px; }
+.nw { white-space: nowrap; }
+.fig figcaption sub { line-height: 0; }
+.showcase-caption .spd { display: inline-block; margin-top: 6px; padding: 1px 8px; border-radius: 999px; background: var(--tint); color: var(--muted); font-size: 12.5px; font-weight: 500; }
 .say .spd { margin-left: auto; padding: 1px 8px; border-radius: 999px; background: #fff; color: var(--muted); font-size: 12.5px; font-weight: 500; }
 .strips { display: grid; gap: 22px; }
 .strips figure { margin: 0; }
@@ -236,7 +240,7 @@ h3.sub:first-of-type { margin-top: 8px; }
 .study-direction { flex: none; color: var(--muted); font-size: 11px; }
 .study-plot { position: relative; width: calc(100% - 32px); margin: 0 0 0 32px; aspect-ratio: 868 / 410; min-height: 164px; }
 .study-plot svg { width: 100%; height: 100%; overflow: visible; }
-.study-y-ticks span { position: absolute; left: -9px; transform: translate(-100%, -50%); font-size: 12px; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
+.study-y-ticks span { position: absolute; left: -14px; transform: translate(-100%, -50%); font-size: 12px; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
 .study-x-ticks span { position: absolute; top: 100%; margin-top: 9px; transform: translateX(-50%); font-size: 12px; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
 .study-x-label { margin: 30px 0 0 32px; text-align: center; font-size: 12px; line-height: 1.4; color: var(--muted); }
 .study-metric:first-of-type .study-x-ticks, .study-metric:first-of-type .study-x-label { display: none; }
@@ -325,7 +329,7 @@ h3.sub:first-of-type { margin-top: 8px; }
   .section-heading { margin-bottom: 28px; }
   .subsection-heading { margin-top: 36px; }
   .gallery { grid-template-columns: 1fr; gap: 20px; }
-      .foot { flex-direction: column; gap: 8px; }
+      .foot { flex-direction: column; gap: 8px; padding-left: 16px; padding-right: 16px; }
 }
 @media (max-width: 420px) { .links { gap: 9px; font-size: 12px; } .links a.tag { padding: 2px 8px; } }
 @media (max-width: 360px) { .brand { font-size: 17px; } .links { gap: 7px; font-size: 11px; } }
