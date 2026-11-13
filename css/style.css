@@ -76,6 +76,11 @@ p { margin: 0; }
 .logos img { height: 52px; width: auto; object-fit: contain; }
 .logos img.wide { height: 34px; }
 .marks { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+.award { margin-top: 18px; }
+.award a { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; padding: 6px 15px; border: 1px solid #ead8a4; border-radius: 999px; background: #fcf7e8; color: #77560f; font-size: 14.5px; font-weight: 600; line-height: 1.35; text-align: left; }
+.award a:hover { background: #f8eecf; text-decoration: none; }
+.award svg { width: 17px; height: 17px; flex: none; }
+@media (max-width: 640px) { .award a { border-radius: 14px; } }
 .date { margin-top: 6px; font-size: 14.5px; font-weight: 500; }
 .top-links { margin-top: 14px; }
 .top-links a { display: inline-block; padding: 7px 16px; border: 1px solid #d2e0f6; border-radius: 999px; background: var(--accent-tint); color: var(--accent); font-size: 15px; font-weight: 500; }
