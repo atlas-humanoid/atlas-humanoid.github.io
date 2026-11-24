@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=66">
+  <link rel="stylesheet" href="css/style.css?v=67">
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
@@ -42,7 +42,7 @@
     <li><a href="#method"><span class="toc-n">02</span><span>Method</span></a></li>
     <li><a href="#results"><span class="toc-n">03</span><span>Learning</span></a></li>
     <li><a href="#more"><span class="toc-n">04</span><span>Tasks</span></a></li>
-    <li><a href="#details"><span class="toc-n">05</span><span>Details</span></a></li>
+    <li><a href="#sim"><span class="toc-n">05</span><span>Simulation</span></a></li>
   </ol>
 </nav>
 
@@ -220,23 +220,20 @@
     </ul>
   </section>
 
-  <section class="sec sec--details" id="details" aria-labelledby="details-title">
+  <section class="sec sec--wide" id="sim" aria-labelledby="sim-title">
     <header class="section-heading">
-      <p class="section-eyebrow"><span class="eyebrow-n">/ 05</span>Details</p>
-      <h2 id="details-title">Setup &amp; Scope</h2>
+      <p class="section-eyebrow"><span class="eyebrow-n">/ 05</span>Simulation</p>
+      <h2 id="sim-title">From Demonstration to Execution</h2>
+      <div class="section-text">
+        <p class="lede">In Isaac Lab, each strip compares the human video demonstration, direct motion retargeting, and ATLAS, aligned by phase.</p>
+      </div>
     </header>
-
-    <h3 class="sub">Setup</h3>
-    <div class="faq">
-      <details><summary>Which whole-body tracker is used?</summary><p>The frozen whole-body tracker is ScaleBFM, trained before any session to follow human motion and adapt to terrain; it carries the robot up the stairs. The agent, the fast system and the retry are the same on the stairs as on the floor.</p></details>
-      <details><summary>What runs on the robot, and what off it?</summary><p>The robot senses with its own head camera (RGB-D) and joint state; some flat-ground tasks also localize it with an external tracking system. The whole-body tracker and the fast system's actor run on the robot; the VLM, SAM 3 and the learner's updates run on a PC over a link.</p></details>
-      <details><summary>Does a person do anything during a run?</summary><p>No one teleoperates the robot. A person only resets the object, after a success or when it leaves the camera's field of view, and steps in if the robot walks out of the workspace.</p></details>
+    <div class="strips">
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg?v=ec0e3568" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video demonstration, an apple in the scene; the retarget misses; ATLAS picks the apple and places it"><source src="media/sim_trio_apple.mp4?v=cdc82082" type="video/mp4"></video><figcaption>Apple · from one human video demonstration</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg?v=4d8eba30" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; ATLAS lifts, carries and sets it down"><source src="media/sim_trio_box.mp4?v=e65e8be8" type="video/mp4"></video><figcaption>Box · carried with both arms</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/sim_trio_fridge_door.jpg?v=0867f584" width="1920" height="476" aria-label="Three panels, phase-aligned: a person squats and pulls an under-counter fridge door open; a direct retarget of the motion squats with its hands in the air and the door stays shut; ATLAS grasps the vertical bar and pulls the door open"><source src="media/sim_trio_fridge_door.mp4?v=c79db51e" type="video/mp4"></video><figcaption>Fridge door · squat, grasp the bar and pull it open</figcaption></figure>
     </div>
-
-    <h3 class="sub">Scope</h3>
-    <p class="scope">Next we will reuse real-robot experience so a new task starts from what the robot already knows.</p>
   </section>
-
 </main>
 
 <footer class="foot"><span>ATLAS</span><a href="#top">Top ↑</a></footer>

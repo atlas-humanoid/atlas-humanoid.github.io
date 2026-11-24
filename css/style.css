@@ -230,7 +230,7 @@ h3.sub:first-of-type { margin-top: 8px; }
 .strips figure { margin: 0; }
 .strips video { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--tint); }
 .strips figcaption { margin-top: 7px; font-size: 13.5px; color: var(--muted); }
-.strips .duo-sim { max-width: 66%; margin: 0 auto; }
+.strips .duo-sim { width: 66%; margin: 0 auto; }
 .strips .duo-sim figcaption { text-align: center; }
 /* Simulation results: original plot pixels, responsive labels and layout. */
 .learning-study { --study-blue: #2b7ce2; --study-control: #fc6330; margin-top: 0; padding: 28px; background: #fcfcfb; border: 1px solid #e6e8eb; border-radius: 18px; }
@@ -290,7 +290,7 @@ h3.sub:first-of-type { margin-top: 8px; }
   .study-band-swatch, .study-warmup-swatch { margin-right: 3px; }
   .study-warmup-swatch { margin-left: 0; }
 }
-@media (max-width: 640px) { .strips .duo-sim { max-width: 100%; } }
+@media (max-width: 640px) { .strips .duo-sim { width: 100%; } }
 .gallery li { display: flex; flex-direction: column; }
 .gallery li p.say { flex: 1; }
 .gallery p.say { margin: 8px 0 0; padding: 9px 12px; font-size: 13.5px; line-height: 1.35; border-radius: 10px; }
