@@ -200,3 +200,9 @@ body.post .foot { margin-top: 88px; }
 /* method subsection numbers (blog v2, 2026-11-09) */
 .post-sec__body h3 .sec-n { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: .35em; }
 @media (max-width: 640px) { .bib pre { white-space: pre-wrap; overflow-wrap: anywhere; } }
+
+/* method after the paper's Sec. 3 (2026-11-24): stacked scripts such as c^ref_t, upright operator names, vocabulary values */
+.m .ss { display: inline-flex; flex-direction: column; vertical-align: .42em; margin-left: .03em; line-height: 1; }
+.m .ss sup, .m .ss sub { position: static; top: auto; font-size: .66em; line-height: 1.12; }
+.m .rm { font-style: normal; }
+.post-sec__body code { padding: 1px 5px; border-radius: 5px; background: var(--tint); font: .86em/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }

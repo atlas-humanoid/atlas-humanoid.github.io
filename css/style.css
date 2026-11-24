@@ -94,16 +94,18 @@ p { margin: 0; }
 .top-links a:hover { background: #dfe9f9; text-decoration: none; }
 .film { max-width: 980px; margin: 32px auto 0; border-radius: var(--r); overflow: hidden; }
 .film--showcase { border: 1px solid var(--line); background: #f5f5f7; box-shadow: 0 8px 26px rgba(17, 20, 24, .07); }
-/* Two rows by setting: the two outdoor takes above the two indoor ones. Each column's fr is its video's width / height,
-   so the videos of a row share one height and every file is shown whole at its own ratio. */
+/* Two rows by setting: the two outdoor takes above the three indoor ones. Each column's fr is its video's width / height,
+   so the videos of a row share one height and every file is shown whole at its own ratio (the three indoor takes are
+   16:9; the writing take, 1590 x 894, is 16:9 within 0.04%). */
 .showcase-scenes { display: grid; gap: 1px; background: var(--line); }
 .showcase-row { display: grid; gap: 1px; background: var(--line); }
-.showcase-row--outdoor { grid-template-columns: minmax(0, .8fr) minmax(0, 1.4527fr); }
-.showcase-row--indoor { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.showcase-row--top { grid-template-columns: minmax(0, .8244fr) minmax(0, 1.2192fr); }
+.showcase-row--bottom { grid-template-columns: minmax(0, 1.7778fr) minmax(0, 1.7778fr) minmax(0, 1.4527fr); }
 .showcase-scene { min-width: 0; display: flex; flex-direction: column; background: #f5f5f7; }
 .showcase-visual { aspect-ratio: 16 / 9; overflow: hidden; background: #151a20; }
-.showcase-scene--stairs-down .showcase-visual { aspect-ratio: 4 / 5; }
+.showcase-scene--stairs-down .showcase-visual { aspect-ratio: 1080 / 1310; }
 .showcase-scene--candy .showcase-visual { aspect-ratio: 1412 / 972; }
+.showcase-scene--writing .showcase-visual { aspect-ratio: 1090 / 894; }
 .showcase-visual video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .showcase-caption { flex: 1; padding: 12px 16px 14px; text-align: left; }
 .showcase-command { display: block; color: var(--fg); font-size: 15px; font-weight: 500; line-height: 1.5; text-wrap: balance; }
