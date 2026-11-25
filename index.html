@@ -23,7 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=67">
+  <link rel="stylesheet" href="css/style.css?v=69">
+  <script src="js/motion.js?v=2"></script>
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
@@ -31,7 +32,7 @@
 <header class="bar">
   <div class="wrap">
     <a class="brand" href="#top">ATLAS</a>
-    <nav class="links" aria-label="Sections"><a href="#method">Method</a><a href="#results">Learning</a><a href="#more">Tasks</a><a class="tag" href="blog/">Blog</a><a class="yt" href="https://www.youtube.com/watch?v=s2tTc9X2q08" target="_blank" rel="noopener" aria-label="Watch the video on YouTube" title="Watch the video on YouTube"><svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#ff0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg></a><a class="xpost" href="https://x.com/junli_r84995/status/2121098492257108116" target="_blank" rel="noopener" aria-label="The ATLAS post on X" title="The ATLAS post on X"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#000"/><path transform="translate(5.2 5.2) scale(0.567)" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#fff"/></svg></a></nav>
+    <nav class="links" aria-label="Sections"><a href="#method">Method</a><a href="#results">Learning</a><a href="#more">Tasks</a><a class="tag" href="paper/atlas_tech_report.pdf" target="_blank" rel="noopener">Paper</a><a class="yt" href="https://www.youtube.com/watch?v=s2tTc9X2q08" target="_blank" rel="noopener" aria-label="Watch the video on YouTube" title="Watch the video on YouTube"><svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#ff0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg></a><a class="xpost" href="https://x.com/junli_r84995/status/2121098492257108116" target="_blank" rel="noopener" aria-label="The ATLAS post on X" title="The ATLAS post on X"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#000"/><path transform="translate(5.2 5.2) scale(0.567)" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#fff"/></svg></a></nav>
   </div>
 </header>
 
@@ -51,7 +52,7 @@
   <!-- ===== Title and the film ===== -->
   <section class="top wrap">
     <h1><span class="name">ATLAS</span>: Agentic Harness for <span class="nw">Whole&#8209;Body</span> Intelligence from Human Video</h1>
-    <p class="authors"><span class="au"><a href="https://renjunli99.github.io/">Junli Ren</a><sup>*1,3</sup></span>, <span class="au"><a href="https://kaixiangyao.github.io/">Kaixiang Yao</a><sup>*1</sup></span>, <span class="au"><a href="https://junfeng-long.github.io/">Junfeng Long</a><sup>*1</sup></span>, <span class="au"><a href="https://taohuang13.github.io/">Tao Huang</a><sup>3</sup></span>, <span class="au"><a href="https://why618188.github.io/">Huayi Wang</a><sup>3</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/yuxiao-chen">Yuxiao Chen</a><sup>2</sup></span>, <span class="au"><a href="https://wenhao.pub">Wenhao Ding</a><sup>2</sup></span>, <span class="au"><a href="https://yanwang.org/">Yan Wang</a><sup>2</sup></span>, <br><span class="au"><a href="https://www.cs.toronto.edu/~wenjie/">Wenjie Luo</a><sup>2</sup></span>, <span class="au"><a href="http://www.borisivanovic.com/">Boris Ivanovic</a><sup>2†</sup></span>, <span class="au"><a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a><sup>1†</sup></span>, <span class="au"><a href="http://luoping.me">Ping Luo</a><sup>3†</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/marco-pavone">Marco Pavone</a><sup>2,4†</sup></span>, <span class="au"><a href="https://thomaschen98.github.io/">Yuxin Chen</a><sup>1^</sup></span>, <span class="au"><a href="https://thomasrantian.github.io/">Ran &quot;Thomas&quot; Tian</a><sup>1,2^</sup></span></p>
+    <p class="authors"><span class="au"><a href="https://renjunli99.github.io/">Junli Ren</a><sup>*1,3</sup></span>, <span class="au"><a href="https://kaixiangyao.github.io/">Kaixiang Yao</a><sup>*1</sup></span>, <span class="au"><a href="https://junfeng-long.github.io/">Junfeng Long</a><sup>*1</sup></span>, <span class="au"><a href="https://taohuang13.github.io/">Tao Huang</a><sup>3</sup></span>, <span class="au"><a href="https://why618188.github.io/">Huayi Wang</a><sup>3</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/yuxiao-chen">Yuxiao Chen</a><sup>2</sup></span>, <span class="au"><a href="https://wenhao.pub">Wenhao Ding</a><sup>2</sup></span>, <span class="au"><a href="https://yanwang.org/">Yan Wang</a><sup>2</sup></span>, <br><span class="au"><a href="https://www.cs.toronto.edu/~wenjie/">Wenjie Luo</a><sup>2</sup></span>, <span class="au"><a href="http://www.borisivanovic.com/">Boris Ivanovic</a><sup>2†</sup></span>, <span class="au"><a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a><sup>1†</sup></span>, <span class="au"><a href="http://luoping.me">Ping Luo</a><sup>3†</sup></span>, <span class="au"><a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a><sup>1†</sup></span>, <span class="au"><a href="https://research.nvidia.com/person/marco-pavone">Marco Pavone</a><sup>2,4†</sup></span>, <span class="au"><a href="https://thomaschen98.github.io/">Yuxin Chen</a><sup>1^</sup></span>, <span class="au"><a href="https://thomasrantian.github.io/">Ran &quot;Thomas&quot; Tian</a><sup>1,2^</sup></span></p>
     <p class="affil">
       <span><sup>1</sup>UC Berkeley</span>
       <span><sup>2</sup>Autonomous System &amp; Physical AI Research Group, NVIDIA</span>
@@ -61,7 +62,7 @@
     <p class="marks">* co-first author &nbsp;·&nbsp; † equal advising &nbsp;·&nbsp; ^ project lead<br>The work was done at UC Berkeley, in academic collaboration with NVIDIA.</p>
     <p class="logos" aria-hidden="true"><img src="media/logos/berkeley.svg" alt=""><img src="media/logos/nvidia.svg" alt="" class="wide"><img src="media/logos/hku.png" alt=""><img src="media/logos/stanford.png" alt=""></p>
     <p class="award"><a href="https://agentic-robotics-workshop.github.io/" target="_blank" rel="noopener" title="Best Demo Award, Workshop on Agentic Robotics, CoRL 2026"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0V4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 6H5.5a2.5 2.5 0 0 0 2.6 3.4M16 6h2.5a2.5 2.5 0 0 1-2.6 3.4M12 13v4M9 20h6M10 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Best Demo Award · Agentic Robotics Workshop, CoRL 2026</span></a></p>
-    <div class="film film--showcase" id="opening-showcase" role="group" aria-label="Featured robot demonstrations">
+    <div class="film film--showcase rv" id="opening-showcase" role="group" aria-label="Featured robot demonstrations">
       <div class="showcase-scenes">
         <div class="showcase-row showcase-row--top">
           <figure class="showcase-scene showcase-scene--stairs-down">
@@ -114,7 +115,7 @@
         </div>
       </div>
     </div>
-    <ul class="facts" aria-label="About these demonstrations">
+    <ul class="facts rv-kids" aria-label="About these demonstrations">
       <li>Fully autonomous</li>
       <li>No teleoperation</li>
       <li>No policy switch</li>
@@ -126,27 +127,27 @@
 
   <!-- ===== Overview ===== -->
   <section class="sec sec--wide sec--overview" id="overview" aria-labelledby="overview-title">
-    <header class="section-heading">
+    <header class="section-heading rv-kids">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 01</span>Overview</p>
       <h2 id="overview-title">One Human Video Demonstration, One Prompt</h2>
       <div class="section-text">
         <p>From one human video demonstration and one prompt, with no robot demonstrations and no task-specific training in simulation, ATLAS completes the task the prompt names. An agentic harness, not a policy pretrained on robot data, links the agent and the whole-body tracker, and it is a part of each. It learns at test time what neither can know in advance: how this real robot executes a command, and the fine-grained task specification in this scene.</p>
-        <p class="more-link"><a href="blog/">Read how it works <span aria-hidden="true">→</span></a></p>
+        <p class="more-link"><a href="paper/atlas_tech_report.pdf" target="_blank" rel="noopener">Read the technical report <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
   </section>
 
   <!-- ===== Method ===== -->
   <section class="sec sec--wide sec--method" id="method" aria-labelledby="method-title">
-    <header class="section-heading">
+    <header class="section-heading rv-kids">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 02</span>Method</p>
       <h2 id="method-title">An Agentic Harness</h2>
       <div class="section-text">
         <p>ATLAS divides the work by what each layer knows and when it learns it. System 2, the agent, knows the task before any session; System 0, the whole-body tracker, knows whole-body motion. The harness, a part of each, links the two and learns what only the running robot shows.</p>
-        <p class="more-link"><a href="blog/#method">Read the method <span aria-hidden="true">→</span></a></p>
+        <p class="more-link"><a href="paper/atlas_tech_report.pdf#page=3" target="_blank" rel="noopener">Read the method <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
-    <figure class="fig">
+    <figure class="fig rv">
       <div class="fig-scroll"><a href="media/fig_method_paper.jpg?v=80c904b1" target="_blank" rel="noopener" aria-label="Open the full-size figure"><img src="media/fig_method_paper.jpg?v=80c904b1" alt="Diagram. Left: the prompt “Open the cabinet door.”; three frames of a person, face blurred, bending to pull open an under-counter glass-front cabinet, labelled Human Demo; below them, after an arrow labelled Retarget, the same motion on a rendered humanoid at the cabinet, labelled Reference Motion. Middle: a shaded panel titled ATLAS Harness with three stages: Phase Segmentation, which splits the task into Navigation and Interaction; Object Grounding, where SAM 3 outlines the door’s vertical handle in a view of the cabinet; and Motion Editing, where the reference reach is shifted onto the handle. A circular arrow beside the panel is labelled Slow update. Right: the edited motion, summed with a Correction from the Fast System, which learns by online RL from the execution dynamics, goes into the frozen Whole-body Tracker, marked with a snowflake; the tracker drives the real robot, shown in three frames crouching at the cabinet and pulling its door open, labelled Robot execution." width="2400" height="771"></a></div>
       <figcaption class="exp"><b>ATLAS links a vision-language agent (System&nbsp;2) and a frozen whole-body tracker (System&nbsp;0) through edited motion references.</b> The human video supplies the whole-body motion; the agent specifies the interaction steps, objects, contacts, and success checks. Onboard perception grounds the contact targets, and the harness aligns the reference for execution. The fast system learns end-effector command corrections; the slow system revises what perception is asked to find and the success checks. Here, a human cabinet-opening video and the prompt &#8220;Open the cabinet door.&#8221; drive the robot to open a cabinet.</figcaption>
     </figure>
@@ -154,12 +155,12 @@
 
   <!-- ===== Learning on the robot ===== -->
   <section class="sec sec--wide" id="results" aria-labelledby="results-title">
-    <header class="section-heading">
+    <header class="section-heading rv-kids">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 03</span>Learning</p>
       <h2 id="results-title">Learning on the Robot</h2>
       <div class="section-text">
         <p class="lede">The fast system starts from zero in each session and learns how this robot misses the target set by the agent and the camera; it never moves the target.</p>
-        <p class="more-link"><a href="blog/#fast">How the fast system learns <span aria-hidden="true">→</span></a></p>
+        <p class="more-link"><a href="paper/atlas_tech_report.pdf#page=5" target="_blank" rel="noopener">How the fast system learns <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
     <figure class="fig fig--retry">
@@ -178,18 +179,18 @@
         <p class="sr-only" id="learning-description">Three attempts from one continuous stair run play alongside conceptual illustrations. The first two reaches miss the target and the robot retries in place; the learner keeps training on the attempts throughout the session, and the third reach grasps the object.</p>
       </div>
     </figure>
-    <div class="subsection-heading">
+    <div class="subsection-heading rv-kids">
       <h3>One autonomous learning session</h3>
       <p>Follow 38 attempts as the robot learns this task.</p>
     </div>
-    <p class="say">Pick up the trash and put it in the bin.</p>
-    <div class="media">
+    <p class="say rv">Pick up the trash and put it in the bin.</p>
+    <div class="media rv">
       <video id="session" muted playsinline controls preload="metadata" poster="media/rl_session_mid.jpg?v=8b466864" width="1920" height="1080"
         aria-label="One online-learning session, sped up ten times: the robot picks trash off the floor and puts it in a bin. A panel on the left shows and plots the success rate over the last eight attempts; it starts at 0% and ends at 88% after 38 attempts.">
         <source src="media/rl_session.mp4?v=c453006d" type="video/mp4">
       </video>
     </div>
-    <ul class="points">
+    <ul class="points rv-kids">
       <li><b>Success rate over the last eight attempts rises from 0% to 88%</b> in 38 attempts.</li>
       <li><b>No teleoperation.</b> A person only resets the trash: after a success, or when it leaves the camera's field of view.</li>
     </ul>
@@ -197,23 +198,23 @@
 
   <!-- ===== Task coverage ===== -->
   <section class="sec sec--wide" id="more" aria-labelledby="tasks-title">
-    <header class="section-heading">
+    <header class="section-heading rv-kids">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 04</span>Tasks</p>
       <h2 id="tasks-title">One Harness, Multiple Tasks</h2>
       <div class="section-text">
         <p class="lede">Cabinet opening, box carrying, and object pickup use the same harness, with each task specified by one human video demonstration and one prompt.</p>
-        <p class="more-link"><a href="blog/#spec">How the agent writes a task <span aria-hidden="true">→</span></a></p>
+        <p class="more-link"><a href="paper/atlas_tech_report.pdf#page=4" target="_blank" rel="noopener">How the agent writes a task <span aria-hidden="true">→</span></a></p>
       </div>
     </header>
-    <p class="say">Open the cabinet door. <span class="spd">1×</span></p>
-    <div class="media">
+    <p class="say rv">Open the cabinet door. <span class="spd">1×</span></p>
+    <div class="media rv">
       <video muted loop playsinline preload="metadata" poster="media/cabinet_open_1x.jpg" width="1440" height="1080" aria-label="A humanoid robot walks up to an under-counter cabinet, crouches, takes the door's handle and pulls the door open, at real speed"><source src="media/cabinet_open_1x.mp4" type="video/mp4"></video>
     </div>
-    <p class="say">Pick up the box, carry it and set it down. <span class="spd">2×</span></p>
-    <div class="media">
+    <p class="say rv">Pick up the box, carry it and set it down. <span class="spd">2×</span></p>
+    <div class="media rv">
       <video muted loop playsinline preload="metadata" poster="media/box_retry_2x.jpg" width="1920" height="1080" aria-label="A humanoid robot walks to a box on the floor, tries to lift it, retries where it stands and lifts it, at 2x speed"><source src="media/box_retry_2x.mp4" type="video/mp4"></video>
     </div>
-    <ul class="gallery">
+    <ul class="gallery rv-kids">
       <li><video muted loop playsinline preload="none" poster="media/box_three_3x.jpg?v=51c3396c" width="1080" height="1080" aria-label="A humanoid robot picks up a box, carries it and sets it down, three times in a row; a person brings the box back each time; at 3x speed"><source src="media/box_three_3x.mp4?v=6e2e0631" type="video/mp4"></video><p class="say">Pick up the box, carry it and set it down. <span class="spd">3×</span></p></li>
       <li><video muted loop playsinline preload="none" poster="media/tennis_pick_2x.jpg" width="1080" height="1080" aria-label="A humanoid robot walks to a tennis ball on the floor, crouches, picks it up and stands holding it, at 1.5x speed"><source src="media/tennis_pick_2x.mp4" type="video/mp4"></video><p class="say">Pick up the tennis ball. <span class="spd">1.5×</span></p></li>
       <li><video muted loop playsinline preload="none" poster="media/can_bin_3x.jpg" width="720" height="720" aria-label="A humanoid robot walks to a crushed can, picks it off the floor and drops it into a bin, at 3x speed"><source src="media/can_bin_3x.mp4" type="video/mp4"></video><p class="say">Pick up the can and put it in the bin. <span class="spd">3×</span></p></li>
@@ -221,14 +222,14 @@
   </section>
 
   <section class="sec sec--wide" id="sim" aria-labelledby="sim-title">
-    <header class="section-heading">
+    <header class="section-heading rv-kids">
       <p class="section-eyebrow"><span class="eyebrow-n">/ 05</span>Simulation</p>
       <h2 id="sim-title">From Demonstration to Execution</h2>
       <div class="section-text">
         <p class="lede">In Isaac Lab, each strip compares the human video demonstration, direct motion retargeting, and ATLAS, aligned by phase.</p>
       </div>
     </header>
-    <div class="strips">
+    <div class="strips rv-kids">
       <figure><video muted loop playsinline preload="none" poster="media/sim_trio_apple.jpg?v=ec0e3568" width="1920" height="476" aria-label="Three panels, phase-aligned: the same human video demonstration, an apple in the scene; the retarget misses; ATLAS picks the apple and places it"><source src="media/sim_trio_apple.mp4?v=cdc82082" type="video/mp4"></video><figcaption>Apple · from one human video demonstration</figcaption></figure>
       <figure><video muted loop playsinline preload="none" poster="media/sim_trio_box.jpg?v=4d8eba30" width="1920" height="476" aria-label="Three panels, phase-aligned: a person carries a large carton and sets it down; the retarget walks through the box; ATLAS lifts, carries and sets it down"><source src="media/sim_trio_box.mp4?v=e65e8be8" type="video/mp4"></video><figcaption>Box · carried with both arms</figcaption></figure>
       <figure><video muted loop playsinline preload="none" poster="media/sim_trio_fridge_door.jpg?v=4e326c4c" width="1920" height="476" aria-label="Three panels, phase-aligned: a person squats and pulls an under-counter fridge door open; a direct retarget of the motion squats with its hands in the air and the door stays shut; ATLAS grasps the vertical bar and pulls the door open"><source src="media/sim_trio_fridge_door.mp4?v=0541d54e" type="video/mp4"></video><figcaption>Fridge door · squat, grasp the bar and pull it open</figcaption></figure>
