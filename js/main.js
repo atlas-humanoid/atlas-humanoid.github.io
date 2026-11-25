@@ -47,18 +47,39 @@ function setupClips() {
 }
 
 /* The opening demos loop independently while visible. */
+/* They start one after another in reading order, the top row first, so the first clips do not share the connection with
+   all five: the next one may start once every clip allowed so far plays, or STAGGER_MS after the last one was allowed.
+   Until a clip plays, its still frame (the poster) covers it, and the cover fades out once the clip runs. */
+const STAGGER_MS = 2500;
 function setupShowcase() {
   const videos = [...document.querySelectorAll("#opening-showcase video[data-showcase-video]")];
   if (!videos.length) return;
   const hasObserver = "IntersectionObserver" in window;
   const visible = new Set(hasObserver ? [] : videos);
-  const applyPlayback = () => videos.forEach(v => {
-    if (!visible.has(v) || document.hidden) v.pause();
+  let allowed = 2, started = 0, timer = 0;
+  const applyPlayback = () => videos.forEach((v, i) => {
+    if (!visible.has(v) || document.hidden || i >= allowed) v.pause();
     else if (!v.paused || REDUCED) return;
     else play(v);
   });
+  const allowNext = () => {
+    clearTimeout(timer);
+    if (allowed >= videos.length) return;
+    allowed += 1;
+    applyPlayback();
+    timer = setTimeout(allowNext, STAGGER_MS);
+  };
+  if (!REDUCED) timer = setTimeout(allowNext, STAGGER_MS);
   videos.forEach(v => {
-    if (REDUCED) { v.removeAttribute("autoplay"); v.pause(); v.controls = true; }
+    if (REDUCED) { v.removeAttribute("autoplay"); v.pause(); v.controls = true; return; }
+    const box = v.parentElement;
+    if (v.poster) { box.style.setProperty("--still", `url("${v.poster}")`); box.classList.add("has-still"); }
+    v.addEventListener("playing", () => {
+      if (box.classList.contains("is-live")) return;
+      box.classList.add("is-live");
+      started += 1;
+      if (started >= allowed) allowNext();
+    });
     v.addEventListener("loadedmetadata", applyPlayback);
   });
   if (hasObserver) {

@@ -107,6 +107,12 @@ p { margin: 0; }
 .showcase-scene--candy .showcase-visual { aspect-ratio: 1412 / 972; }
 .showcase-scene--writing .showcase-visual { aspect-ratio: 1090 / 894; }
 .showcase-visual video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+/* the opening clips: their still frame covers them until they play, then fades out (main.js setupShowcase); without JS
+   or under reduced motion there is no cover and the video shows its own poster */
+.showcase-visual.has-still { position: relative; }
+.showcase-visual.has-still::after { content: ""; position: absolute; inset: 0; background: var(--still) center / cover no-repeat;
+  pointer-events: none; transition: opacity .6s ease; }
+.showcase-visual.has-still.is-live::after { opacity: 0; }
 .showcase-caption { flex: 1; padding: 12px 16px 14px; text-align: left; }
 .showcase-command { display: block; color: var(--fg); font-size: 15px; font-weight: 500; line-height: 1.5; text-wrap: balance; }
 @media (min-width: 641px) and (max-width: 900px) {
