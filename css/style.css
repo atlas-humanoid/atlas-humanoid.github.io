@@ -45,10 +45,7 @@ p { margin: 0; }
 .links a.tag[aria-current] { background: var(--accent); color: #fff; }
 .links a.yt { display: inline-flex; align-items: center; flex: none; }
 .links a.yt svg { width: 26px; height: 19px; display: block; flex: none; }
-.links a.xpost { display: inline-flex; align-items: center; flex: none; margin-left: -10px; }
-.links a.xpost svg { width: 19px; height: 19px; display: block; flex: none; }
-.links a.xpost:hover svg rect { fill: #333; }
-@media (max-width: 420px) { .links a.yt svg { width: 20px; height: 15px; } .links a.xpost { margin-left: -2px; } .links a.xpost svg { width: 15px; height: 15px; } }
+@media (max-width: 420px) { .links a.yt svg { width: 20px; height: 15px; } }
 .links a.yt:hover svg rect { fill: #cc0000; }
 
 /* ---------- "on this page": the section being read ---------- */
