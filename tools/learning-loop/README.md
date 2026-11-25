@@ -20,6 +20,14 @@ npm run render
 npm run render -- --composition LearningLoopMobile
 ```
 
+The gripper in the illustration is the robot's Dex1-1, rendered from its CAD meshes (the `meshes/` folder of the
+`dex1_1` robot description) with MuJoCo: `src/dex1_strip.png` holds ten frames from open to closed and
+`src/dex1_strip.json` their size and the point between the pads. To render it again (Python with mujoco, numpy, Pillow):
+
+```sh
+MUJOCO_GL=egl python dex1/render_dex1.py --meshdir /path/to/dex1_1/meshes --out src
+```
+
 The registered compositions in `src/index.tsx` determine dimensions, frame rate
 and duration. Current targets are `LearningLoop` (1920 × 880) and
 `LearningLoopMobile` (960 × 1400), both 630 frames at 30 fps (21 seconds).

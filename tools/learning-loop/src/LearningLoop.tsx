@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Easing, Freeze, Img, OffthreadVideo, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import dex1Strip from './dex1_strip.png';
+import dex1 from './dex1_strip.json';
 
 // One original 21-second recording, already sped up 3x. Source frames are
 // presented in order; completed attempts retain their last source frame.
 // Diagram positions below are conceptual, not tracked robot measurements.
 const ATTEMPTS = [
   {slot: 0, start: 3.4, land: 5.5, update: 8.0, lastFrame: 251, end: {x: 232, y: 156}},
-  {slot: 8.4, start: 8.7, land: 10.7, update: 13.0, lastFrame: 401, end: {x: 325, y: 178}},
+  {slot: 8.4, start: 8.7, land: 10.7, update: 13.0, lastFrame: 401, end: {x: 300, y: 178}},
   {slot: 13.4, start: 13.7, land: 16.2, update: 21, lastFrame: 629, end: {x: 380, y: 188}},
 ] as const;
 const TARGET = {x: 380, y: 188};
@@ -20,18 +22,16 @@ const ramp = (t: number, a: number, b: number) => interpolate(t, [a, b], [0, 1],
 const mix = (a: number, b: number, p: number) => a + (b - a) * p;
 const activeAttempt = (t: number) => t < 8.4 ? 0 : t < 13.4 ? 1 : 2;
 
+// The robot's Dex1-1 gripper, rendered from its CAD meshes (dex1/render_dex1.py): one strip of frames from open to
+// closed, placed by the point between its pads.
+const DEX1_SCALE = 0.3;
 const Gripper: React.FC<{x: number; y: number; close: number}> = ({x, y, close}) => {
-  const spread = mix(28, 18, close);
-  return <g transform={'translate(' + x + ' ' + y + ')'}>
-    <ellipse cx="0" cy="6" rx="47" ry="11" fill="#24272d" opacity="0.055" />
-    <rect x="-13" y="-106" width="26" height="34" rx="8" fill="#a0a6ae" />
-    <rect x="-40" y="-79" width="80" height="46" rx="14" fill="url(#metal)" stroke="#777e89" strokeWidth="1.5" />
-    <path d="M -27 -68 H 27" stroke="#fff" strokeWidth="2" opacity="0.75" strokeLinecap="round" />
-    <circle cx="-22" cy="-51" r="3" fill="#737b86" />
-    <circle cx="22" cy="-51" r="3" fill="#737b86" />
-    <path d={'M ' + -spread + ' -33 V -5 Q ' + -spread + ' 6 ' + (-spread + 10) + ' 6 H -10 M ' + spread + ' -33 V -5 Q ' + spread + ' 6 ' + (spread - 10) + ' 6 H 10'} fill="none" stroke="#444c58" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-    <circle r="3.5" fill={INK} />
-  </g>;
+  const [handle] = useState(() => delayRender('Load the Dex1 gripper'));
+  const [w, h] = dex1.frame;
+  const k = Math.round(close * (dex1.frames - 1));
+  return <svg x={x - dex1.anchor[0] * DEX1_SCALE} y={y - dex1.anchor[1] * DEX1_SCALE} width={w * DEX1_SCALE} height={h * DEX1_SCALE} viewBox={k * w + ' 0 ' + w + ' ' + h}>
+    <image href={dex1Strip} width={w * dex1.frames} height={h} onLoad={() => continueRender(handle)} />
+  </svg>;
 };
 
 const Reach: React.FC<{index: number; t: number}> = ({index, t}) => {
@@ -43,7 +43,6 @@ const Reach: React.FC<{index: number; t: number}> = ({index, t}) => {
   const y = mix(148, attempt.end.y, movement);
   const success = index === 2 ? landed : 0;
   return <svg viewBox="0 0 568 280" width="100%" height="100%" style={{overflow: 'visible'}}>
-    <defs><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#f0f1f4" /><stop offset="0.48" stopColor="#d1d5dc" /><stop offset="1" stopColor="#a5acb7" /></linearGradient></defs>
     <g opacity={started ? 1 : 0.3}>
       <g transform={'translate(' + TARGET.x + ' ' + TARGET.y + ')'}>
         <ellipse cy="2" rx="61" ry="28" fill="#eaf1fa" />
@@ -60,7 +59,7 @@ const Reach: React.FC<{index: number; t: number}> = ({index, t}) => {
       </g>}
       <Gripper x={x} y={y} close={index === 2 ? ramp(t, 16.2, 16.7) : 0} />
       {t < attempt.start && <text x="148" y="210" textAnchor="middle" fill={MUTED} fontSize="21">End effector</text>}
-      {success > 0 && <g transform="translate(426 135)" opacity={success}>
+      {success > 0 && <g transform="translate(448 128)" opacity={success}>
         <circle r="16" fill={BLUE} />
         <path d="M -7 0 L -2 5 L 8 -6" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       </g>}
