@@ -17,20 +17,20 @@ function setupLinks() {
   });
 }
 
-/* looping clips play while on screen; the whole session plays once when it comes into view */
+/* looping clips play while on screen; each whole session plays once when it comes into view */
 function setupClips() {
-  const session = document.getElementById("session");
+  const sessions = [...document.querySelectorAll("video[data-session]")];
   const loops = [...document.querySelectorAll("video[loop]:not(#learning-video):not([data-showcase-video])")];
   if (REDUCED) {
     loops.forEach(v => { v.removeAttribute("autoplay"); v.pause(); v.setAttribute("controls", ""); });
     return;
   }
   if (!("IntersectionObserver" in window)) { loops.forEach(play); return; }
-  let sessionStarted = false;
+  const started = new Set();
   const onVisibility = es => es.forEach(e => {
     const v = e.target;
-    if (v === session) {
-      if (e.isIntersecting && !sessionStarted) { sessionStarted = true; play(v); }
+    if (sessions.includes(v)) {
+      if (e.isIntersecting && !started.has(v)) { started.add(v); play(v); }
       else if (!e.isIntersecting && !v.paused && !v.ended) v.pause();
       return;
     }
@@ -43,7 +43,7 @@ function setupClips() {
     (v.closest(".film") ? heroIO : io).observe(v);
     v.addEventListener("click", () => (v.paused ? play(v) : v.pause()));
   });
-  if (session) io.observe(session);
+  sessions.forEach(v => io.observe(v));
 }
 
 /* The opening demos loop independently while visible. */
